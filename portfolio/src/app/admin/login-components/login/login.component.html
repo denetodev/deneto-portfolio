@@ -1,0 +1,32 @@
+<!-- login.component.html -->
+<div class="login-container">
+  <div class="login-box">
+    <h2 class="login-title">Log in</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          class="form-control"
+          placeholder="Enter your email"
+        />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          formControlName="password"
+          class="form-control"
+          placeholder="Enter your password"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary">Log in</button>
+    </form>
+    <p class="register-link">
+      Don't have an account? <a routerLink="/admin/register">Sign up</a>
+    </p>
+  </div>
+</div>

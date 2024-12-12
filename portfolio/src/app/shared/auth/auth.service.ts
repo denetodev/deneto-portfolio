@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 
@@ -13,55 +13,57 @@ interface AppUser {
 export class AuthService {
   private user: AppUser | null = null;
 
-  constructor(
-    @Inject(AngularFireAuth) private fireauth: AngularFireAuth,
-    private router: Router
-  ) {
+  constructor(private fireauth: AngularFireAuth, private router: Router) {
     this.fireauth.authState.subscribe((user) => {
       if (user) {
         this.user = {
           uid: user.uid,
           email: user.email,
         };
+        localStorage.setItem('user', JSON.stringify(this.user));
       } else {
         this.user = null;
+        localStorage.removeItem('user');
       }
     });
   }
 
   async login(email: string, password: string) {
     try {
-      await this.fireauth.signInWithEmailAndPassword(email, password);
-      localStorage.setItem('token', 'true');
-      this.router.navigate(['/dashboard']);
+      const result = await this.fireauth.signInWithEmailAndPassword(
+        email,
+        password
+      );
+      if (result.user) {
+        this.router.navigate(['/admin/dashboard']);
+      }
     } catch (error) {
-      console.error(error);
-      this.router.navigate(['/login']);
+      console.error('Erro ao fazer login:', error);
+      throw error;
     }
   }
 
   async register(email: string, password: string) {
     try {
       await this.fireauth.createUserWithEmailAndPassword(email, password);
-      localStorage.setItem('token', 'true');
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/admin/dashboard']);
     } catch (error) {
-      console.error(error);
-      this.router.navigate(['/login']);
+      console.error('Erro ao registrar:', error);
+      this.router.navigate(['/admin/login']);
     }
   }
 
   async logout() {
     try {
       await this.fireauth.signOut();
-      localStorage.removeItem('token');
-      this.router.navigate(['/login']);
+      localStorage.removeItem('user');
+      this.router.navigate(['/admin/login']);
     } catch (error) {
-      console.error(error);
+      console.error('Erro ao fazer logout:', error);
     }
   }
 
   isLoggedIn(): boolean {
-    return this.user !== null;
+    return localStorage.getItem('user') !== null;
   }
 }

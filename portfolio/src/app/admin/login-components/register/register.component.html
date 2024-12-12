@@ -1,0 +1,42 @@
+<!-- register.component.html -->
+<div class="register-container">
+  <div class="register-box">
+    <h2 class="register-title">Sign up</h2>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          class="form-control"
+          placeholder="Enter your email"
+        />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          formControlName="password"
+          class="form-control"
+          placeholder="Enter your password"
+        />
+      </div>
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input
+          type="password"
+          id="confirmPassword"
+          formControlName="confirmPassword"
+          class="form-control"
+          placeholder="Confirm your password"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary">Sign up</button>
+    </form>
+    <p class="login-link">
+      Already have an account? <a routerLink="/admin/login">Log in</a>
+    </p>
+  </div>
+</div>
