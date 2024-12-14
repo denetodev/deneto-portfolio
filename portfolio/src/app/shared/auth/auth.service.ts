@@ -1,36 +1,88 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject, PLATFORM_ID } from '@angular/core';
 import { Router } from '@angular/router';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
+import {
+  Firestore,
+  doc,
+  setDoc,
+  getDoc,
+  updateDoc,
+} from '@angular/fire/firestore';
+import { isPlatformBrowser } from '@angular/common';
+
+import {
+  Auth,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+} from '@angular/fire/auth';
 
 interface AppUser {
   uid: string;
   email: string | null;
+  role: string;
 }
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private user: AppUser | null = null;
+  private firestore = inject(Firestore);
+  private auth = inject(Auth);
+  private router = inject(Router);
 
-  constructor(private fireauth: AngularFireAuth, private router: Router) {
-    this.fireauth.authState.subscribe((user) => {
+  private user: AppUser | null = null;
+  private platformId = inject(PLATFORM_ID);
+
+  constructor() {
+    onAuthStateChanged(this.auth, async (user) => {
       if (user) {
-        this.user = {
-          uid: user.uid,
-          email: user.email,
-        };
-        localStorage.setItem('user', JSON.stringify(this.user));
+        try {
+          const userDoc = await getDoc(doc(this.firestore, 'users', user.uid));
+          if (userDoc.exists()) {
+            this.user = {
+              uid: user.uid,
+              email: user.email,
+              role: userDoc.data()['role'],
+            };
+            this.setLocalStorageItem('user', JSON.stringify(this.user));
+          }
+        } catch (error) {
+          console.error('Error fetching user document:', error);
+          // Optionally clear the local storage if there's an error
+          this.removeLocalStorageItem('user');
+        }
       } else {
         this.user = null;
-        localStorage.removeItem('user');
+        this.removeLocalStorageItem('user');
       }
     });
   }
 
+  private setLocalStorageItem(key: string, value: string): void {
+    if (isPlatformBrowser(this.platformId)) {
+      try {
+        localStorage.setItem(key, value);
+      } catch (error) {
+        console.error('Error setting localStorage item:', error);
+      }
+    }
+  }
+
+  private removeLocalStorageItem(key: string): void {
+    if (isPlatformBrowser(this.platformId)) {
+      try {
+        localStorage.removeItem(key);
+      } catch (error) {
+        console.error('Error removing localStorage item:', error);
+      }
+    }
+  }
+
   async login(email: string, password: string) {
     try {
-      const result = await this.fireauth.signInWithEmailAndPassword(
+      const result = await signInWithEmailAndPassword(
+        this.auth,
         email,
         password
       );
@@ -45,17 +97,27 @@ export class AuthService {
 
   async register(email: string, password: string) {
     try {
-      await this.fireauth.createUserWithEmailAndPassword(email, password);
-      this.router.navigate(['/admin/dashboard']);
+      const result = await createUserWithEmailAndPassword(
+        this.auth,
+        email,
+        password
+      );
+      if (result.user) {
+        await setDoc(doc(this.firestore, 'users', result.user.uid), {
+          email,
+          role: 'pending',
+        });
+        this.router.navigate(['/admin/login']);
+      }
     } catch (error) {
       console.error('Erro ao registrar:', error);
-      this.router.navigate(['/admin/login']);
+      throw error;
     }
   }
 
   async logout() {
     try {
-      await this.fireauth.signOut();
+      await signOut(this.auth);
       localStorage.removeItem('user');
       this.router.navigate(['/admin/login']);
     } catch (error) {
@@ -64,6 +126,27 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-    return localStorage.getItem('user') !== null;
+    if (isPlatformBrowser(this.platformId)) {
+      const user = localStorage.getItem('user');
+      return user !== null && user !== undefined;
+    }
+    return false;
+  }
+
+  async getUserRole(uid: string): Promise<string | null> {
+    const userDoc = await getDoc(doc(this.firestore, 'users', uid));
+    return userDoc.exists() ? userDoc.data()['role'] : null;
+  }
+
+  async approveUser(uid: string) {
+    const userRef = doc(this.firestore, 'users', uid);
+    await updateDoc(userRef, { role: 'admin' });
+  }
+
+  getCurrentUser() {
+    if (isPlatformBrowser(this.platformId)) {
+      return this.auth.currentUser;
+    }
+    return null;
   }
 }

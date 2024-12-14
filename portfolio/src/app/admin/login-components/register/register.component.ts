@@ -18,6 +18,7 @@ import { CommonModule } from '@angular/common';
 })
 export class RegisterComponent {
   registerForm: FormGroup;
+  errorMessage: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -31,35 +32,60 @@ export class RegisterComponent {
         confirmPassword: ['', [Validators.required, Validators.minLength(8)]],
       },
       {
-        validator: this.passwordMatchValidator,
+        validators: this.passwordMatchValidator,
       }
     );
   }
 
-  passwordMatchValidator(group: FormGroup): { [key: string]: boolean } {
-    const password = group.get('password')?.value;
-    const confirmPassword = group.get('confirmPassword')?.value;
+  passwordMatchValidator(group: FormGroup): { [key: string]: boolean } | null {
+    const password = group.get('password');
+    const confirmPassword = group.get('confirmPassword');
 
-    if (password !== confirmPassword) {
+    if (
+      password &&
+      confirmPassword &&
+      password.value !== confirmPassword.value
+    ) {
       return { passwordMismatch: true };
     }
 
-    return {};
+    return null;
   }
 
   onSubmit(): void {
+    this.errorMessage = ''; // Limpa mensagens de erro anteriores
+
     if (this.registerForm.valid) {
+      const { email, password } = this.registerForm.value;
+
       this.authService
-        .register(
-          this.registerForm.value.email,
-          this.registerForm.value.password
-        )
+        .register(email, password)
         .then(() => {
-          this.router.navigate(['/admin/dashboard']);
+          this.router.navigate(['/admin/login']);
         })
         .catch((error) => {
+          // Tratamento de erros específicos do Firebase
+          switch (error.code) {
+            case 'auth/email-already-in-use':
+              this.errorMessage = 'This email is already registered.';
+              break;
+            case 'auth/invalid-email':
+              this.errorMessage = 'Invalid email address.';
+              break;
+            case 'auth/weak-password':
+              this.errorMessage = 'Password is too weak.';
+              break;
+            default:
+              this.errorMessage = 'Error creating account. Please try again.';
+          }
           console.error('Erro ao criar conta:', error);
         });
+    } else {
+      // Marca todos os campos como tocados para mostrar validações
+      Object.keys(this.registerForm.controls).forEach((field) => {
+        const control = this.registerForm.get(field);
+        control?.markAsTouched();
+      });
     }
   }
 }

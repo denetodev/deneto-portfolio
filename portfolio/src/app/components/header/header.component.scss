@@ -1,0 +1,75 @@
+@import "../../../assets/styles/variables";
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $spacing-small $spacing-xlarge; // 10px 30px ajustado para variáveis
+  background-color: $color-primary-dark-blue; // substituindo #2e2e2e
+  color: $color-platinum-light; // substituindo #ffffff
+  font-family: $font-family-primary;
+
+  .logo {
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 30px;
+      margin-right: $spacing-small; // 8px ajustado para variável
+    }
+
+    span {
+      font-size: $font-size-large; // 1.2rem ajustado
+      strong {
+        font-weight: $font-weight-bold; // substituído por variável
+      }
+    }
+  }
+
+  .nav-links {
+    display: flex;
+    gap: $spacing-large; // 20px ajustado para variável
+
+    a {
+      text-decoration: none;
+      color: $color-platinum-light; // substituindo #ffffff
+      font-size: $font-size-base; // 1rem ajustado
+      transition: color $transition-speed-medium;
+
+      &:hover {
+        color: $color-primary-orange; // substituindo $primary-color
+      }
+    }
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: $spacing-large; // 20px ajustado
+
+    .language-btn {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+
+      img {
+        width: 24px;
+      }
+    }
+
+    .contact-btn {
+      background-color: $color-primary-orange; // substituindo $primary-color
+      color: $color-platinum-light;
+      padding: $spacing-small $spacing-medium; // 8px 15px ajustado
+      border: none;
+      border-radius: $border-radius-small; // 5px ajustado para variável
+      font-size: $font-size-small; // 0.9rem ajustado
+      cursor: pointer;
+      transition: background-color $transition-speed-medium;
+
+      &:hover {
+        background-color: darken($color-primary-orange, 10%);
+      }
+    }
+  }
+}

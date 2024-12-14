@@ -15,19 +15,18 @@ import { AuthService } from './auth.service';
 export class AuthGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
 
-  canActivate(
+  async canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ):
-    | Observable<boolean | UrlTree>
-    | Promise<boolean | UrlTree>
-    | boolean
-    | UrlTree {
-    if (this.authService.isLoggedIn()) {
-      return true;
-    } else {
-      this.router.navigate(['/login']);
-      return false;
+  ): Promise<boolean | UrlTree> {
+    const user = await this.authService.getCurrentUser();
+    if (user) {
+      const role = await this.authService.getUserRole(user.uid);
+      if (role === 'admin') {
+        return true;
+      }
     }
+    this.router.navigate(['/login']);
+    return false;
   }
 }

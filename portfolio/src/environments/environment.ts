@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  firebase : {
+  firebase: {
     apiKey: 'AIzaSyAZu9vTATCD0a3yCPx2eeFQmfx5a02mASw',
     authDomain: 'portfolio-management-5d64f.firebaseapp.com',
     projectId: 'portfolio-management-5d64f',
