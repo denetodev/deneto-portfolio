@@ -1,43 +1,95 @@
 @import "../../../assets/styles/variables";
 
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4; // Cor de fundo da página
+}
+
 .app-header {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: $spacing-small $spacing-xlarge; // 10px 30px ajustado para variáveis
-  background-color: $color-primary-dark-blue; // substituindo #2e2e2e
-  color: $color-platinum-light; // substituindo #ffffff
+  padding: $spacing-medium $spacing-xlarge;
+  background-color: $color-black;
+  color: $color-platinum-light;
   font-family: $font-family-primary;
+  width: 100%; // Garante que o header ocupe toda a largura da tela
+  box-sizing: border-box; // Garante que o padding não afete a largura do header
+  margin: 0 auto; // Garante centralização no layout
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px; // Limita o conteúdo a 1200px
+    margin: 0 auto; // Centraliza o conteúdo dentro do header
+  }
 
   .logo {
     display: flex;
     align-items: center;
+    cursor: pointer;
 
     img {
-      width: 30px;
-      margin-right: $spacing-small; // 8px ajustado para variável
-    }
+      height: 40px;
+      margin-right: $spacing-small;
 
-    span {
-      font-size: $font-size-large; // 1.2rem ajustado
-      strong {
-        font-weight: $font-weight-bold; // substituído por variável
+      &:active {
+        transform: scale(0.98);
       }
     }
   }
 
-  .nav-links {
+  .custom-menubar {
     display: flex;
-    gap: $spacing-large; // 20px ajustado para variável
+    justify-content: flex-end;
+    align-items: center;
+  }
 
-    a {
-      text-decoration: none;
-      color: $color-platinum-light; // substituindo #ffffff
-      font-size: $font-size-base; // 1rem ajustado
-      transition: color $transition-speed-medium;
+  .custom-menubar .p-menuitem {
+    margin: 0 $spacing-xlarge;
+  }
 
-      &:hover {
-        color: $color-primary-orange; // substituindo $primary-color
+  .custom-menubar .p-menuitem-link {
+    color: $color-platinum-light;
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    transition: color $transition-speed-medium;
+    cursor: pointer;
+
+    &:hover {
+      color: $color-primary-orange;
+    }
+  }
+
+  .menu-toggle {
+    display: none;
+    cursor: pointer;
+
+    .menu-icon {
+      width: 30px;
+      height: 3px;
+      background-color: $color-platinum-light;
+      position: relative;
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        width: 30px;
+        height: 3px;
+        background-color: $color-platinum-light;
+      }
+
+      &::before {
+        top: -8px;
+      }
+
+      &::after {
+        top: 8px;
       }
     }
   }
@@ -45,31 +97,94 @@
   .actions {
     display: flex;
     align-items: center;
-    gap: $spacing-large; // 20px ajustado
+    gap: $spacing-large;
+  }
+}
 
-    .language-btn {
-      background: transparent;
-      border: none;
-      cursor: pointer;
+// Responsividade para telas menores
 
-      img {
-        width: 24px;
+// @media (max-width: 576px) {
+//   .nav-links {
+//     display: none; // Esconde os links por padrão
+//     position: absolute;
+//     top: 60px; // Ajuste conforme a altura do header
+//     right: 0;
+//     background-color: $color-black;
+//     flex-direction: column;
+//     gap: $spacing-medium;
+//     padding: $spacing-medium;
+//     width: 100%;
+//     z-index: 10;
+
+//     &.active {
+//       display: flex; // Exibe os links quando a classe 'active' é adicionada
+//     }
+//   }
+
+//   .menu-toggle {
+//     display: block; // Garante que o ícone do menu apareça
+//     cursor: pointer;
+
+//     .menu-icon {
+//       width: 30px;
+//       height: 3px;
+//       background-color: $color-platinum-light;
+//       position: relative;
+
+//       &::before,
+//       &::after {
+//         content: "";
+//         position: absolute;
+//         width: 30px;
+//         height: 3px;
+//         background-color: $color-platinum-light;
+//       }
+
+//       &::before {
+//         top: -8px;
+//       }
+
+//       &::after {
+//         top: 8px;
+//       }
+//     }
+//   }
+// }
+
+@media (max-width: 768px) {
+  .app-header {
+    position: relative;
+    padding: $spacing-small $spacing-medium;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+
+    .logo img {
+      height: 35px;
+    }
+
+    .custom-menubar {
+      position: absolute;
+      top: 60px; // Ajuste conforme a altura do header
+      right: 0;
+      background-color: $color-black;
+      width: 100%;
+      z-index: 10;
+      flex-direction: column;
+      gap: $spacing-medium;
+      padding: $spacing-medium;
+      a {
+        font-size: $font-size-small;
       }
     }
 
-    .contact-btn {
-      background-color: $color-primary-orange; // substituindo $primary-color
-      color: $color-platinum-light;
-      padding: $spacing-small $spacing-medium; // 8px 15px ajustado
-      border: none;
-      border-radius: $border-radius-small; // 5px ajustado para variável
-      font-size: $font-size-small; // 0.9rem ajustado
-      cursor: pointer;
-      transition: background-color $transition-speed-medium;
+    .actions {
+      margin-top: $spacing-medium;
+      gap: $spacing-small;
+    }
 
-      &:hover {
-        background-color: darken($color-primary-orange, 10%);
-      }
+    .menu-toggle {
+      display: block; // Exibe o botão de toggle em telas menores
     }
   }
 }

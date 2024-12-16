@@ -1,0 +1,103 @@
+@import "../../../../assets/styles/variables";
+
+::ng-deep button {
+  background-color: transparent !important;
+  border: none;
+  padding: $spacing-small;
+  display: flex;
+  align-items: center;
+  gap: $spacing-small;
+  cursor: pointer;
+
+  transition: background-color $transition-speed-medium,
+    transform $transition-speed-fast;
+}
+
+button:hover {
+  transform: scale(1.15);
+}
+
+button:active {
+  transform: scale(0.98); // Faz o botão "encolher" um pouco ao clicar
+}
+
+.language-list {
+  font-family: $font-family-primary;
+}
+
+.title-language {
+  font-weight: $font-weight-semibold;
+  margin-bottom: $spacing-small;
+  font-size: $font-size-small;
+}
+
+.text-language-int {
+  display: flex !important;
+  align-items: center !important;
+  gap: $spacing-small !important;
+  padding: $spacing-small;
+  border-radius: $border-radius-small;
+  cursor: pointer !important;
+  transition: background-color $transition-speed-fast;
+}
+
+.text-language-int:hover {
+  background-color: darken($color-platinum-light, 5%);
+}
+
+img {
+  vertical-align: middle;
+}
+
+span {
+  font-weight: $font-weight-semibold;
+  vertical-align: middle;
+}
+
+::ng-deep .p-popover {
+  background-color: $color-platinum-light !important;
+  border-radius: $border-radius-medium !important;
+  box-shadow: $shadow-medium !important;
+  padding: $spacing-large !important;
+
+  .p-popover-content {
+    padding: 0 !important;
+  }
+
+  .language-list {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-medium;
+
+    .title-language {
+      font-weight: $font-weight-semibold;
+      margin-bottom: $spacing-small;
+      font-size: $font-size-small;
+    }
+
+    ul {
+      li {
+        display: flex !important;
+        align-items: center !important;
+        gap: $spacing-small !important;
+        padding: $spacing-small $spacing-medium;
+        border-radius: $border-radius-small;
+        cursor: pointer !important;
+        transition: background-color $transition-speed-fast;
+
+        &:hover {
+          background-color: darken($color-platinum-light, 5%);
+        }
+
+        img {
+          vertical-align: middle;
+        }
+
+        span {
+          font-weight: $font-weight-semibold;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+}

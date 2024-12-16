@@ -1,15 +1,59 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, ViewChild } from '@angular/core';
+import { Popover } from 'primeng/popover';
+import { PopoverModule } from 'primeng/popover';
+import { ButtonModule } from 'primeng/button';
+
+interface Language {
+  code: string;
+  name: string;
+  flag: string;
+}
 
 @Component({
   selector: 'app-language-switcher',
   standalone: true,
-  imports: [],
+  imports: [PopoverModule, ButtonModule, CommonModule],
   templateUrl: './language-switcher.component.html',
-  styleUrl: './language-switcher.component.scss',
+  styleUrls: ['./language-switcher.component.scss'],
 })
 export class LanguageSwitcherComponent {
-  changeLanguage(language: string): void {
-    console.log(`Idioma selecionado: ${language}`);
-    // Aqui você pode adicionar lógica para trocar o idioma.
+  @ViewChild('op') op!: Popover;
+
+  selectedLanguage: Language = {
+    code: 'pt',
+    name: 'Português',
+    flag: 'assets/images/flag/brasil.png',
+  };
+
+  languages: Language[] = [
+    {
+      code: 'pt',
+      name: 'Português',
+      flag: 'assets/images/flag/brasil.png',
+    },
+    {
+      code: 'en',
+      name: 'English',
+      flag: 'assets/images/flag/eua.png',
+    },
+    {
+      code: 'es',
+      name: 'Español',
+      flag: 'assets/images/flag/spain.png',
+    },
+  ];
+
+  toggle(event: Event) {
+    if (this.op) {
+      this.op.toggle(event);
+    }
+  }
+
+  selectLanguage(language: Language) {
+    this.selectedLanguage = language;
+    if (this.op) {
+      this.op.hide();
+    }
   }
 }

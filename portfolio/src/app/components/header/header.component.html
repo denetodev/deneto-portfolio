@@ -1,28 +1,35 @@
 <header class="app-header">
-  <div class="logo">
-    <img src="assets/images/logo.png" alt="Logo Deneto" />
-    <span>Dn <strong>Deneto</strong></span>
-  </div>
+  <div class="header-content">
+    <!-- Logo -->
+    <div class="logo">
+      <a routerLink="/landingpage/home">
+        <img
+          src="assets/images/visual-identity/logo-horizontal.png"
+          alt="Logo Deneto"
+        />
+      </a>
+    </div>
 
-  <nav class="nav-links">
-    <a routerLink="/landingpage/home">Sobre</a>
-    <a routerLink="/landingpage/services">Serviços</a>
-    <a routerLink="/landingpage/projects">Projetos</a>
-    <a routerLink="/landingpage/blog">Blog</a>
-  </nav>
+    <!-- Menu Toggle para telas menores -->
+    <div class="menu-toggle" (click)="toggleMenu()">
+      <div class="menu-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
 
-  <div class="actions">
-    <button class="language-btn" (click)="openLanguageModal()">
-      <img src="assets/images/brazil-flag.png" alt="Selecionar Idioma" />
-    </button>
-    <button
-      pButton
-      type="button"
-      class="contact-btn"
-      label="Fale Comigo"
-      (click)="goToLinksPage()"
-    >
-      Fale Comigo
-    </button>
+    <!-- MenuBar PrimeNG -->
+    <p-menubar [model]="items" class="custom-menubar">
+      <ng-template pTemplate="start">
+      </ng-template>
+
+      <ng-template pTemplate="end">
+        <div class="actions">
+          <app-language-switcher></app-language-switcher>
+          <app-contact-button></app-contact-button>
+        </div>
+      </ng-template>
+    </p-menubar>
   </div>
 </header>
