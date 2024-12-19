@@ -4,32 +4,27 @@
     <div class="logo">
       <a routerLink="/landingpage/home">
         <img
+          class="desktop-logo"
           src="assets/images/visual-identity/logo-horizontal.png"
           alt="Logo Deneto"
+        />
+        <img
+          class="mobile-logo"
+          src="assets/images/visual-identity/icon.png"
+          alt="Logo Deneto Icon"
         />
       </a>
     </div>
 
-    <!-- Menu Toggle para telas menores -->
-    <div class="menu-toggle" (click)="toggleMenu()">
-      <div class="menu-icon">
-        <span></span>
-        <span></span>
-        <span></span>
+    <!-- Menu de Navegação -->
+    <app-nav-menu></app-nav-menu>
+
+    <!-- Botões -->
+    <div>
+      <div class="actions">
+        <app-language-switcher></app-language-switcher>
+        <app-contact-button></app-contact-button>
       </div>
     </div>
-
-    <!-- MenuBar PrimeNG -->
-    <p-menubar [model]="items" class="custom-menubar">
-      <ng-template pTemplate="start">
-      </ng-template>
-
-      <ng-template pTemplate="end">
-        <div class="actions">
-          <app-language-switcher></app-language-switcher>
-          <app-contact-button></app-contact-button>
-        </div>
-      </ng-template>
-    </p-menubar>
   </div>
 </header>

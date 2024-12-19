@@ -1,190 +1,63 @@
 @import "../../../assets/styles/variables";
 
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f4; // Cor de fundo da página
-}
-
 .app-header {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: $spacing-medium $spacing-xlarge;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   background-color: $color-black;
-  color: $color-platinum-light;
-  font-family: $font-family-primary;
-  width: 100%; // Garante que o header ocupe toda a largura da tela
-  box-sizing: border-box; // Garante que o padding não afete a largura do header
-  margin: 0 auto; // Garante centralização no layout
+  z-index: 1000;
+  padding: 0.75rem;
 
   .header-content {
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    max-width: 1200px; // Limita o conteúdo a 1200px
-    margin: 0 auto; // Centraliza o conteúdo dentro do header
+    position: relative;
   }
 
   .logo {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
+    flex-shrink: 0;
+    z-index: 2;
+
+    a {
+      display: block;
+    }
 
     img {
       height: 40px;
-      margin-right: $spacing-small;
-
-      &:active {
-        transform: scale(0.98);
-      }
+      width: auto;
     }
-  }
 
-  .custom-menubar {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-  }
-
-  .custom-menubar .p-menuitem {
-    margin: 0 $spacing-xlarge;
-  }
-
-  .custom-menubar .p-menuitem-link {
-    color: $color-platinum-light;
-    font-size: $font-size-base;
-    font-weight: $font-weight-semibold;
-    transition: color $transition-speed-medium;
-    cursor: pointer;
-
-    &:hover {
-      color: $color-primary-orange;
-    }
-  }
-
-  .menu-toggle {
-    display: none;
-    cursor: pointer;
-
-    .menu-icon {
-      width: 30px;
-      height: 3px;
-      background-color: $color-platinum-light;
-      position: relative;
-
-      &::before,
-      &::after {
-        content: "";
-        position: absolute;
-        width: 30px;
-        height: 3px;
-        background-color: $color-platinum-light;
-      }
-
-      &::before {
-        top: -8px;
-      }
-
-      &::after {
-        top: 8px;
-      }
+    .mobile-logo {
+      display: none;
     }
   }
 
   .actions {
     display: flex;
     align-items: center;
-    gap: $spacing-large;
+    gap: 1rem;
   }
 }
 
-// Responsividade para telas menores
-
-// @media (max-width: 576px) {
-//   .nav-links {
-//     display: none; // Esconde os links por padrão
-//     position: absolute;
-//     top: 60px; // Ajuste conforme a altura do header
-//     right: 0;
-//     background-color: $color-black;
-//     flex-direction: column;
-//     gap: $spacing-medium;
-//     padding: $spacing-medium;
-//     width: 100%;
-//     z-index: 10;
-
-//     &.active {
-//       display: flex; // Exibe os links quando a classe 'active' é adicionada
-//     }
-//   }
-
-//   .menu-toggle {
-//     display: block; // Garante que o ícone do menu apareça
-//     cursor: pointer;
-
-//     .menu-icon {
-//       width: 30px;
-//       height: 3px;
-//       background-color: $color-platinum-light;
-//       position: relative;
-
-//       &::before,
-//       &::after {
-//         content: "";
-//         position: absolute;
-//         width: 30px;
-//         height: 3px;
-//         background-color: $color-platinum-light;
-//       }
-
-//       &::before {
-//         top: -8px;
-//       }
-
-//       &::after {
-//         top: 8px;
-//       }
-//     }
-//   }
-// }
-
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .app-header {
-    position: relative;
-    padding: $spacing-small $spacing-medium;
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
+    padding: 0.5rem;
 
-    .logo img {
-      height: 35px;
+    .header-content {
+      padding: 0 1rem;
     }
 
-    .custom-menubar {
-      position: absolute;
-      top: 60px; // Ajuste conforme a altura do header
-      right: 0;
-      background-color: $color-black;
-      width: 100%;
-      z-index: 10;
-      flex-direction: column;
-      gap: $spacing-medium;
-      padding: $spacing-medium;
-      a {
-        font-size: $font-size-small;
+    .logo {
+      .desktop-logo {
+        display: none;
       }
-    }
-
-    .actions {
-      margin-top: $spacing-medium;
-      gap: $spacing-small;
-    }
-
-    .menu-toggle {
-      display: block; // Exibe o botão de toggle em telas menores
+      .mobile-logo {
+        display: block;
+      }
     }
   }
 }
