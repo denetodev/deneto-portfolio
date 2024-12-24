@@ -1,30 +1,38 @@
-<header class="app-header">
-  <div class="header-content">
-    <!-- Logo -->
-    <div class="logo">
-      <a routerLink="/landingpage/home">
-        <img
-          class="desktop-logo"
-          src="assets/images/visual-identity/logo-horizontal.png"
-          alt="Logo Deneto"
-        />
-        <img
-          class="mobile-logo"
-          src="assets/images/visual-identity/icon.png"
-          alt="Logo Deneto Icon"
-        />
-      </a>
-    </div>
-
-    <!-- Menu de Navegação -->
-    <app-nav-menu></app-nav-menu>
-
-    <!-- Botões -->
-    <div>
-      <div class="actions">
-        <app-language-switcher></app-language-switcher>
-        <app-contact-button></app-contact-button>
+<div class="card">
+  <p-menubar [model]="items">
+    <ng-template #start>
+      <div class="logo">
+        <a routerLink="/landingpage/home">
+          <img
+            class="mobile-logo"
+            src="assets/images/visual-identity/icon.png"
+            alt="Logo Deneto Icon"
+          />
+        </a>
       </div>
-    </div>
-  </div>
-</header>
+    </ng-template>
+
+    <ng-template #item let-item let-root="root">
+      <a pRipple class="flex items-center p-menubar-item-link">
+        <span>{{ item.label }}</span>
+
+        <span
+          *ngIf="item.shortcut"
+          class="ml-auto border border-surface rounded bg-emphasis text-muted-color text-xs p-1"
+          >{{ item.shortcut }}</span
+        >
+        <i
+          *ngIf="item.items"
+          [ngClass]="['ml-auto pi', root ? 'pi-angle-down' : 'pi-angle-right']"
+        ></i>
+      </a>
+    </ng-template>
+
+    <ng-template #end>
+      <div class="actions flex items-center gap-2">
+        <app-language-switcher></app-language-switcher>
+        <app-contact-button class="contact-button"></app-contact-button>
+      </div>
+    </ng-template>
+  </p-menubar>
+</div>

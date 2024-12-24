@@ -1,34 +1,6 @@
 @import "../../../../assets/styles/variables";
 
-:host ::ng-deep .contact-btn {
-  background-color: $color-primary-orange;
-  color: $color-platinum-light;
-  padding: $spacing-small $spacing-medium;
-  border: none;
-  border-radius: $border-radius-medium;
-  font-size: $font-size-base;
-  font-weight: $font-weight-semibold;
-  cursor: pointer;
-  transition: background-color $transition-speed-medium,
-    transform $transition-speed-fast !important;
-  text-align: center;
-  display: inline-block;
+a {
+  padding: $spacing-small;
   text-decoration: none;
-
-  // Estilos para hover, active e focus
-  &:hover {
-    background-color: darken($color-primary-orange, 10%);
-    transform: scale(1.03);
-  }
-
-  &:active {
-    background-color: darken($color-primary-orange, 15%);
-    transform: scale(0.98); // Faz o botão "encolher" um pouco ao clicar
-  }
-
-  // Responsividade
-  @media (max-width: 768px) {
-    padding: $spacing-small $spacing-large;
-    font-size: $font-size-base;
-  }
 }

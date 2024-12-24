@@ -1,30 +1,26 @@
 <div class="language-list">
-  <button
-    class="p-button min-w-48 flex items-center gap-2"
+  <img
+    [src]="selectedLanguage.flag"
+    alt="Selected Language"
+    style="width: 32px; height: 32px"
     (click)="toggle($event)"
-  >
-    <img
-      [src]="selectedLanguage.flag"
-      alt="Selected Language"
-      style="width: 32px; height: 32px"
-    />
-  </button>
+  />
 
   <p-popover #op>
     <div class="flex flex-col gap-4">
       <div>
-        <span class="title-language font-medium block mb-2"
-          >Escolha o Idioma</span
-        >
-        <ul class="list-none p-0 m-0 flex flex-col">
+        <span class="title-language font-medium block mb-2">
+          Escolha o Idioma
+        </span>
+        <ul class="languages-list">
           <li
             *ngFor="let language of languages"
-            class="text-language-int flex items-center gap-2 px-2 py-3 hover:bg-emphasis cursor-pointer rounded-border"
+            class="text-language-int language-item"
             (click)="selectLanguage(language)"
           >
             <img
               [src]="language.flag"
-              style="width: 32px; height: 32px"
+              class="language-flag"
               alt="{{ language.name }}"
             />
             <span class="font-medium">{{ language.name }}</span>

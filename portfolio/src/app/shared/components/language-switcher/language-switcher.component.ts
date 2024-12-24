@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
+import { ButtonModule } from 'primeng/button';
 import { Popover } from 'primeng/popover';
 import { PopoverModule } from 'primeng/popover';
-import { ButtonModule } from 'primeng/button';
 
 interface Language {
   code: string;

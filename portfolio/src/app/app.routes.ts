@@ -6,7 +6,10 @@ import { AuthGuard } from './shared/auth/auth.guard';
 import { LandingPageComponent } from './pages/landingpage/landingpage.component';
 
 export const routes: Routes = [
+  // Página inicial
   { path: '', component: LandingPageComponent },
+
+  // Páginas acessíveis a partir da LandingPage
   {
     path: 'blog',
     loadComponent: () =>
@@ -22,12 +25,14 @@ export const routes: Routes = [
       ),
   },
   {
-    path: 'offices',
+    path: 'links',
     loadComponent: () =>
-      import('./pages/landingpage/offices/offices.component').then(
-        (m) => m.OfficesComponent
+      import('./pages/links-page/links-page.component').then(
+        (m) => m.LinksPageComponent
       ),
   },
+
+  // Rotas para o Admin
   {
     path: 'admin',
     children: [
@@ -41,5 +46,7 @@ export const routes: Routes = [
       },
     ],
   },
-  { path: '**', redirectTo: '' },
+
+  // Fallback para rotas inexistentes
+  { path: '**', redirectTo: '', pathMatch: 'full' },
 ];

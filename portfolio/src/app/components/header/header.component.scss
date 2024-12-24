@@ -1,63 +1,83 @@
 @import "../../../assets/styles/variables";
 
-.app-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: $color-black;
-  z-index: 1000;
-  padding: 0.75rem;
-
-  .header-content {
+:host ::ng-deep {
+  .card {
+    background-color: $color-black;
+  }
+  .p-menubar {
     max-width: 1200px;
+    border: none;
+    border-radius: none !important;
+    background-color: transparent !important;
     margin: 0 auto;
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    align-items: center;
-    position: relative;
-  }
 
-  .logo {
-    flex-shrink: 0;
-    z-index: 2;
+    .p-menubar-button {
+      color: $color-platinum-light !important;
+      height: 35px !important;
+      width: 35px !important;
+      flex-shrink: 0;
 
-    a {
-      display: block;
-    }
-
-    img {
-      height: 40px;
-      width: auto;
-    }
-
-    .mobile-logo {
-      display: none;
+      &:hover {
+        background-color: rgb($color-primary-orange, 60%);
+      }
     }
   }
 
-  .actions {
+  .p-menubar-root-list {
     display: flex;
+    justify-content: flex-end;
     align-items: center;
-    gap: 1rem;
+    background-color: $color-black !important;
+
+    .p-menubar-item-link {
+      color: $color-platinum-light;
+
+      &:hover {
+        color: $color-primary-orange;
+        background-color: none !important;
+      }
+      span {
+        font-weight: $font-weight-semibold;
+        font-size: $font-size-small;
+      }
+    }
   }
 }
 
-@media screen and (max-width: 768px) {
-  .app-header {
-    padding: 0.5rem;
+.logo {
+  flex-shrink: 0;
+  z-index: 2;
+  cursor: pointer;
 
-    .header-content {
-      padding: 0 1rem;
-    }
+  a {
+    display: block;
+  }
 
-    .logo {
-      .desktop-logo {
-        display: none;
-      }
-      .mobile-logo {
-        display: block;
-      }
+  img {
+    height: 40px;
+    width: auto;
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+@media screen and (max-width: 576px) {
+  .logo {
+    .desktop-logo {
+      display: none;
     }
+    .mobile-logo {
+      display: block;
+    }
+  }
+  .contact-button {
+    display: none;
   }
 }
