@@ -1,0 +1,22 @@
+@import "../../../../assets/styles/variables";
+
+:host ::ng-deep {
+  .container {
+    display: inline-flex;
+    padding: 6px;
+    border: 2px solid rgb($color-gray, 60%);
+    background: rgba($color-taupe-gray, 0.1); // Fundo mais transparente
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 25px;
+  }
+
+  .p-button {
+    font-weight: $font-weight-semibold;
+    transition: all 0.2s ease;
+  }
+
+  .gray-button .p-button-label {
+    color: $color-black;
+  }
+}

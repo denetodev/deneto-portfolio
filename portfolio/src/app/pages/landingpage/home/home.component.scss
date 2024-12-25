@@ -1,0 +1,232 @@
+@import "../../../../assets/styles/variables";
+
+:host ::ng-deep {
+  .home-container {
+    position: relative;
+    min-height: 82vh;
+    padding: 2rem 0 0;
+    background-color: $color-platinum-light;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .content-wrapper {
+      width: 100%;
+      max-width: 1300px;
+      padding: 0 4rem;
+    }
+
+    .top-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 2rem;
+      z-index: 2;
+
+      .p-button-outlined.p-button-contrast {
+        padding: 8px 22px;
+        font-size: $font-size-large;
+        font-weight: $font-weight-bold;
+        border: 1.6px solid $color-black;
+      }
+
+      .hello-button img {
+        margin-bottom: $spacing-large;
+      }
+
+      .main-title {
+        text-align: center;
+
+        h1 {
+          font-size: 3.5rem;
+          font-weight: $font-weight-semibold;
+          margin-top: $spacing-medium;
+          color: $color-black;
+
+          .highlight {
+            color: $color-primary-orange;
+          }
+        }
+
+        .writer-context {
+          ::ng-deep app-typewriter {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: $color-black;
+          }
+        }
+      }
+    }
+
+    .side-content {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      z-index: 2;
+
+      .quote {
+        max-width: 300px;
+
+        img {
+          width: 2.5rem;
+          margin-bottom: $spacing-small;
+        }
+
+        blockquote {
+          color: $color-gray;
+          font-weight: $font-weight-semibold;
+          font-size: $font-size-large;
+          margin: 0;
+        }
+      }
+
+      .experience-rating {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        ::ng-deep .p-rating-item-active .p-rating-icon {
+          color: $color-primary-orange;
+        }
+
+        .years {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+
+          .number {
+            font-size: $font-size-heading-3;
+            font-weight: $font-weight-semibold;
+            color: $color-black;
+            margin: $spacing-tiny 0;
+          }
+
+          .label {
+            font-size: $font-size-small;
+            font-weight: $font-weight-semibold;
+            color: $color-black;
+          }
+        }
+      }
+    }
+
+    .bottom-content {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 1300px;
+
+      .profile-container {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        z-index: 1;
+
+        .profile-image {
+          max-width: 730px;
+          width: 100%;
+        }
+      }
+
+      .button-container {
+        margin-bottom: 80px;
+        z-index: 3;
+        transform: translateY(50px);
+      }
+    }
+  }
+
+  @media (max-width: 1441px) {
+    .home-container {
+      padding: 2rem;
+
+      .top-content {
+        .main-title {
+          h1 {
+            font-size: 3rem;
+          }
+
+          .writer-context ::ng-deep app-typewriter {
+            font-size: 2rem;
+          }
+        }
+      }
+
+      .bottom-content {
+        margin-top: 2rem;
+
+        .profile-container .profile-image {
+          max-width: 430px;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .home-container {
+      padding: 1rem;
+
+      .top-content .main-title {
+        h1 {
+          font-size: $font-size-heading-2;
+        }
+
+        .writer-context {
+          font-size: $font-size-heading-3 !important;
+        }
+      }
+
+      .bottom-content .profile-container .profile-image {
+        max-width: 400px;
+      }
+
+      .hello-button {
+        display: none;
+      }
+    }
+
+    .side-content {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1rem;
+
+      .quote img {
+        width: 1.5rem;
+      }
+
+      blockquote {
+        font-size: $font-size-small !important;
+      }
+
+      .experience-rating {
+        align-items: center;
+        .years {
+          align-items: center;
+        }
+        .number {
+          font-size: $font-size-large !important;
+          font-weight: $font-weight-bold;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    .experience-rating {
+      display: none !important;
+    }
+
+    .bottom-content .profile-container .profile-image {
+      width: 90vw !important;
+    }
+  }
+}

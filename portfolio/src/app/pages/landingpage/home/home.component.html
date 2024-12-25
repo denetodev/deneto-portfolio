@@ -1,1 +1,71 @@
-<p>home works!</p>
+<section class="home-container">
+  <div class="content-wrapper">
+    <div class="top-content">
+      <div class="hello-button">
+        <p-button
+          label="Hello!!"
+          variant="outlined"
+          [rounded]="true"
+          severity="contrast"
+        />
+        <img
+          src="../../../../assets/images/landing-page/Vector_asp02.svg"
+          alt="aspas-image"
+        />
+      </div>
+
+      <div class="main-title">
+        <h1>Eu sou o <span class="highlight">Neto</span>.</h1>
+        <div class="writer-context">
+          <app-typewriter
+            [strings]="[
+              'Desenvolvedor FullStack',
+              'Web Designer',
+              'Dev Mobile',
+              'Dev Back-End',
+              'Dev Front-End',
+              'Desenvolvedor WordPress'
+            ]"
+            [typeSpeed]="150"
+            [backSpeed]="150"
+            [loop]="true"
+          >
+          </app-typewriter>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-content">
+      <div class="quote">
+        <img
+          src="../../../../assets/images/landing-page/Vector_asp03.svg"
+          alt="aspas-image"
+        />
+        <blockquote>
+          Construindo pontes digitais entre seu negócio e seus clientes.
+        </blockquote>
+      </div>
+
+      <div class="experience-rating">
+        <p-rating [ngModel]="ratingValue" [readonly]="true"></p-rating>
+        <div class="years">
+          <span class="number">{{ yearsOfExperience }} Anos</span>
+          <span class="label">Experiência</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-content">
+    <div class="profile-container">
+      <img
+        src="../../../../assets/images/landing-page/profile-photo.png"
+        alt="Neto - Desenvolvedor FullStack"
+        class="profile-image"
+      />
+    </div>
+    <div class="button-container">
+      <app-group-button></app-group-button>
+    </div>
+  </div>
+</section>

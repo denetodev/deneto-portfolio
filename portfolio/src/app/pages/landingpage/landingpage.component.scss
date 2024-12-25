@@ -1,20 +1,5 @@
-.landing-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100%;
-  padding: 2rem;
-  background-color: white;
+@import "../../../assets/styles/variables";
 
-  h1 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: #333;
-  }
-
-  p {
-    font-size: 1.2rem;
-    color: #666;
-  }
+app-home {
+  background-color: $color-platinum-light;
 }

@@ -1,0 +1,15 @@
+@import "../../../../assets/styles/variables";
+
+.container {
+  font-family: $font-family-primary;
+  font-weight: $font-weight-semibold;
+  font-size: 3.75rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+span {
+  color: $color-black;
+}
