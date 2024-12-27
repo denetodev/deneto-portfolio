@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { RouterModule } from '@angular/router';
 
@@ -9,4 +9,17 @@ import { RouterModule } from '@angular/router';
   templateUrl: './contact-button.component.html',
   styleUrls: ['./contact-button.component.scss'],
 })
-export class ContactButtonComponent {}
+export class ContactButtonComponent {
+  @Input() variant: 'outlined' | 'text' | undefined; // Tipos permitidos pelo `p-button`
+  @Input() severity:
+    | 'success'
+    | 'info'
+    | 'warn'
+    | 'danger'
+    | 'help'
+    | 'primary'
+    | 'secondary'
+    | 'contrast'
+    | null
+    | undefined; // Tipos permitidos pelo `p-button`
+}

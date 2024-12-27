@@ -34,6 +34,16 @@
         margin-bottom: $spacing-large;
       }
 
+      #confetti {
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 999;
+        pointer-events: none;
+      }
+
       .main-title {
         text-align: center;
 
@@ -164,7 +174,7 @@
         margin-top: 2rem;
 
         .profile-container .profile-image {
-          max-width: 430px;
+          max-width: 500px;
         }
       }
     }
@@ -176,20 +186,24 @@
 
       .top-content .main-title {
         h1 {
-          font-size: $font-size-heading-2;
+          font-size: $font-size-heading-1;
         }
 
         .writer-context {
-          font-size: $font-size-heading-3 !important;
+          font-size: $font-size-heading-2 !important;
         }
       }
 
       .bottom-content .profile-container .profile-image {
-        max-width: 400px;
+        width: 90vw !important;
       }
 
-      .hello-button {
-        display: none;
+      .hello-button img {
+        width: $spacing-medium;
+      }
+
+      .experience-rating {
+        display: none !important;
       }
     }
 
@@ -200,11 +214,11 @@
       gap: 1rem;
 
       .quote img {
-        width: 1.5rem;
+        width: $spacing-large !important;
       }
 
       blockquote {
-        font-size: $font-size-small !important;
+        font-size: $font-size-large !important;
       }
 
       .experience-rating {

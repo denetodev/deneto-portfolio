@@ -1,0 +1,64 @@
+@import "../../../../assets/styles/variables";
+
+.service-card {
+  height: 100%;
+  transition: transform 0.3s ease;
+  cursor: default;
+
+  &:hover {
+    transform: translateY(-8px);
+
+    ::ng-deep .p-card {
+      border-color: $color-primary-orange;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+
+      .icon-wrapper i {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  ::ng-deep .p-card {
+    border: 2px solid $color-gray;
+    background-color: $color-platinum-light;
+    border-radius: $border-radius-large;
+    box-shadow: none;
+    height: 100%;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+    .p-card-body {
+      padding: $spacing-large;
+    }
+  }
+
+  .card-content {
+    padding: $spacing-large $spacing-small;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-tiny;
+  }
+
+  .icon-wrapper {
+    margin-bottom: $spacing-tiny;
+
+    i {
+      color: $color-primary-orange;
+      font-size: $font-size-heading-2;
+      transition: transform 0.3s ease;
+    }
+  }
+
+  .service-title {
+    color: $color-primary-orange;
+    font-size: $font-size-xlarge;
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-tiny;
+  }
+
+  .service-description {
+    color: $color-taupe-gray;
+    line-height: 1.25;
+    margin: 0;
+    font-size: $font-size-base;
+  }
+}
