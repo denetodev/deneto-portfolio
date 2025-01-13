@@ -8,6 +8,7 @@
     [showIndicators]="true"
     [responsiveOptions]="responsiveOptions"
     autoplayInterval="3000"
+    class="custom-carousel"
   >
     <ng-template let-project pTemplate="item">
       <div class="project-card">
@@ -16,20 +17,10 @@
           <div class="project-info-overlay">
             <div class="header-content">
               <h3>{{ project.title }}</h3>
-              <div class="button-group">
-                <a [href]="project.githubUrl" target="_blank">
-                  <button pButton class="p-button-outlined">
-                    <img src="assets/images/github-icon.svg" alt="GitHub" />
-                    Code
-                  </button>
-                </a>
-                <a [href]="project.siteUrl" target="_blank">
-                  <button pButton>
-                    <img src="assets/images/link-icon.svg" alt="Site" />
-                    Site
-                  </button>
-                </a>
-              </div>
+              <app-project-buttons
+                [githubUrl]="project.githubUrl"
+                [siteUrl]="project.siteUrl"
+              ></app-project-buttons>
             </div>
             <p>{{ project.description }}</p>
           </div>

@@ -12,6 +12,16 @@
     margin: $spacing-xlarge $spacing-tiny;
     box-shadow: 0px 12px 22px -2px rgba(0, 0, 0, 0.4);
 
+    border: 1px solid $color-platinum !important;
+
+    transition: transform 0.5s ease; // Adiciona transição suave
+
+    &:hover {
+      transform: scale(1.1);
+      z-index: 3;
+      box-shadow: 0px 12px 8px -20px rgba(0, 0, 0, 0.3);
+    }
+
     .image-container {
       width: 100%;
       height: 100%;
@@ -34,10 +44,12 @@
         width: 100%;
         height: 100%;
         background: linear-gradient(
-          0deg,
-          rgba(11, 11, 11, 0.86) 30%,
-          rgba(0, 0, 0, 0.52) 65%,
-          rgba(255, 255, 255, 0) 100%
+          8deg,
+          #000000 20%,
+          rgba(0, 0, 0, 0.79) 30%,
+          rgba(0, 0, 0, 0.46) 45%,
+          rgba(0, 0, 0, 0.15) 60%,
+          rgba(0, 0, 0, 0) 70%
         );
         z-index: 1;
       }
@@ -47,12 +59,14 @@
         left: 0;
         right: 0;
         bottom: 0;
-        height: 200px;
-        backdrop-filter: blur(3px) saturate(137%);
-        -webkit-backdrop-filter: blur(3px) saturate(137%);
-        background-color: rgba(37, 34, 34, 0.63);
-        margin: 12px;
-        border: 1px solid white;
+        height: 160px;
+        backdrop-filter: blur(7px) saturate(200%);
+        -webkit-backdrop-filter: blur(7px) saturate(200%);
+        background-color: rgba(217, 217, 217, 0.11);
+
+        z-index: 2;
+        margin: 8px;
+        border: 1px solid $color-taupe-gray !important;
         border-radius: 12px;
         padding: 1rem;
         display: flex;
@@ -63,60 +77,26 @@
         .header-content {
           display: flex;
           justify-content: space-between;
-          align-items: center;
+          align-items: center !important;
           margin-bottom: 1rem;
           z-index: 3;
 
           h3 {
             color: white;
-            font-size: 1.5rem;
+            font-size: $font-size-heading-3;
+            font-weight: $font-weight-bold;
             margin: 0;
             flex: 1;
-          }
-
-          .button-group {
-            display: flex;
-            gap: 0.75rem;
-
-            button {
-              display: flex;
-              align-items: center;
-              gap: 0.5rem;
-              padding: 0.5rem 1rem;
-              border-radius: 4px;
-
-              img {
-                width: 16px;
-                height: 16px;
-              }
-
-              &.p-button-outlined {
-                border-color: rgba(255, 255, 255, 0.6);
-                color: white;
-
-                &:hover {
-                  background: rgba(255, 255, 255, 0.1);
-                  border-color: white;
-                }
-              }
-
-              &:not(.p-button-outlined) {
-                background: #f47b20;
-                border: none;
-
-                &:hover {
-                  background: darken(#f47b20, 10%);
-                }
-              }
-            }
+            text-align: start;
           }
         }
 
         p {
-          color: white;
+          color: $color-platinum-light;
           margin: 0;
-          font-size: 1rem;
-          line-height: 1.5;
+          font-size: $font-size-small;
+          font-weight: $font-weight-regular;
+          line-height: 1.2;
         }
       }
     }
@@ -131,7 +111,8 @@
 
     button {
       &.p-button-text {
-        color: #666;
+        color: $color-taupe-gray;
+        background: $color-platinum;
 
         &:hover {
           background: rgba(244, 123, 32, 0.1);
@@ -150,4 +131,8 @@
   &.p-highlight {
     background: #f47b20;
   }
+}
+
+:host ::ng-deep .p-carousel-indicator-button {
+  background-color: $color-black;
 }

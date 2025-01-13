@@ -4,11 +4,17 @@ import { ProjectService } from '../../services/project.service';
 import { ButtonModule } from 'primeng/button';
 import { CommonModule } from '@angular/common';
 import { CarouselModule } from 'primeng/carousel';
+import { ProjectButtonsComponent } from '../project-buttons/project-buttons.component';
 
 @Component({
   selector: 'app-carousel-projects',
   standalone: true,
-  imports: [ButtonModule, CommonModule, CarouselModule],
+  imports: [
+    ButtonModule,
+    CommonModule,
+    CarouselModule,
+    ProjectButtonsComponent,
+  ],
   templateUrl: './carousel-projects.component.html',
   styleUrls: ['./carousel-projects.component.scss'],
 })
