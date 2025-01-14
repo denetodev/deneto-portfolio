@@ -1,0 +1,91 @@
+@import "../../../../assets/styles/variables";
+
+.projects-container {
+  background-color: $color-platinum-light;
+}
+
+.projects-header {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  h2 {
+    font-weight: $font-weight-semibold;
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    color: $color-black;
+  }
+
+  .highlight {
+    color: $color-primary-orange;
+  }
+}
+
+.projects-section {
+  padding: 1rem 1rem;
+
+  .portfolio-summary {
+    text-align: center;
+
+    .portfolio-title {
+      color: $color-black;
+      font-weight: $font-weight-semibold;
+      font-size: $font-size-large;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center; /* Ajusta o alinhamento vertical */
+      gap: 1rem;
+
+      .pi {
+        font-size: 24px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        //margin-right: 6px;
+      }
+    }
+
+    .portfolio-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center; /* Centraliza horizontalmente */
+      align-items: center; /* Centraliza verticalmente */
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+
+      .portfolio-heading {
+        color: $color-black;
+        font-weight: $font-weight-semibold;
+        font-size: $font-size-heading-1;
+        display: flex;
+        align-items: center; /* Ajusta alinhamento vertical */
+        justify-content: center; /* Ajusta alinhamento horizontal */
+        text-align: center; /* Garante alinhamento interno */
+      }
+
+      a p-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s ease, background-color 0.3s ease,
+          color 0.3s ease;
+
+        &:hover {
+          transform: scale(1.15) rotate(-45deg); /* Corrige a escala e rotação */
+        }
+      }
+    }
+
+    .portfolio-description {
+      max-width: 1000px;
+      margin: 0 auto;
+      color: $color-gray;
+      font-size: $font-size-mlarge; /* Ajuste do tamanho do texto */
+      line-height: 1.2; /* Melhor legibilidade */
+      font-weight: $font-weight-regular;
+    }
+  }
+}

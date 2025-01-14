@@ -1,0 +1,21 @@
+@import "../../../../assets/styles/variables";
+
+.ver-mais-button {
+  display: inline-block;
+  background-color: $color-primary-orange;
+  color: $color-platinum-light;
+  text-decoration: none;
+  padding: $spacing-xMedium $spacing-xlarge;
+  border-radius: $border-radius-medium;
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-xlarge;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: darken($color-primary-orange, 10%);
+  }
+
+  &:active {
+    background-color: darken($color-primary-orange, 15%);
+  }
+}

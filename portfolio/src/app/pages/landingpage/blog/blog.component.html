@@ -1,1 +1,43 @@
-<p>blog works!</p>
+<section class="blog-section">
+  <!-- Seção de Inscrição por Email -->
+  <div class="email-subscription">
+    <h2>
+      Tem uma ideia de projeto incrível? <br />
+      <span class="highlight">Vamos conversar</span>!
+    </h2>
+
+    <app-email-input></app-email-input>
+  </div>
+
+  <!-- Seção de Posts do Blog -->
+  <div class="blog-posts">
+    <div class="section-header">
+      <div class="titles">
+        <h2>Veja minhas últimas</h2>
+        <h3>Postagens no Blog</h3>
+      </div>
+      <app-ver-mais-button url="/blog"></app-ver-mais-button>
+    </div>
+
+    <div class="posts-grid">
+      <div *ngFor="let post of blogPosts" class="post-card">
+        <div
+          class="post-image"
+          [style.backgroundImage]="'url(' + post.image + ')'"
+        >
+          <div class="arrow-icon">
+            <i class="pi pi-arrow-right"></i>
+          </div>
+        </div>
+        <div class="post-content">
+          <h4>{{ post.title }}</h4>
+          <p>{{ post.description }}</p>
+          <div class="post-meta">
+            <span class="date">{{ post.date }}</span>
+            <span class="category">{{ post.category }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
