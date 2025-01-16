@@ -34,7 +34,7 @@ export class BlogComponent {
 
   blogPosts: BlogPost[] = [
     {
-      image: 'assets/web-dev-2024.jpg',
+      image: '../../../../assets/images/blog-section/ios-tumb.png',
       title: 'As Tendências Mais Quentes em Desenvolvimento Web para 2024',
       description:
         'Descubra as tecnologias e práticas que estão moldando o futuro da web',
@@ -42,7 +42,7 @@ export class BlogComponent {
       category: 'Landing Page',
     },
     {
-      image: 'assets/mobile-dev.jpg',
+      image: '../../../../assets/images/blog-section/mobile-tumb.png',
       title:
         'Desenvolvimento Mobile: Dicas Essenciais para Criar Apps de Sucesso',
       description:
@@ -51,7 +51,7 @@ export class BlogComponent {
       category: 'E-commerce',
     },
     {
-      image: 'assets/ai-ml.jpg',
+      image: '../../../../assets/images/blog-section/machine-learn-tumb.png',
       title:
         'Como a Inteligência Artificial Está Transformando o Desenvolvimento de Software',
       description:
