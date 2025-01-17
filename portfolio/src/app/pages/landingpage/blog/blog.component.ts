@@ -4,6 +4,7 @@ import { InputIconModule } from 'primeng/inputicon';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputTextModule } from 'primeng/inputtext';
 import { FloatLabelModule } from 'primeng/floatlabel';
+import { Tag } from 'primeng/tag';
 import { FormsModule } from '@angular/forms';
 import { VerMaisButtonComponent } from '@app/shared/components/ver-mais-button/ver-mais-button.component';
 import { BlogPost } from '@app/shared/interfaces/blogPost.interface';
@@ -25,6 +26,7 @@ import { EmailInputComponent } from '../../../shared/components/email-input/emai
     RouterModule,
     VerMaisButtonComponent,
     EmailInputComponent,
+    Tag,
   ],
   templateUrl: './blog.component.html',
   styleUrl: './blog.component.scss',

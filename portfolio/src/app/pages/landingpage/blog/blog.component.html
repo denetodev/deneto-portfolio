@@ -29,15 +29,29 @@
           [style.backgroundImage]="'url(' + post.image + ')'"
         >
           <div class="arrow-icon">
-            <i class="pi pi-arrow-right"></i>
+            <!-- TODO ajustar link para página correta -->
+            <a href="https://github.com/denetodev" target="_blank">
+              <p-button
+                icon="pi pi-arrow-right"
+                size="large"
+                [rounded]="true"
+              ></p-button>
+            </a>
           </div>
         </div>
         <div class="post-content">
-          <h4>{{ post.title }}</h4>
+          <h3>{{ post.title }}</h3>
           <p>{{ post.description }}</p>
           <div class="post-meta">
-            <span class="date">{{ post.date }}</span>
-            <span class="category">{{ post.category }}</span>
+            <div class="date-inline">
+              <i class="pi pi-calendar"></i>
+              <span class="date">{{ post.date }}</span>
+            </div>
+            <p-tag
+              class="category"
+              severity="warn"
+              value="{{ post.category }}"
+            />
           </div>
         </div>
       </div>

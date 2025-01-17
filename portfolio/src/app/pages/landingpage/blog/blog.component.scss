@@ -78,11 +78,10 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
-  padding: 1rem;
 }
 
 .post-card {
-  //border-radius: 22px;
+  border-radius: 22px;
   overflow: hidden;
   background: var(--surface-0);
   transition: all 0.3s ease;
@@ -93,7 +92,7 @@
 
   &:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    // box-shadow: 0px 8px 22px -13px rgba(0, 0, 0, 0.295);
 
     .post-image::after {
       opacity: 0.8;
@@ -105,17 +104,18 @@
   }
 
   .post-image {
-    height: 480px;
-    width: 420px;
+    height: 380px;
+    width: 100%;
     background-size: cover;
     background-position: center;
     border-radius: 22px;
+    display: flex;
+    align-items: end;
+    justify-content: flex-end;
 
     .arrow-icon {
-      position: absolute;
-      right: 1.5rem;
-      bottom: 1.5rem;
-      background: white;
+      position: relative;
+      margin: 24px;
       width: 48px;
       height: 48px;
       border-radius: 50%;
@@ -125,39 +125,57 @@
       z-index: 2;
       transition: all 0.3s ease;
 
-      i {
-        color: var(--primary-color);
-        font-size: 1.2rem;
+      a,
+      p-button {
+        transition: transform 0.3s ease, background-color 0.3s ease,
+          color 0.3s ease;
+
+        &:hover {
+          transform: scale(1.15) rotate(-45deg); /* Corrige a escala e rotação */
+        }
       }
     }
   }
 
   .post-content {
-    padding: 1.5rem;
+    padding: 1.5rem 0;
     background: white;
     flex: 1;
+    margin: 0 1rem;
 
-    h4 {
-      margin: 0 0 0.8rem 0;
-      font-size: 1.2rem;
-      color: var(--surface-900);
-      line-height: 1.4;
-      font-weight: 600;
+    h3 {
+      margin-bottom: 0.8rem;
+      font-size: $font-size-xlarge;
+      color: $color-black;
+      font-weight: $font-weight-bold;
     }
 
     p {
       color: var(--surface-600);
       margin-bottom: 1rem;
-      line-height: 1.6;
-      font-size: 0.9rem;
+      line-height: 1.2;
+      font-size: $font-size-large;
     }
 
     .post-meta {
       display: flex;
       justify-content: space-between;
-      color: var(--surface-500);
-      font-size: 0.85rem;
+      align-items: flex-end;
+      color: $color-black;
+      font-size: 0.8rem;
       margin-top: auto;
+
+      .date-inline {
+        i {
+          margin-right: 8px;
+          font-size: 1.5rem;
+        }
+
+        .date {
+          font-weight: $font-weight-semibold;
+          font-size: $font-size-small;
+        }
+      }
 
       .category {
         font-weight: 500;
