@@ -1,11 +1,11 @@
-@import "../../../../assets/styles/variables";
+@use "../../../../assets/styles/variables" as vars;
 
 :host ::ng-deep {
   .home-container {
     position: relative;
     min-height: 82vh;
     padding: 2rem 0 0;
-    background-color: $color-platinum-light;
+    background-color: vars.$color-platinum-light;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -25,13 +25,13 @@
 
       .p-button-outlined.p-button-contrast {
         padding: 8px 22px;
-        font-size: $font-size-large;
-        font-weight: $font-weight-bold;
-        border: 1.6px solid $color-black;
+        font-size: vars.$font-size-large;
+        font-weight: vars.$font-weight-bold;
+        border: 1.6px solid vars.$color-black;
       }
 
       .hello-button img {
-        margin-bottom: $spacing-large;
+        margin-bottom: vars.$spacing-large;
       }
 
       #confetti {
@@ -49,12 +49,12 @@
 
         h1 {
           font-size: 3.5rem;
-          font-weight: $font-weight-semibold;
-          margin-top: $spacing-medium;
-          color: $color-black;
+          font-weight: vars.$font-weight-semibold;
+          margin-top: vars.$spacing-medium;
+          color: vars.$color-black;
 
           .highlight {
-            color: $color-primary-orange;
+            color: vars.$color-primary-orange;
           }
         }
 
@@ -62,7 +62,7 @@
           ::ng-deep app-typewriter {
             font-size: 2.5rem;
             font-weight: 700;
-            color: $color-black;
+            color: vars.$color-black;
           }
         }
       }
@@ -79,13 +79,13 @@
 
         img {
           width: 2.5rem;
-          margin-bottom: $spacing-small;
+          margin-bottom: vars.$spacing-small;
         }
 
         blockquote {
-          color: $color-gray;
-          font-weight: $font-weight-semibold;
-          font-size: $font-size-large;
+          color: vars.$color-gray;
+          font-weight: vars.$font-weight-semibold;
+          font-size: vars.$font-size-large;
           margin: 0;
         }
       }
@@ -96,7 +96,7 @@
         align-items: flex-end;
 
         ::ng-deep .p-rating-item-active .p-rating-icon {
-          color: $color-primary-orange;
+          color: vars.$color-primary-orange;
         }
 
         .years {
@@ -105,16 +105,16 @@
           align-items: flex-end;
 
           .number {
-            font-size: $font-size-heading-3;
-            font-weight: $font-weight-semibold;
-            color: $color-black;
-            margin: $spacing-tiny 0;
+            font-size: vars.$font-size-heading-3;
+            font-weight: vars.$font-weight-semibold;
+            color: vars.$color-black;
+            margin: vars.$spacing-tiny 0;
           }
 
           .label {
-            font-size: $font-size-small;
-            font-weight: $font-weight-semibold;
-            color: $color-black;
+            font-size: vars.$font-size-small;
+            font-weight: vars.$font-weight-semibold;
+            color: vars.$color-black;
           }
         }
       }
@@ -186,11 +186,11 @@
 
       .top-content .main-title {
         h1 {
-          font-size: $font-size-heading-1;
+          font-size: vars.$font-size-heading-1;
         }
 
         .writer-context {
-          font-size: $font-size-heading-2 !important;
+          font-size: vars.$font-size-heading-2 !important; // Corrigido: adicionado o namespace vars.
         }
       }
 
@@ -199,7 +199,7 @@
       }
 
       .hello-button img {
-        width: $spacing-medium;
+        width: vars.$spacing-medium; // Corrigido: adicionado o namespace vars.
       }
 
       .experience-rating {
@@ -214,11 +214,11 @@
       gap: 1rem;
 
       .quote img {
-        width: $spacing-large !important;
+        width: vars.$spacing-large !important; // Corrigido: adicionado o namespace vars.
       }
 
       blockquote {
-        font-size: $font-size-large !important;
+        font-size: vars.$font-size-large !important; // Corrigido: adicionado o namespace vars.
       }
 
       .experience-rating {
@@ -227,8 +227,8 @@
           align-items: center;
         }
         .number {
-          font-size: $font-size-large !important;
-          font-weight: $font-weight-bold;
+          font-size: vars.$font-size-large !important; // Corrigido: adicionado o namespace vars.
+          font-weight: vars.$font-weight-bold; // Corrigido: adicionado o namespace vars.
         }
       }
     }

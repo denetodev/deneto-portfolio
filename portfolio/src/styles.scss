@@ -1,8 +1,10 @@
-@import "assets/styles/variables";
-@import "assets/styles/_reset.scss";
-@import "primeicons/primeicons.css";
-@import "primeflex/primeflex.scss";
+@use "assets/styles/variables" as vars;
+@use "assets/styles/reset";
+@use "assets/styles/mixins" as mixins;
+
+@use "primeicons/primeicons.css" as primeicons;
+@use "primeflex/primeflex" as primeflex;
 
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: vars.$font-family-primary;
 }

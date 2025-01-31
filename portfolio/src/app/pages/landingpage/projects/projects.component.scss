@@ -1,7 +1,7 @@
-@import "../../../../assets/styles/variables";
+@use "../../../../assets/styles/variables" as vars;
 
 .projects-container {
-  background-color: $color-platinum-light;
+  background-color: vars.$color-platinum-light;
 }
 
 .projects-header {
@@ -12,14 +12,14 @@
   justify-content: space-between;
 
   h2 {
-    font-weight: $font-weight-semibold;
+    font-weight: vars.$font-weight-semibold;
     font-size: 3.5rem;
     margin-bottom: 1.5rem;
-    color: $color-black;
+    color: vars.$color-black;
   }
 
   .highlight {
-    color: $color-primary-orange;
+    color: vars.$color-primary-orange; // Corrigido: adicionado o namespace vars.
   }
 }
 
@@ -30,9 +30,9 @@
     text-align: center;
 
     .portfolio-title {
-      color: $color-black;
-      font-weight: $font-weight-semibold;
-      font-size: $font-size-large;
+      color: vars.$color-black; // Corrigido: adicionado o namespace vars.
+      font-weight: vars.$font-weight-semibold; // Corrigido: adicionado o namespace vars.
+      font-size: vars.$font-size-large; // Corrigido: adicionado o namespace vars.
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
@@ -57,9 +57,9 @@
       margin-bottom: 1.5rem;
 
       .portfolio-heading {
-        color: $color-black;
-        font-weight: $font-weight-semibold;
-        font-size: $font-size-heading-1;
+        color: vars.$color-black; // Corrigido: adicionado o namespace vars.
+        font-weight: vars.$font-weight-semibold; // Corrigido: adicionado o namespace vars.
+        font-size: vars.$font-size-heading-1; // Corrigido: adicionado o namespace vars.
         display: flex;
         align-items: center; /* Ajusta alinhamento vertical */
         justify-content: center; /* Ajusta alinhamento horizontal */
@@ -82,10 +82,10 @@
     .portfolio-description {
       max-width: 1000px;
       margin: 0 auto;
-      color: $color-gray;
-      font-size: $font-size-mlarge; /* Ajuste do tamanho do texto */
+      color: vars.$color-gray; // Corrigido: adicionado o namespace vars.
+      font-size: vars.$font-size-mlarge; // Corrigido: adicionado o namespace vars.
       line-height: 1.2; /* Melhor legibilidade */
-      font-weight: $font-weight-regular;
+      font-weight: vars.$font-weight-regular; // Corrigido: adicionado o namespace vars.
     }
   }
 }

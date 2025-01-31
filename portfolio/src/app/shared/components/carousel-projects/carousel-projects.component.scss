@@ -1,4 +1,4 @@
-@import "../../../../assets/styles/variables";
+@use "../../../../assets/styles/variables" as vars;
 
 :host ::ng-deep .carousel-container {
   padding: 2rem 0;
@@ -7,13 +7,11 @@
     width: 500px;
     height: 360px;
     position: relative;
-    border-radius: $border-radius-xlarge;
+    border-radius: vars.$border-radius-xlarge;
     overflow: hidden;
-    margin: $spacing-xlarge $spacing-tiny;
+    margin: vars.$spacing-xlarge vars.$spacing-tiny;
     box-shadow: 0px 12px 22px -2px rgba(0, 0, 0, 0.4);
-
-    border: 1px solid $color-platinum !important;
-
+    border: 1px solid vars.$color-platinum !important;
     transition: transform 0.5s ease; // Adiciona transição suave
 
     &:hover {
@@ -63,10 +61,9 @@
         backdrop-filter: blur(7px) saturate(200%);
         -webkit-backdrop-filter: blur(7px) saturate(200%);
         background-color: rgba(217, 217, 217, 0.11);
-
         z-index: 2;
         margin: 8px;
-        border: 1px solid $color-taupe-gray !important;
+        border: 1px solid vars.$color-taupe-gray !important;
         border-radius: 12px;
         padding: 1rem;
         display: flex;
@@ -83,8 +80,8 @@
 
           h3 {
             color: white;
-            font-size: $font-size-heading-3;
-            font-weight: $font-weight-bold;
+            font-size: vars.$font-size-heading-3;
+            font-weight: vars.$font-weight-bold;
             margin: 0;
             flex: 1;
             text-align: start;
@@ -92,10 +89,10 @@
         }
 
         p {
-          color: $color-platinum-light;
+          color: vars.$color-platinum-light;
           margin: 0;
-          font-size: $font-size-small;
-          font-weight: $font-weight-regular;
+          font-size: vars.$font-size-small;
+          font-weight: vars.$font-weight-regular;
           line-height: 1.2;
         }
       }
@@ -111,8 +108,8 @@
 
     button {
       &.p-button-text {
-        color: $color-taupe-gray;
-        background: $color-platinum;
+        color: vars.$color-taupe-gray;
+        background: vars.$color-platinum;
 
         &:hover {
           background: rgba(244, 123, 32, 0.1);
@@ -134,5 +131,5 @@
 }
 
 :host ::ng-deep .p-carousel-indicator-button {
-  background-color: $color-black;
+  background-color: vars.$color-black; // Corrigido: adicionado o namespace vars.
 }

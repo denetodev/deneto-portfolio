@@ -1,4 +1,4 @@
-@import "../../../../assets/styles/variables";
+@use "../../../../assets/styles/variables" as vars;
 
 .page-container {
   max-width: 1300px;
@@ -18,20 +18,21 @@
     max-width: 1300px;
 
     h2 {
-      font-weight: $font-weight-semibold;
+      font-weight: vars.$font-weight-semibold;
       font-size: 3.5rem;
-      color: $color-primary-orange;
+      color: vars.$color-primary-orange;
       white-space: nowrap;
     }
 
     .services-description {
-      font-weight: $font-weight-semibold;
-      font-size: $font-size-large;
-      color: $color-gray;
+      font-weight: vars.$font-weight-semibold;
+      font-size: vars.$font-size-large;
+      color: vars.$color-gray;
       line-height: 1.2;
       flex: 1;
       margin: 0.5rem 0 0;
     }
+
     @media (max-width: 768px) {
       flex-direction: column;
       gap: 1rem;
@@ -55,7 +56,7 @@
 
 .hire-section {
   padding: 4rem 0;
-  background-color: var(--surface-ground);
+  background-color: vars.$color-platinum-light; // Substituído var(--surface-ground) por uma variável SASS
 }
 
 .hire-content {
@@ -88,28 +89,31 @@
   align-items: flex-start;
 
   .hire-title {
-    font-weight: $font-weight-semibold;
+    font-weight: vars.$font-weight-semibold;
     font-size: 3.5rem;
     margin-bottom: 1.5rem;
-    color: $color-black;
+    color: vars.$color-black;
 
     .highlight {
-      color: $color-primary-orange;
+      color: vars.$color-primary-orange;
     }
   }
 
   .hire-description {
-    font-weight: $font-weight-semibold;
-    font-size: $font-size-base;
-    color: $color-gray;
+    font-weight: vars.$font-weight-semibold;
+    font-size: vars.$font-size-base;
+    color: vars.$color-gray;
     line-height: 1.2;
     margin-bottom: 2rem;
   }
+
   @media (max-width: 968px) {
     align-items: center;
     text-align: center;
+
     .contact-button {
       justify-content: center;
+
       &:hover {
         border-width: 2px;
       }
@@ -130,19 +134,19 @@
   .metric {
     display: flex;
     flex-direction: column;
-    gap: $spacing-tiny;
+    gap: vars.$spacing-tiny;
 
     .metric-value {
-      font-size: $font-size-heading-2;
-      font-weight: $font-weight-semibold;
-      color: $color-black;
+      font-size: vars.$font-size-heading-2;
+      font-weight: vars.$font-weight-semibold;
+      color: vars.$color-black;
       line-height: 1;
     }
 
     .metric-label {
       font-size: 1rem;
       font-weight: 500;
-      color: $color-gray;
+      color: vars.$color-gray; // Corrigido: adicionado o namespace vars.
       line-height: 1.4;
       max-width: 200px;
     }
@@ -154,8 +158,8 @@
     .p-button {
       padding: 1rem 2rem;
       border-width: 2px;
-      border-radius: $border-radius-large;
-      font-size: $font-size-large;
+      border-radius: vars.$border-radius-large; // Corrigido: adicionado o namespace vars.
+      font-size: vars.$font-size-large; // Corrigido: adicionado o namespace vars.
     }
   }
 }

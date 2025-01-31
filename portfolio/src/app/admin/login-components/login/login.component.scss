@@ -1,79 +1,83 @@
-@import "../../../../assets/styles/variables";
+@use "sass:color"; // Importa o módulo de cores do SASS
+@use "../../../../assets/styles/variables" as vars;
 
 .login-container {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: $color-platinum-light;
+  background-color: vars.$color-platinum-light;
 
   .login-box {
     background: white;
-    padding: $spacing-xlarge;
-    border-radius: $border-radius-medium;
-    box-shadow: $shadow-medium;
+    padding: vars.$spacing-xlarge;
+    border-radius: vars.$border-radius-medium;
+    box-shadow: vars.$shadow-medium; // Corrigido: adicionado o namespace vars.
     width: 100%;
     max-width: 400px;
 
     .login-title {
       text-align: center;
-      margin-bottom: $spacing-xlarge;
-      color: $color-black;
-      font-family: $font-family-primary;
-      font-weight: $font-weight-bold;
-      font-size: $font-size-heading-2;
+      margin-bottom: vars.$spacing-xlarge; // Corrigido: adicionado o namespace vars.
+      color: vars.$color-black; // Corrigido: adicionado o namespace vars.
+      font-family: vars.$font-family-primary; // Corrigido: adicionado o namespace vars.
+      font-weight: vars.$font-weight-bold; // Corrigido: adicionado o namespace vars.
+      font-size: vars.$font-size-heading-2; // Corrigido: adicionado o namespace vars.
     }
 
     .form-group {
-      margin-bottom: $spacing-medium;
+      margin-bottom: vars.$spacing-medium; // Corrigido: adicionado o namespace vars.
 
       label {
         display: block;
-        margin-bottom: $spacing-small;
-        font-family: $font-family-primary;
-        font-weight: $font-weight-semibold;
-        color: $color-black;
+        margin-bottom: vars.$spacing-small; // Corrigido: adicionado o namespace vars.
+        font-family: vars.$font-family-primary; // Corrigido: adicionado o namespace vars.
+        font-weight: vars.$font-weight-semibold; // Corrigido: adicionado o namespace vars.
+        color: vars.$color-black; // Corrigido: adicionado o namespace vars.
       }
 
       input {
         width: 100%;
-        padding: $spacing-small;
-        border: 1px solid $color-taupe-gray;
-        border-radius: $border-radius-small;
-        font-family: $font-family-primary;
-        font-size: $font-size-base;
-        transition: border-color $transition-speed-fast ease;
+        padding: vars.$spacing-small; // Corrigido: adicionado o namespace vars.
+        border: 1px solid vars.$color-taupe-gray; // Corrigido: adicionado o namespace vars.
+        border-radius: vars.$border-radius-small; // Corrigido: adicionado o namespace vars.
+        font-family: vars.$font-family-primary; // Corrigido: adicionado o namespace vars.
+        font-size: vars.$font-size-base; // Corrigido: adicionado o namespace vars.
+        transition: border-color vars.$transition-speed-fast ease; // Corrigido: adicionado o namespace vars.
         background-color: white;
 
         &:focus {
-          border-color: $color-primary-orange;
+          border-color: vars.$color-primary-orange; // Corrigido: adicionado o namespace vars.
           outline: none;
-          box-shadow: $shadow-subtle;
+          box-shadow: vars.$shadow-subtle; // Corrigido: adicionado o namespace vars.
         }
 
         &::placeholder {
-          color: $color-taupe-gray;
+          color: vars.$color-taupe-gray; // Corrigido: adicionado o namespace vars.
         }
       }
     }
 
     .btn-primary {
       width: 100%;
-      padding: $spacing-medium;
-      background-color: $color-primary-orange;
-      color: $color-platinum-light;
+      padding: vars.$spacing-medium; // Corrigido: adicionado o namespace vars.
+      background-color: vars.$color-primary-orange; // Corrigido: adicionado o namespace vars.
+      color: vars.$color-platinum-light; // Corrigido: adicionado o namespace vars.
       border: none;
-      border-radius: $border-radius-small;
+      border-radius: vars.$border-radius-small; // Corrigido: adicionado o namespace vars.
       cursor: pointer;
-      margin-top: $spacing-medium;
-      font-family: $font-family-primary;
-      font-weight: $font-weight-semibold;
-      font-size: $font-size-base;
-      transition: all $transition-speed-fast ease;
+      margin-top: vars.$spacing-medium; // Corrigido: adicionado o namespace vars.
+      font-family: vars.$font-family-primary; // Corrigido: adicionado o namespace vars.
+      font-weight: vars.$font-weight-semibold; // Corrigido: adicionado o namespace vars.
+      font-size: vars.$font-size-base; // Corrigido: adicionado o namespace vars.
+      transition: all vars.$transition-speed-fast ease; // Corrigido: adicionado o namespace vars.
 
       &:hover {
-        background-color: darken($color-primary-orange, 10%);
-        box-shadow: $shadow-medium;
+        background-color: color.adjust(
+          vars.$color-primary-orange,
+          $lightness: -10%
+        ); // Corrigido: adicionado o namespace vars.
+        box-shadow: vars.$shadow-medium; // Corrigido: adicionado o namespace vars.
       }
 
       &:active {
@@ -82,21 +86,24 @@
     }
 
     .register-link {
-      margin-top: $spacing-large;
+      margin-top: vars.$spacing-large; // Corrigido: adicionado o namespace vars.
       text-align: center;
-      font-family: $font-family-primary;
-      font-size: $font-size-small;
-      color: $color-gray;
+      font-family: vars.$font-family-primary; // Corrigido: adicionado o namespace vars.
+      font-size: vars.$font-size-small; // Corrigido: adicionado o namespace vars.
+      color: vars.$color-gray; // Corrigido: adicionado o namespace vars.
 
       a {
-        color: $color-primary-orange;
+        color: vars.$color-primary-orange; // Corrigido: adicionado o namespace vars.
         text-decoration: none;
-        font-weight: $font-weight-semibold;
-        transition: all $transition-speed-fast ease;
+        font-weight: vars.$font-weight-semibold; // Corrigido: adicionado o namespace vars.
+        transition: all vars.$transition-speed-fast ease; // Corrigido: adicionado o namespace vars.
         cursor: pointer;
 
         &:hover {
-          color: darken($color-primary-orange, 10%);
+          color: color.adjust(
+            vars.$color-primary-orange,
+            $lightness: 10%
+          ); // Corrigido: adicionado o namespace vars.
           text-decoration: underline;
         }
       }

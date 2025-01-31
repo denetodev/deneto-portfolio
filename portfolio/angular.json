@@ -25,10 +25,14 @@
             "outputPath": "dist/portfolio",
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "polyfills": ["zone.js"],
+            "polyfills": [
+              "zone.js"
+            ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": ["src/assets"],
+            "assets": [
+              "src/assets"
+            ],
             "styles": [
               "src/styles.scss",
               "node_modules/slick-carousel/slick/slick.css",
@@ -39,10 +43,10 @@
               "node_modules/slick-carousel/slick/slick.min.js"
             ],
             "server": "src/main.server.ts",
-            "prerender": true,
             "ssr": {
-              "entry": "server.ts"
-            }
+              "entry": "src/server.ts"
+            },
+            "outputMode": "server"
           },
           "configurations": {
             "production": {

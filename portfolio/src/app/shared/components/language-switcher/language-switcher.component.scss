@@ -1,4 +1,4 @@
-@import "../../../../assets/styles/variables";
+@use "../../../../assets/styles/variables" as vars;
 
 img {
   cursor: pointer;
@@ -25,9 +25,9 @@ img {
   transition: background-color 0.3s ease;
 
   &:hover {
-    color: $color-primary-orange;
-    background-color: $color-platinum-light;
-    background-color: $color-platinum-light;
+    color: vars.$color-primary-orange;
+    background-color: vars.$color-platinum-light;
+    background-color: vars.$color-platinum-light;
   }
 }
 
@@ -41,4 +41,3 @@ img {
 .font-medium {
   font-weight: 500;
 }
-

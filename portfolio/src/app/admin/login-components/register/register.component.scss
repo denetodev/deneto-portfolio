@@ -1,79 +1,83 @@
-@import "../../../../assets/styles/variables";
+@use "sass:color"; // Importa o módulo de cores do SASS
+@use "../../../../assets/styles/variables" as vars;
 
 .register-container {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: $color-platinum-light;
+  background-color: vars.$color-platinum-light;
 
   .register-box {
     background: white;
-    padding: $spacing-xlarge;
-    border-radius: $border-radius-medium;
-    box-shadow: $shadow-medium;
+    padding: vars.$spacing-xlarge;
+    border-radius: vars.$border-radius-medium;
+    box-shadow: vars.$shadow-medium;
     width: 100%;
     max-width: 400px;
 
     .register-title {
       text-align: center;
-      margin-bottom: $spacing-xlarge;
-      color: $color-black;
-      font-family: $font-family-primary;
-      font-weight: $font-weight-bold;
-      font-size: $font-size-heading-2;
+      margin-bottom: vars.$spacing-xlarge;
+      color: vars.$color-black;
+      font-family: vars.$font-family-primary;
+      font-weight: vars.$font-weight-bold;
+      font-size: vars.$font-size-heading-2;
     }
 
     .form-group {
-      margin-bottom: $spacing-medium;
+      margin-bottom: vars.$spacing-medium;
 
       label {
         display: block;
-        margin-bottom: $spacing-small;
-        font-family: $font-family-primary;
-        font-weight: $font-weight-semibold;
-        color: $color-black;
+        margin-bottom: vars.$spacing-small;
+        font-family: vars.$font-family-primary;
+        font-weight: vars.$font-weight-semibold;
+        color: vars.$color-black;
       }
 
       input {
         width: 100%;
-        padding: $spacing-small;
-        border: 1px solid $color-taupe-gray;
-        border-radius: $border-radius-small;
-        font-family: $font-family-primary;
-        font-size: $font-size-base;
-        transition: border-color $transition-speed-fast ease;
+        padding: vars.$spacing-small;
+        border: 1px solid vars.$color-taupe-gray;
+        border-radius: vars.$border-radius-small;
+        font-family: vars.$font-family-primary;
+        font-size: vars.$font-size-base;
+        transition: border-color vars.$transition-speed-fast ease;
         background-color: white;
 
         &:focus {
-          border-color: $color-primary-orange;
+          border-color: vars.$color-primary-orange;
           outline: none;
-          box-shadow: $shadow-subtle;
+          box-shadow: vars.$shadow-subtle;
         }
 
         &::placeholder {
-          color: $color-taupe-gray;
+          color: vars.$color-taupe-gray;
         }
       }
     }
 
     .btn-primary {
       width: 100%;
-      padding: $spacing-medium;
-      background-color: $color-primary-orange;
-      color: $color-platinum-light;
+      padding: vars.$spacing-medium;
+      background-color: vars.$color-primary-orange;
+      color: vars.$color-platinum-light;
       border: none;
-      border-radius: $border-radius-small;
+      border-radius: vars.$border-radius-small;
       cursor: pointer;
-      margin-top: $spacing-medium;
-      font-family: $font-family-primary;
-      font-weight: $font-weight-semibold;
-      font-size: $font-size-base;
-      transition: all $transition-speed-fast ease;
+      margin-top: vars.$spacing-medium;
+      font-family: vars.$font-family-primary;
+      font-weight: vars.$font-weight-semibold;
+      font-size: vars.$font-size-base;
+      transition: all vars.$transition-speed-fast ease;
 
       &:hover {
-        background-color: darken($color-primary-orange, 10%);
-        box-shadow: $shadow-medium;
+        background-color: color.adjust(
+          vars.$color-primary-orange,
+          $lightness: 10%
+        );
+        box-shadow: vars.$shadow-medium;
       }
 
       &:active {
@@ -82,21 +86,21 @@
     }
 
     .login-link {
-      margin-top: $spacing-large;
+      margin-top: vars.$spacing-large;
       text-align: center;
-      font-family: $font-family-primary;
-      font-size: $font-size-small;
-      color: $color-gray;
+      font-family: vars.$font-family-primary;
+      font-size: vars.$font-size-small;
+      color: vars.$color-gray;
 
       a {
-        color: $color-primary-orange;
+        color: vars.$color-primary-orange;
         text-decoration: none;
-        font-weight: $font-weight-semibold;
-        transition: all $transition-speed-fast ease;
+        font-weight: vars.$font-weight-semibold;
+        transition: all vars.$transition-speed-fast ease;
         cursor: pointer;
 
         &:hover {
-          color: darken($color-primary-orange, 10%);
+          color: color.adjust(vars.$color-primary-orange, $lightness: 10%);
           text-decoration: underline;
         }
       }

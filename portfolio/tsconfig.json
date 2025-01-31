@@ -3,6 +3,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "types": ["@angular/ssr"],
     "baseUrl": "src",
     "paths": {
       "@app/*": ["app/*"],

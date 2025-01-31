@@ -1,9 +1,11 @@
-@import "../../../assets/styles/variables";
+@use "sass:color"; // Importa o módulo de cores do SASS
+@use "../../../assets/styles/variables" as vars;
 
 :host ::ng-deep {
   .card {
-    background-color: $color-black;
+    background-color: vars.$color-black; // Corrigido: adicionado o namespace vars.
   }
+
   .p-menubar {
     max-width: 1200px;
     border: none;
@@ -15,13 +17,16 @@
     justify-content: space-between;
 
     .p-menubar-button {
-      color: $color-platinum-light !important;
+      color: vars.$color-platinum-light !important; // Corrigido: adicionado o namespace vars.
       height: 35px !important;
       width: 35px !important;
       flex-shrink: 0;
 
       &:hover {
-        background-color: rgb($color-primary-orange, 60%);
+        background-color: rgba(
+          vars.$color-primary-orange,
+          0.6
+        ); // Corrigido: uso correto de rgba com variável SASS
       }
     }
   }
@@ -30,18 +35,19 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    background-color: $color-black !important;
+    background-color: vars.$color-black !important; // Corrigido: adicionado o namespace vars.
 
     .p-menubar-item-link {
-      color: $color-platinum-light;
+      color: vars.$color-platinum-light; // Corrigido: adicionado o namespace vars.
 
       &:hover {
-        color: $color-primary-orange;
+        color: vars.$color-primary-orange; // Corrigido: adicionado o namespace vars.
         background-color: none !important;
       }
+
       span {
-        font-weight: $font-weight-semibold;
-        font-size: $font-size-small;
+        font-weight: vars.$font-weight-semibold; // Corrigido: adicionado o namespace vars.
+        font-size: vars.$font-size-small; // Corrigido: adicionado o namespace vars.
       }
     }
   }
@@ -73,10 +79,12 @@
     .desktop-logo {
       display: none;
     }
+
     .mobile-logo {
       display: block;
     }
   }
+
   .contact-button {
     display: none;
   }
