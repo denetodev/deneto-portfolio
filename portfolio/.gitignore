@@ -42,3 +42,4 @@ testem.log
 Thumbs.db
 ../_Antigos/
 .angular/
+src/server.ts
