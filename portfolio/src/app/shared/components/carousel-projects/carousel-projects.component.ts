@@ -5,6 +5,7 @@ import { ButtonModule } from 'primeng/button';
 import { CommonModule } from '@angular/common';
 import { CarouselModule } from 'primeng/carousel';
 import { ProjectButtonsComponent } from '../project-buttons/project-buttons.component';
+import { Tag } from 'primeng/tag';
 
 @Component({
   selector: 'app-carousel-projects',
@@ -14,6 +15,7 @@ import { ProjectButtonsComponent } from '../project-buttons/project-buttons.comp
     CommonModule,
     CarouselModule,
     ProjectButtonsComponent,
+    Tag,
   ],
   templateUrl: './carousel-projects.component.html',
   styleUrls: ['./carousel-projects.component.scss'],

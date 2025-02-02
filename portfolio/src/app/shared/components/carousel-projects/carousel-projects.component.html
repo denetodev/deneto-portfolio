@@ -57,3 +57,47 @@
     ></button>
   </div>
 </div>
+
+<p-carousel
+  [value]="projects"
+  [numVisible]="3"
+  [numScroll]="1"
+  [circular]="true"
+  [responsiveOptions]="responsiveOptions"
+  autoplayInterval="4500"
+>
+  <ng-template let-project #item>
+    <div
+      class="border border-surface-200 dark:border-surface-700 rounded m-2 p-4"
+    >
+      <div class="mb-4">
+        <div class="relative mx-auto">
+          <img
+            [src]="project.image"
+            [alt]="project.title"
+            class="w-full rounded-border"
+          />
+          <p-tag
+            [value]="project.category"
+            severity="info"
+            class="absolute"
+            styleClass="dark:!bg-surface-900"
+            [ngStyle]="{ 'left.px': 5, 'top.px': 5 }"
+          />
+        </div>
+      </div>
+      <div class="mb-4 font-medium">
+        {{ project.description }}
+      </div>
+      <div class="flex justify-between items-center">
+        <div class="mt-0 font-semibold text-xl">
+          {{ project.title }}
+        </div>
+        <span>
+          <p-button icon="pi pi-heart" severity="secondary" [outlined]="true" />
+          <p-button icon="pi pi-shopping-cart" styleClass="ml-2" />
+        </span>
+      </div>
+    </div>
+  </ng-template>
+</p-carousel>
