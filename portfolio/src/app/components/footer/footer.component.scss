@@ -15,15 +15,34 @@
 
   .connect-section {
     text-align: center;
-    margin-bottom: vars.$spacing-xlarge;
+    margin-bottom: 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid rgba(vars.$color-platinum-light, 0.3);
 
     h2 {
-      font-size: vars.$font-size-heading-1;
-      margin: 0;
-      font-weight: vars.$font-weight-bold;
+      font-weight: vars.$font-weight-semibold;
+      font-size: 3.5rem;
+      margin-bottom: 2rem;
+      color: white;
 
       .highlight {
         color: vars.$color-primary-orange;
+      }
+    }
+
+    .contact-button {
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      ::ng-deep {
+        .p-button {
+          padding: 1rem 2rem;
+          border-width: 2px;
+          border-radius: vars.$border-radius-large;
+          font-size: vars.$font-size-large;
+        }
       }
     }
   }
@@ -50,7 +69,7 @@
     }
 
     .social-text {
-      margin-bottom: vars.$spacing-large;
+      margin: vars.$spacing-xlarge 0;
       line-height: 1.5;
       color: vars.$color-gray;
       font-size: vars.$font-size-base;
@@ -59,26 +78,34 @@
 
     .social-links {
       display: flex;
-      gap: vars.$spacing-medium;
-
-      @media (max-width: 768px) {
-        justify-content: center;
-      }
+      justify-content: space-evenly;
 
       .social-icon {
         color: vars.$color-platinum-light;
-        font-size: vars.$font-size-xlarge;
+        font-size: vars.$font-size-heading-2;
         transition: color vars.$transition-speed-medium ease;
 
+        width: vars.$spacing-xlarge;
+        height: vars.$spacing-xlarge;
+
         svg {
-          width: 24px; // Ajuste o tamanho conforme necessário
-          height: 24px; // Ajuste o tamanho conforme necessário
-          fill: currentColor; // Herda a cor do texto
+          width: vars.$spacing-xlarge;
+          height: vars.$spacing-xlarge;
+          fill: currentColor;
+        }
+
+        i.pi {
+          font-size: vars.$font-size-heading-2;
+          line-height: 1;
         }
 
         &:hover {
           color: vars.$color-primary-orange;
         }
+      }
+
+      @media (max-width: 768px) {
+        justify-content: center;
       }
     }
   }
@@ -101,6 +128,7 @@
         margin-bottom: vars.$spacing-small;
         font-size: vars.$font-size-base;
         color: vars.$color-gray;
+        line-height: 2.5;
 
         a {
           color: vars.$color-platinum-light;
@@ -119,7 +147,7 @@
   .footer-newsletter {
     .newsletter-form {
       display: flex;
-      gap: vars.$spacing-tiny;
+      gap: 0; // Remove o gap para deixar elementos colados
 
       @media (max-width: 768px) {
         justify-content: center;
@@ -128,21 +156,27 @@
       input {
         background-color: vars.$color-platinum-light;
         border: none;
-        padding: vars.$spacing-small vars.$spacing-medium;
-        border-radius: vars.$border-radius-small;
+        padding: 12px 16px;
+        border-radius: 16px 0 0 16px;
         font-family: vars.$font-family-primary;
         font-size: vars.$font-size-base;
+        width: 240px;
+        height: 42px;
+        outline: none;
       }
 
       button {
         background-color: vars.$color-primary-orange;
         border: none;
         color: vars.$color-platinum-light;
-        padding: vars.$spacing-small vars.$spacing-medium;
-        border-radius: vars.$border-radius-small;
+        padding: 12px 20px;
+        border-radius: 0 16px 16px 0; // Arredonda apenas o lado direito
         cursor: pointer;
         transition: background-color vars.$transition-speed-medium ease;
         font-family: vars.$font-family-primary;
+        height: 42px; // Mesma altura do input
+        margin-left: -1px; // Para garantir que fique colado ao input
+        min-width: 48px; // Largura mínima para o botão
 
         &:hover {
           background-color: color.adjust(
@@ -159,7 +193,8 @@
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
     padding-top: vars.$spacing-large;
-    border-top: 1px solid rgba(vars.$color-platinum-light, 0.1);
+    padding-bottom: vars.$spacing-large; // Adicionar padding bottom
+    border-top: 1px solid rgba(vars.$color-platinum-light, 0.1); // Ajustar opacidade e espessura da borda
 
     @media (max-width: 768px) {
       grid-template-columns: 1fr;
@@ -170,9 +205,10 @@
     .copyright {
       p {
         margin: 0;
-        font-size: vars.$font-size-small;
+        font-size: 14px; // Ajustar tamanho específico
         color: vars.$color-gray;
-        font-weight: vars.$font-weight-regular;
+        font-weight: 400;
+        line-height: 1.5; // Melhorar espaçamento entre linhas
       }
     }
 
@@ -185,25 +221,28 @@
       color: vars.$color-gray;
 
       img {
-        max-width: 30px;
+        max-width: 150px; // Ajustar tamanho do logo
+        height: auto;
+        opacity: 0.8; // Adicionar leve transparência
       }
     }
 
     .terms {
       display: flex;
-      gap: vars.$spacing-medium;
-      justify-content: flex-end;
+      flex-direction: column;
+      gap: 8px; // Reduzir o gap entre os links
+      align-items: flex-end; // Alinhar à direita
 
       @media (max-width: 768px) {
-        justify-content: center;
+        align-items: center;
       }
 
       a {
         color: vars.$color-gray;
         text-decoration: none;
-        font-size: vars.$font-size-small;
-        transition: color vars.$transition-speed-medium ease;
-        font-weight: vars.$font-weight-regular;
+        font-size: 14px; // Mesmo tamanho do copyright
+        transition: color 0.3s ease;
+        font-weight: 400;
 
         &:hover {
           color: vars.$color-primary-orange;
