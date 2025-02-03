@@ -1,0 +1,21 @@
+<section class="carousel">
+  <div class="carousel__container">
+    <div *ngFor="let project of projects" class="carousel-item">
+      <img
+        class="carousel-item__img"
+        [src]="project.image"
+        [alt]="project.title"
+      />
+      <div class="carousel-item__details">
+        <div class="controls">
+          <span class="fas fa-play-circle"></span>
+          <span class="fas fa-plus-circle"></span>
+        </div>
+        <h5 class="carousel-item__details--title">{{ project.title }}</h5>
+        <h6 class="carousel-item__details--subtitle">
+          {{ project.description }}
+        </h6>
+      </div>
+    </div>
+  </div>
+</section>

@@ -4,8 +4,8 @@ import { ProjectService } from '../../services/project.service';
 import { ButtonModule } from 'primeng/button';
 import { CommonModule } from '@angular/common';
 import { CarouselModule } from 'primeng/carousel';
-import { ProjectButtonsComponent } from '../project-buttons/project-buttons.component';
 import { Tag } from 'primeng/tag';
+import { ProjectButtonsComponent } from '../project-buttons/project-buttons.component';
 
 @Component({
   selector: 'app-carousel-projects',

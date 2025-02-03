@@ -4,7 +4,6 @@ import { initializeApp } from 'firebase/app';
 import { environment } from '../../../environments/environment';
 import { Project } from '../interfaces/project.interface';
 import { Observable, from } from 'rxjs';
-import { isPlatformBrowser } from '@angular/common';
 import { PLATFORM_ID } from '@angular/core';
 
 const app = initializeApp(environment.firebase);
@@ -19,9 +18,9 @@ export class ProjectService {
 
   getProjectsSmall(): Observable<Project[]> {
     // Se estiver no servidor, retorna dados mockados
-    if (!isPlatformBrowser(this.platformId)) {
-      return from(Promise.resolve(this.getMockProjects()));
-    }
+    // if (!isPlatformBrowser(this.platformId)) {
+    //   return from(Promise.resolve(this.getMockProjects()));
+    // }
 
     // Se já tiver cache, usa ele
     if (this.cachedProjects) {
@@ -44,33 +43,33 @@ export class ProjectService {
     );
   }
 
-  private getMockProjects(): Project[] {
-    // Dados mockados para SSR
-    return [
-      {
-        id: '1',
-        title: 'Projeto 1',
-        description: 'Carregando...',
-        image: '/assets/placeholder.jpg',
-        githubUrl: '#',
-        siteUrl: '#',
-      },
-      {
-        id: '2',
-        title: 'Projeto 2',
-        description: 'Carregando...',
-        image: '/assets/placeholder.jpg',
-        githubUrl: '#',
-        siteUrl: '#',
-      },
-      {
-        id: '3',
-        title: 'Projeto 3',
-        description: 'Carregando...',
-        image: '/assets/placeholder.jpg',
-        githubUrl: '#',
-        siteUrl: '#',
-      },
-    ];
-  }
+  // private getMockProjects(): Project[] {
+  //   // Dados mockados para SSR
+  //   return [
+  //     {
+  //       id: '1',
+  //       title: 'Projeto 1',
+  //       description: 'Carregando...',
+  //       image: '/assets/placeholder.jpg',
+  //       githubUrl: '#',
+  //       siteUrl: '#',
+  //     },
+  //     {
+  //       id: '2',
+  //       title: 'Projeto 2',
+  //       description: 'Carregando...',
+  //       image: '/assets/placeholder.jpg',
+  //       githubUrl: '#',
+  //       siteUrl: '#',
+  //     },
+  //     {
+  //       id: '3',
+  //       title: 'Projeto 3',
+  //       description: 'Carregando...',
+  //       image: '/assets/placeholder.jpg',
+  //       githubUrl: '#',
+  //       siteUrl: '#',
+  //     },
+  //   ];
+  // }
 }

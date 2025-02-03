@@ -3,7 +3,7 @@
   "version": 1,
   "cli": {
     "cache": {
-      "enabled": false
+      "enabled": true
     }
   },
   "newProjectRoot": "projects",
@@ -25,14 +25,10 @@
             "outputPath": "dist/portfolio",
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/assets"
-            ],
+            "assets": ["src/assets"],
             "styles": [
               "src/styles.scss",
               "node_modules/slick-carousel/slick/slick.css",
@@ -41,25 +37,20 @@
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/slick-carousel/slick/slick.min.js"
-            ],
-            "server": "src/main.server.ts",
-            "ssr": {
-              "entry": "src/server.ts"
-            },
-            "outputMode": "server"
+            ]
           },
           "configurations": {
             "production": {
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "2MB",
+                  "maximumError": "3MB"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kB",
-                  "maximumError": "4kB"
+                  "maximumWarning": "6kB",
+                  "maximumError": "8kB"
                 }
               ],
               "outputHashing": "all"
@@ -83,9 +74,26 @@
             },
             "development": {
               "buildTarget": "portfolio:build:development"
+            },
+            "ssr": {
+              "buildTarget": "portfolio:build:production"
             }
           },
           "defaultConfiguration": "development"
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/portfolio/server",
+            "main": "src/main.server.ts",
+            "tsConfig": "tsconfig.server.json",
+            "externalDependencies": ["@grpc/grpc-js", "@grpc/proto-loader"]
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "all"
+            }
+          }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n"

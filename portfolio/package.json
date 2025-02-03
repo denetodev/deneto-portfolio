@@ -6,9 +6,11 @@
     "start": "ng serve --disable-host-check --poll=4000",
     "dev": "ng serve --disable-host-check --poll=4000",
     "build": "ng build",
+    "serve": "ng serve",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:portfolio": "node dist/portfolio/server/server.mjs"
+    "build:ssr": "ng build --configuration production && ng run portfolio:server",
+    "serve:ssr": "node dist/portfolio/server/main.js"
   },
   "private": true,
   "dependencies": {
