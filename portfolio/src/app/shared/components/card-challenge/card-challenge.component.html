@@ -1,21 +1,31 @@
-<section class="carousel">
-  <div class="carousel__container">
-    <div *ngFor="let project of projects" class="carousel-item">
-      <img
-        class="carousel-item__img"
-        [src]="project.image"
-        [alt]="project.title"
-      />
-      <div class="carousel-item__details">
-        <div class="controls">
-          <span class="fas fa-play-circle"></span>
-          <span class="fas fa-plus-circle"></span>
+<p-carousel
+  [value]="projects"
+  [numVisible]="3"
+  [numScroll]="1"
+  [circular]="true"
+  [responsiveOptions]="responsiveOptions"
+  autoplayInterval="4300"
+>
+  <ng-template let-project pTemplate="item">
+    <div
+      class="project-card"
+      [class.show-content]="project.isHovered"
+      (mouseenter)="onMouseEnter(project)"
+      (mouseleave)="onMouseLeave(project)"
+    >
+      <div class="project-image">
+        <img [src]="project.image" [alt]="project.title" />
+      </div>
+      <div class="project-content">
+        <div class="project-actions">
+          <app-project-buttons
+            [githubUrl]="project.githubUrl"
+            [siteUrl]="project.siteUrl"
+          ></app-project-buttons>
         </div>
-        <h5 class="carousel-item__details--title">{{ project.title }}</h5>
-        <h6 class="carousel-item__details--subtitle">
-          {{ project.description }}
-        </h6>
+        <h3 class="project-title">{{ project.title }}</h3>
+        <p class="project-description">{{ project.description }}</p>
       </div>
     </div>
-  </div>
-</section>
+  </ng-template>
+</p-carousel>

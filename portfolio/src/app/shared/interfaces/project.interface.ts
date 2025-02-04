@@ -1,4 +1,5 @@
 export interface Project {
+  isHovered?: boolean;
   id: string;
   title: string;
   description: string;
