@@ -1,16 +1,24 @@
+@use "../../../../assets/styles/variables" as vars;
+
 .button-group {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: vars.$spacing-small;
 
   a {
     text-decoration: none;
+    transition: transform vars.$transition-speed-medium ease;
+  }
+
+  ::ng-deep .p-button {
+    font-family: vars.$font-family-primary;
+    font-weight: vars.$font-weight-semibold;
   }
 
   ::ng-deep .p-button.p-button-outlined {
     color: white;
     border-color: white;
-    transition: transform 0.3s ease; // Adiciona transição suave
+    transition: all vars.$transition-speed-medium ease;
 
     .p-button-icon {
       color: white;
@@ -19,18 +27,53 @@
     &:hover {
       background: rgba(255, 255, 255, 0.1);
       border-color: white;
-      transform: translateY(-2px); // Movimenta suavemente o botão para cima
+      transform: translateY(-2px);
     }
   }
 
   ::ng-deep .p-button:not(.p-button-outlined) {
-    background: #f47b20;
+    background: vars.$color-primary-orange;
     border: none;
-    transition: transform 0.3s ease; // Adiciona transição suave
+    transition: all vars.$transition-speed-medium ease;
 
     &:hover {
-      background: #ff8c2f;
-      transform: translateY(-2px); // Movimenta suavemente o botão para cima
+      background: lighten(vars.$color-primary-orange, 5%);
+      transform: translateY(-2px);
+    }
+  }
+
+  // Tablets e dispositivos médios
+  @media screen and (max-width: 852px) {
+    flex-direction: column;
+    ::ng-deep .p-button {
+      font-size: vars.$font-size-base;
+      padding: vars.$spacing-small vars.$spacing-medium;
+
+      .p-button-icon {
+        font-size: vars.$font-size-base;
+      }
+    }
+  }
+
+  // Dispositivos móveis
+  @media screen and (max-width: 576px) {
+    flex-direction: row;
+    width: 100%;
+    gap: vars.$spacing-tiny;
+
+    a {
+      width: 100%;
+    }
+
+    ::ng-deep .p-button {
+      width: 100%;
+      font-size: vars.$font-size-small;
+      padding: vars.$spacing-tiny vars.$spacing-small;
+      justify-content: center;
+
+      .p-button-icon {
+        font-size: vars.$font-size-small;
+      }
     }
   }
 }
