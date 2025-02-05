@@ -21,13 +21,25 @@
           e-mail ou conecte-se comigo nas redes sociais.
         </p>
         <div class="social-links">
-          <a href="https://linkedin.com" target="_blank" class="social-icon">
+          <a
+            href="https://www.linkedin.com/in/deneto"
+            target="_blank"
+            class="social-icon"
+          >
             <i class="pi pi-linkedin"></i>
           </a>
-          <a href="https://github.com" target="_blank" class="social-icon">
+          <a
+            href="https://github.com/denetodev"
+            target="_blank"
+            class="social-icon"
+          >
             <i class="pi pi-github"></i>
           </a>
-          <a href="https://behance.com" target="_blank" class="social-icon">
+          <a
+            href="https://www.behance.net/deneto/moodboards"
+            target="_blank"
+            class="social-icon"
+          >
             <i>
               <svg
                 width="24"
@@ -42,10 +54,18 @@
               </svg>
             </i>
           </a>
-          <a href="https://instagram.com" target="_blank" class="social-icon">
+          <a
+            href="https://www.instagram.com/denetodev"
+            target="_blank"
+            class="social-icon"
+          >
             <i class="pi pi-instagram"></i>
           </a>
-          <a href="https://youtube.com" target="_blank" class="social-icon">
+          <a
+            href="https://www.youtube.com/@denetodev"
+            target="_blank"
+            class="social-icon"
+          >
             <i class="pi pi-youtube"></i>
           </a>
           <a
@@ -63,10 +83,26 @@
         <div class="nav-section">
           <h3>Navegação</h3>
           <ul>
-            <li><a routerLink="/sobre">Sobre</a></li>
-            <li><a routerLink="/servicos">Serviços</a></li>
-            <li><a routerLink="/projetos">Projetos</a></li>
-            <li><a routerLink="/blog">Blog</a></li>
+            <li>
+              <a (click)="scrollToSection('sobre')" style="cursor: pointer"
+                >Sobre</a
+              >
+            </li>
+            <li>
+              <a (click)="scrollToSection('servicos')" style="cursor: pointer"
+                >Serviços</a
+              >
+            </li>
+            <li>
+              <a (click)="scrollToSection('projetos')" style="cursor: pointer"
+                >Projetos</a
+              >
+            </li>
+            <li>
+              <a (click)="scrollToSection('blog')" style="cursor: pointer"
+                >Blog</a
+              >
+            </li>
           </ul>
         </div>
       </div>
@@ -84,6 +120,7 @@
       </div>
 
       <!-- Newsletter -->
+       <!-- TODO ajustar para enviar emails -->
       <div class="footer-newsletter">
         <div class="newsletter-form">
           <input type="text" pInputText placeholder="Email" />

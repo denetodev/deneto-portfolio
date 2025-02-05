@@ -21,7 +21,5 @@ import { OfficesComponent } from './offices/offices.component';
   styleUrl: './landingpage.component.scss',
 })
 export class LandingPageComponent implements OnInit {
-  ngOnInit() {
-    console.log('LandingPage Component Initialized');
-  }
+  ngOnInit() {}
 }

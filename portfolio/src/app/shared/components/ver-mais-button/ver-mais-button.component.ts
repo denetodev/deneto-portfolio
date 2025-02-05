@@ -9,6 +9,4 @@ import { ButtonModule } from 'primeng/button';
   templateUrl: './ver-mais-button.component.html',
   styleUrl: './ver-mais-button.component.scss',
 })
-export class VerMaisButtonComponent {
-  @Input() url: string = '#';
-}
+export class VerMaisButtonComponent {}

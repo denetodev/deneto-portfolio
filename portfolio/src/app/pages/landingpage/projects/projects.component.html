@@ -8,9 +8,8 @@
       </span>
       digitais
     </h2>
-    <!-- TODO ajustar o link correto  -->
     <app-ver-mais-button
-      url="https://seu-link-externo.com"
+      (click)="navigateToProjectPage()"
     ></app-ver-mais-button>
   </div>
 
@@ -27,7 +26,6 @@
         >
           Explore Meus Projetos no GitHub
         </div>
-        <!-- TODO ajustar link para página correta -->
         <a href="https://github.com/denetodev" target="_blank">
           <p-button
             icon="pi pi-arrow-right"

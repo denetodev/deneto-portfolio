@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { ScrollService } from '@app/shared/services/scroll.service';
 import { ButtonModule } from 'primeng/button';
 
 @Component({
@@ -10,5 +11,17 @@ import { ButtonModule } from 'primeng/button';
   styleUrl: './group-button.component.scss',
 })
 export class GroupButtonComponent {
-  
+  constructor(private router: Router, private scrollService: ScrollService) {}
+
+  scrollToSection(sectionId: string): void {
+    if (this.router.url !== '/') {
+      this.router.navigate(['/']).then(() => {
+        setTimeout(() => {
+          this.scrollService.scrollToElement(sectionId);
+        }, 100);
+      });
+    } else {
+      this.scrollService.scrollToElement(sectionId);
+    }
+  }
 }

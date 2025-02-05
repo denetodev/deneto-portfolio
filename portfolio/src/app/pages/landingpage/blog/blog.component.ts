@@ -8,7 +8,7 @@ import { Tag } from 'primeng/tag';
 import { FormsModule } from '@angular/forms';
 import { VerMaisButtonComponent } from '@app/shared/components/ver-mais-button/ver-mais-button.component';
 import { BlogPost } from '@app/shared/interfaces/blogPost.interface';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { EmailInputComponent } from '../../../shared/components/email-input/email-input.component';
 
@@ -62,4 +62,10 @@ export class BlogComponent {
       category: 'I.A.',
     },
   ];
+
+  constructor(private router: Router) {}
+
+  navigateToBlogPage() {
+    this.router.navigate(['/blog-page']);
+  }
 }

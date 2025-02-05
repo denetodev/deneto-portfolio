@@ -1,10 +1,9 @@
-<!-- TODO ajustar os links dos botões -->
 <div class="container gap-1">
   <p-button
     class="orange-button"
     label="Portfólio"
     [rounded]="true"
-    [routerLink]="['/portfolio']"
+    (onClick)="scrollToSection('projetos')"
   />
   <p-button
     class="gray-button"
@@ -12,6 +11,6 @@
     variant="text"
     [rounded]="true"
     severity="secondary"
-    [routerLink]="['/contact']"
+    (onClick)="scrollToSection('servicos')"
   />
 </div>

@@ -2,7 +2,7 @@
   <p-menubar [model]="items">
     <ng-template #start>
       <div class="logo">
-        <a routerLink="/landingpage/home">
+        <a (click)="navigateToLandingpage()">
           <img
             class="mobile-logo"
             src="assets/images/visual-identity/icon.png"

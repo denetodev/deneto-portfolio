@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-contact-button',
@@ -22,4 +22,13 @@ export class ContactButtonComponent {
     | 'contrast'
     | null
     | undefined; // Tipos permitidos pelo `p-button`
+
+  constructor(private router: Router) {}
+
+  navigateToLinksPage() {
+    const url = this.router.serializeUrl(
+      this.router.createUrlTree(['/links-page'])
+    );
+    window.open(url, '_blank');
+  }
 }

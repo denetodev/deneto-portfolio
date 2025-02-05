@@ -1,8 +1,7 @@
-<!-- TODO Ajustar o caminho do link -->
 <div class="card flex justify-center gap-4">
   <p-button
     label="Fale Comigo"
-    [routerLink]="['/contact']"
+    (click)="navigateToLinksPage()"
     [variant]="variant"
     [severity]="severity"
   ></p-button>

@@ -4,35 +4,27 @@ import { DashboardComponent } from './admin/login-components/dashboard/dashboard
 import { RegisterComponent } from './admin/login-components/register/register.component';
 import { AuthGuard } from './shared/auth/auth.guard';
 import { LandingPageComponent } from './pages/landingpage/landingpage.component';
+import { BlogComponent } from './pages/landingpage/blog/blog.component';
+import { ProjectsComponent } from './pages/landingpage/projects/projects.component';
+import { LinksPageComponent } from './pages/links-page/links-page.component';
+import { HomeComponent } from './pages/landingpage/home/home.component';
+import { OfficesComponent } from './pages/landingpage/offices/offices.component';
+import { BlogPageComponent } from './pages/blog-page/blog-page.component';
+import { ProjectPageComponent } from './pages/project-page/project-page.component';
 
 export const routes: Routes = [
-  // Página inicial
-  { path: '', component: LandingPageComponent },
+  { path: '', component: LandingPageComponent }, // Rota principal
+  
+  // Rota dentro da LandingPage
+  { path: 'home', component: HomeComponent },
+  { path: 'offices', component: OfficesComponent },
+  { path: 'projects', component: ProjectsComponent },
+  { path: 'blog', component: BlogComponent },
 
-  // Páginas acessíveis a partir da LandingPage
-  {
-    path: 'blog',
-    loadComponent: () =>
-      import('./pages/landingpage/blog/blog.component').then(
-        (m) => m.BlogComponent
-      ),
-  },
-  {
-    path: 'projects',
-    loadComponent: () =>
-      import('./pages/landingpage/projects/projects.component').then(
-        (m) => m.ProjectsComponent
-      ),
-  },
-  {
-    path: 'links',
-    loadComponent: () =>
-      import('./pages/links-page/links-page.component').then(
-        (m) => m.LinksPageComponent
-      ),
-  },
-
-  // Rotas para o Admin
+  // Rotas entre páginas
+  { path: 'links-page', component: LinksPageComponent },
+  { path: 'blog-page', component: BlogPageComponent },
+  { path: 'project-page', component: ProjectPageComponent },
   {
     path: 'admin',
     children: [
@@ -46,7 +38,5 @@ export const routes: Routes = [
       },
     ],
   },
-
-  // Fallback para rotas inexistentes
-  { path: '**', redirectTo: '', pathMatch: 'full' },
+  { path: '**', redirectTo: '' }, // Redireciona para a página principal se a rota não for encontrada
 ];
