@@ -1,69 +1,71 @@
-<div class="page-container">
-  <!-- Seção Serviços -->
-  <section class="services-section">
-    <div class="services-header">
-      <h2>Serviços</h2>
-      <p class="services-description">
-        Mais que código, crio soluções digitais que transformam ideias em
-        resultados. Com foco em performance e conversão, cada projeto é
-        desenvolvido com um único propósito: fazer seu negócio crescer.
-      </p>
-    </div>
-
-    <div class="grid-container">
-      <app-card-services
-        *ngFor="let service of services"
-        [icon]="service.icon"
-        [title]="service.title"
-        [description]="service.description"
-      >
-      </app-card-services>
-    </div>
-  </section>
-
-  <!-- Seção Por que me contratar -->
-  <section class="hire-section">
-    <div class="hire-content">
-      <div class="hire-image-container">
-        <img
-          src="../../../../assets/images/landing-page/profile-photo-2.png"
-          alt="Neto - Desenvolvedor FullStack"
-          class="profile-image"
-        />
-      </div>
-      <div class="hire-info">
-        <h2 class="hire-title">
-          Por que
-          <span class="highlight"
-            >me <br />
-            contratar</span
-          >?
-        </h2>
-        <p class="hire-description">
-          Alinho expertise técnica com visão estratégica. Cada projeto recebe
-          atenção personalizada e é desenvolvido com as melhores práticas de
-          mercado. Não entrego apenas código, entrego soluções que fazem seu
-          negócio crescer.
+<div class="offices-page">
+  <div class="page-container">
+    <!-- Seção Serviços -->
+    <section class="services-section">
+      <div class="services-header">
+        <h2>Serviços</h2>
+        <p class="services-description">
+          Mais que código, crio soluções digitais que transformam ideias em
+          resultados. Com foco em performance e conversão, cada projeto é
+          desenvolvido com um único propósito: fazer seu negócio crescer.
         </p>
-        <div class="metrics">
-          <div class="metric">
-            <span class="metric-value">40+</span>
-            <span class="metric-label">Projetos Completos</span>
-          </div>
-          <div class="metric">
-            <span class="metric-value">12+</span>
-            <span class="metric-label"
-              >Anos de Experiência em Atendimento ao Cliente</span
-            >
-          </div>
-        </div>
-        <app-contact-button
-          class="contact-button"
-          variant="outlined"
-          severity="contrast"
-        ></app-contact-button>
       </div>
-    </div>
-  </section>
+  
+      <div class="grid-container">
+        <app-card-services
+          *ngFor="let service of services"
+          [icon]="service.icon"
+          [title]="service.title"
+          [description]="service.description"
+        >
+        </app-card-services>
+      </div>
+    </section>
+  
+    <!-- Seção Por que me contratar -->
+    <section class="hire-section">
+      <div class="hire-content">
+        <div class="hire-image-container">
+          <img
+            src="../../../../assets/images/landing-page/profile-photo-2.png"
+            alt="Neto - Desenvolvedor FullStack"
+            class="profile-image"
+          />
+        </div>
+        <div class="hire-info">
+          <h2 class="hire-title">
+            Por que
+            <span class="highlight"
+              >me <br />
+              contratar</span
+            >?
+          </h2>
+          <p class="hire-description">
+            Alinho expertise técnica com visão estratégica. Cada projeto recebe
+            atenção personalizada e é desenvolvido com as melhores práticas de
+            mercado. Não entrego apenas código, entrego soluções que fazem seu
+            negócio crescer.
+          </p>
+          <div class="metrics">
+            <div class="metric">
+              <span class="metric-value">40+</span>
+              <span class="metric-label">Projetos Completos</span>
+            </div>
+            <div class="metric">
+              <span class="metric-value">12+</span>
+              <span class="metric-label"
+                >Anos de Experiência em Atendimento ao Cliente</span
+              >
+            </div>
+          </div>
+          <app-contact-button
+            class="contact-button"
+            variant="outlined"
+            severity="contrast"
+          ></app-contact-button>
+        </div>
+      </div>
+    </section>
+  </div>
+  <app-carousel-features class="features"></app-carousel-features>
 </div>
-<app-carousel-features class="features"></app-carousel-features>

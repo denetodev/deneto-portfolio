@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostBinding, HostListener, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ToolbarModule } from 'primeng/toolbar';
 import { ButtonModule } from 'primeng/button';
@@ -6,8 +6,9 @@ import { AvatarModule } from 'primeng/avatar';
 import { RippleModule } from 'primeng/ripple';
 import { Router } from '@angular/router';
 import { ScrollService } from '@app/shared/services/scroll.service';
-import { LanguageSwitcherComponent } from '../../shared/components/language-switcher/language-switcher.component';
+import { LanguageSwitcherComponent } from '../../../shared/components/language-switcher/language-switcher.component';
 import { ContactButtonComponent } from '@app/shared/components/contact-button/contact-button.component';
+import { MenubarModule } from 'primeng/menubar';
 
 @Component({
   selector: 'app-header',
@@ -22,10 +23,13 @@ import { ContactButtonComponent } from '@app/shared/components/contact-button/co
     RippleModule,
     LanguageSwitcherComponent,
     ContactButtonComponent,
+    MenubarModule,
   ],
 })
 export class HeaderComponent implements OnInit {
-  isScrolled = false;
+  @HostBinding('class.scrolled') isScrolled = false;
+  isMobile = false;
+
   items = [
     {
       label: 'Sobre',
@@ -49,6 +53,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.onWindowScroll();
+    this.checkScreenSize();
   }
 
   private scrollToSection(sectionId: string): void {
@@ -70,5 +75,10 @@ export class HeaderComponent implements OnInit {
   @HostListener('window:scroll', [])
   onWindowScroll() {
     this.isScrolled = window.scrollY > 50;
+  }
+
+  @HostListener('window:resize', [])
+  checkScreenSize() {
+    this.isMobile = window.innerWidth <= 768;
   }
 }

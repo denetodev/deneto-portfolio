@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { BlogComponent } from './blog/blog.component';
 import { OfficesComponent } from './offices/offices.component';
+import { HeaderComponent } from './header/header.component';
 
 @Component({
   selector: 'app-landingpage',
@@ -16,6 +17,7 @@ import { OfficesComponent } from './offices/offices.component';
     OfficesComponent,
     ProjectsComponent,
     BlogComponent,
+    HeaderComponent,
   ],
   templateUrl: './landingpage.component.html',
   styleUrl: './landingpage.component.scss',

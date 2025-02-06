@@ -1,0 +1,244 @@
+:host ::ng-deep {
+  .home-container {
+    position: relative;
+    min-height: 82vh;
+    padding: 2rem 0 0;
+    background-color: vars.$color-platinum-light;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .content-wrapper {
+      width: 100%;
+      max-width: 1300px;
+      padding: 0 4rem;
+    }
+
+    .top-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 2rem;
+      z-index: 2;
+
+      .p-button-outlined.p-button-contrast {
+        padding: 8px 22px;
+        font-size: vars.$font-size-large;
+        font-weight: vars.$font-weight-bold;
+        border: 1.6px solid vars.$color-black;
+      }
+
+      .hello-button img {
+        margin-bottom: vars.$spacing-large;
+      }
+
+      #confetti {
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 999;
+        pointer-events: none;
+      }
+
+      .main-title {
+        text-align: center;
+
+        h1 {
+          font-size: 3.5rem;
+          font-weight: vars.$font-weight-semibold;
+          margin-top: vars.$spacing-medium;
+          color: vars.$color-black;
+
+          .highlight {
+            color: vars.$color-primary-orange;
+          }
+        }
+
+        .writer-context {
+          ::ng-deep app-typewriter {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: vars.$color-black;
+          }
+        }
+      }
+    }
+
+    .side-content {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      z-index: 2;
+
+      .quote {
+        max-width: 300px;
+
+        img {
+          width: 2.5rem;
+          margin-bottom: vars.$spacing-small;
+        }
+
+        blockquote {
+          color: vars.$color-gray;
+          font-weight: vars.$font-weight-semibold;
+          font-size: vars.$font-size-large;
+          margin: 0;
+        }
+      }
+
+      .experience-rating {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        ::ng-deep .p-rating-item-active .p-rating-icon {
+          color: vars.$color-primary-orange;
+        }
+
+        .years {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+
+          .number {
+            font-size: vars.$font-size-heading-3;
+            font-weight: vars.$font-weight-semibold;
+            color: vars.$color-black;
+            margin: vars.$spacing-tiny 0;
+          }
+
+          .label {
+            font-size: vars.$font-size-small;
+            font-weight: vars.$font-weight-semibold;
+            color: vars.$color-black;
+          }
+        }
+      }
+    }
+
+    .bottom-content {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 1300px;
+
+      .profile-container {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        z-index: 1;
+
+        .profile-image {
+          max-width: 730px;
+          width: 100%;
+        }
+      }
+
+      .button-container {
+        margin-bottom: 80px;
+        z-index: 3;
+        transform: translateY(50px);
+      }
+    }
+  }
+
+  @media (max-width: 1441px) {
+    .home-container {
+      padding: 2rem;
+
+      .top-content {
+        .main-title {
+          h1 {
+            font-size: 3rem;
+          }
+
+          .writer-context ::ng-deep app-typewriter {
+            font-size: 2rem;
+          }
+        }
+      }
+
+      .bottom-content {
+        margin-top: 2rem;
+
+        .profile-container .profile-image {
+          max-width: 500px;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .home-container {
+      padding: 1rem;
+
+      .top-content .main-title {
+        h1 {
+          font-size: vars.$font-size-heading-1;
+        }
+
+        .writer-context {
+          font-size: vars.$font-size-heading-2 !important; // Corrigido: adicionado o namespace vars.
+        }
+      }
+
+      .bottom-content .profile-container .profile-image {
+        width: 90vw !important;
+      }
+
+      .hello-button img {
+        width: vars.$spacing-medium; // Corrigido: adicionado o namespace vars.
+      }
+
+      .experience-rating {
+        display: none !important;
+      }
+    }
+
+    .side-content {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1rem;
+
+      .quote img {
+        width: vars.$spacing-large !important; // Corrigido: adicionado o namespace vars.
+      }
+
+      blockquote {
+        font-size: vars.$font-size-large !important; // Corrigido: adicionado o namespace vars.
+      }
+
+      .experience-rating {
+        align-items: center;
+        .years {
+          align-items: center;
+        }
+        .number {
+          font-size: vars.$font-size-large !important; // Corrigido: adicionado o namespace vars.
+          font-weight: vars.$font-weight-bold; // Corrigido: adicionado o namespace vars.
+        }
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    .experience-rating {
+      display: none !important;
+    }
+
+    .bottom-content .profile-container .profile-image {
+      width: 90vw !important;
+    }
+  }
+} 

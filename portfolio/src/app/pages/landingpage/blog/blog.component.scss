@@ -1,6 +1,12 @@
 @use "sass:color";
 @use "../../../../assets/styles/variables" as vars;
 
+
+.blog-pages {
+  width: 100%;
+  background-color: white;
+}
+
 .blog-section {
   padding: 2rem;
   max-width: 1300px;
