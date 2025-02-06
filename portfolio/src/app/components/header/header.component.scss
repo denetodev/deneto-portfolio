@@ -1,91 +1,121 @@
-@use "sass:color"; // Importa o módulo de cores do SASS
+/* header.component.scss */
+@use "sass:color";
 @use "../../../assets/styles/variables" as vars;
 
 :host ::ng-deep {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; // Mudamos para 100% para controlar o centro corretamente
+  z-index: 1000;
+  background-color: transparent;
+  transition: background-color 1s ease, backdrop-filter 1s ease;
+
   .card {
-    background-color: vars.$color-black; // Corrigido: adicionado o namespace vars.
+    background-color: transparent;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    transition: all 1s ease;
   }
 
-  .p-menubar {
-    max-width: 1200px;
+  .p-toolbar {
+    margin: 20px 0;
+    width: 100%;
+    min-width: 1200px;
+    background-color: vars.$color-black;
     border: none;
-    border-radius: none !important;
-    background-color: transparent !important;
-    margin: 0 auto;
+    color: var(--p-toolbar-color);
+    border-radius: var(--p-toolbar-border-radius);
     display: flex;
+    justify-content: space-between; // Distribui o espaço entre os elementos
     align-items: center;
-    justify-content: space-between;
+    transition: all 1s ease;
 
-    .p-menubar-button {
-      color: vars.$color-platinum-light !important; // Corrigido: adicionado o namespace vars.
-      height: 35px !important;
-      width: 35px !important;
-      flex-shrink: 0;
+    // Ajusta os grupos da toolbar
+    .p-toolbar-group-start,
+    .p-toolbar-group-end {
+      flex: 1;
+      display: flex;
+      align-items: center;
+    }
 
-      &:hover {
-        background-color: rgba(
-          vars.$color-primary-orange,
-          0.6
-        ); // Corrigido: uso correto de rgba com variável SASS
-      }
+    .p-toolbar-group-start {
+      justify-content: flex-start;
+    }
+
+    .p-toolbar-group-end {
+      justify-content: flex-end;
+      gap: 1rem; // Espaço entre os elementos do grupo end
     }
   }
 
-  .p-menubar-root-list {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    background-color: vars.$color-black !important; // Corrigido: adicionado o namespace vars.
-
-    .p-menubar-item-link {
-      color: vars.$color-platinum-light; // Corrigido: adicionado o namespace vars.
-
-      &:hover {
-        color: vars.$color-primary-orange; // Corrigido: adicionado o namespace vars.
-        background-color: none !important;
-      }
-
-      span {
-        font-weight: vars.$font-weight-semibold; // Corrigido: adicionado o namespace vars.
-        font-size: vars.$font-size-small; // Corrigido: adicionado o namespace vars.
-      }
+  .card.scrolled {
+    .p-toolbar {
+      background-color: rgba(vars.$color-black, 0.3);
+      backdrop-filter: blur(4px);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      border: 1px solid vars.$color-platinum-light;
     }
   }
-}
 
-.logo {
-  flex-shrink: 0;
-  z-index: 2;
-  cursor: pointer;
-
-  a {
-    display: block;
+  .menu-items {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-right: 2rem; // Espaço entre o menu e os botões
   }
 
-  img {
-    height: 40px;
-    width: auto;
+  .menu-item-link {
+    color: vars.$color-platinum-light;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+
+    &:hover {
+      color: vars.$color-primary-orange;
+      font-weight: vars.$font-weight-bold !important;
+      background-color: transparent !important;
+    }
+
+    span {
+      font-weight: vars.$font-weight-semibold;
+      font-size: vars.$font-size-small;
+    }
   }
-}
 
-.actions {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-@media screen and (max-width: 576px) {
   .logo {
-    .desktop-logo {
-      display: none;
-    }
+    flex-shrink: 0;
+    z-index: 2;
+    cursor: pointer;
 
-    .mobile-logo {
+    a {
       display: block;
     }
-  }
 
-  .contact-button {
-    display: none;
+    img {
+      height: 35px;
+      width: auto;
+    }
+  }
+}
+
+// Media queries para responsividade
+@media screen and (max-width: 768px) {
+  :host ::ng-deep {
+    .card {
+      width: 95%; // Aumenta um pouco a largura em telas menores
+      margin: 10px auto; // Reduz a margem em telas menores
+    }
+
+    .menu-items {
+      display: none; // Esconde o menu em telas menores
+    }
+
+    // Adicione aqui a lógica para o menu mobile quando necessário
   }
 }

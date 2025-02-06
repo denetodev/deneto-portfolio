@@ -1,38 +1,33 @@
-<div class="card">
-  <p-menubar [model]="items">
+<div class="card" [class.scrolled]="isScrolled">
+  <p-toolbar
+    [style]="{ 'border-radius': '3rem', padding: '1rem 1rem 1rem 1.5rem' }"
+  >
     <ng-template #start>
-      <div class="logo">
+      <div class="logo flex items-center gap-3">
         <a (click)="navigateToLandingpage()">
           <img
             class="mobile-logo"
-            src="assets/images/visual-identity/icon.png"
+            src="assets/images/visual-identity/logo-horizontal.png"
             alt="Logo Deneto Icon"
           />
         </a>
       </div>
     </ng-template>
 
-    <ng-template #item let-item let-root="root">
-      <a pRipple class="flex items-center p-menubar-item-link">
-        <span>{{ item.label }}</span>
-
-        <span
-          *ngIf="item.shortcut"
-          class="ml-auto border border-surface rounded bg-emphasis text-muted-color text-xs p-1"
-          >{{ item.shortcut }}</span
-        >
-        <i
-          *ngIf="item.items"
-          [ngClass]="['ml-auto pi', root ? 'pi-angle-down' : 'pi-angle-right']"
-        ></i>
-      </a>
-    </ng-template>
-
     <ng-template #end>
-      <div class="actions flex items-center gap-2">
-        <app-language-switcher></app-language-switcher>
+      <!-- -------- -->
+      <div class="menu-items">
+        <ng-container *ngFor="let item of items">
+          <a pRipple class="menu-item-link" (click)="item.command()">
+            <span>{{ item.label }}</span>
+          </a>
+        </ng-container>
+      </div>
+      <!-- ------ -->
+      <div class="flex items-center gap-3">
         <app-contact-button></app-contact-button>
+        <app-language-switcher></app-language-switcher>
       </div>
     </ng-template>
-  </p-menubar>
+  </p-toolbar>
 </div>
