@@ -1,42 +1,44 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
+import { ButtonModule } from 'primeng/button';
 import { CarouselModule } from 'primeng/carousel';
-import { ChipModule } from 'primeng/chip';
-import { DividerModule } from 'primeng/divider';
-import { TabViewModule } from 'primeng/tabview';
-import { Project } from '../../shared/interfaces/project.interface';
-import { ProjectService } from '../../shared/services/project.service';
-import { LinkPageTestComponent } from './link-page-test/link-page-test.component';
+import { RippleModule } from 'primeng/ripple';
+import { AvatarModule } from 'primeng/avatar';
+import { Project } from '@app/shared/interfaces/project.interface';
+import { ProjectService } from '@app/shared/services/project.service';
 
 @Component({
-  selector: 'app-links-page',
-  standalone: true,
+  selector: 'app-link-page-test',
   imports: [
     CommonModule,
-    ButtonModule,
     CardModule,
+    ButtonModule,
     CarouselModule,
-    ChipModule,
-    DividerModule,
-    TabViewModule,
-    LinkPageTestComponent,
+    RippleModule,
+    AvatarModule,
   ],
-  templateUrl: './links-page.component.html',
-  styleUrl: './links-page.component.scss',
+  templateUrl: './link-page-test.component.html',
+  styleUrl: './link-page-test.component.scss',
 })
-export class LinksPageComponent {
+export class LinkPageTestComponent {
+  services = [
+    {
+      title: 'Design Gráfico',
+      description:
+        'Criação de identidade visual exclusiva. Design de materiais de marketing, portfólios, cartões de visita e banners.',
+      icon: 'pi pi-palette',
+    },
+    {
+      title: 'Design de Sites',
+      description:
+        'Criação de websites atraentes e funcionais. Garantia de site otimizado para dispositivos móveis.',
+      icon: 'pi pi-desktop',
+    },
+  ];
+
   private projectService = inject(ProjectService);
   projects: Project[] = [];
-  techStack = [
-    'Angular',
-    'TypeScript',
-    'Firebase',
-    'Node.js',
-    'PrimeNG',
-    'SCSS',
-  ];
 
   featuredProjects: Project[] = [
     {
@@ -77,10 +79,17 @@ export class LinksPageComponent {
     },
   ];
 
+  socialLinks = [
+    { icon: 'pi pi-instagram', link: '#' },
+    { icon: 'pi pi-whatsapp', link: '#' },
+    { icon: 'pi pi-telegram', link: '#' },
+    { icon: 'pi pi-envelope', link: '#' },
+  ];
+
   ngOnInit() {
     this.projectService
       .getProjectsSmall()
-      .subscribe((projects) => (this.projects = projects));
+      .subscribe((projects: Project[]) => (this.projects = projects));
   }
 
   openUrl(url: string): void {
