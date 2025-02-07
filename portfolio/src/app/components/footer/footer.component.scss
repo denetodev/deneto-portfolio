@@ -21,6 +21,10 @@
     align-items: center;
     border-bottom: 2px solid rgba(vars.$color-platinum-light, 0.3);
 
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+
     h2 {
       font-weight: vars.$font-weight-semibold;
       font-size: 3.5rem;
@@ -29,6 +33,10 @@
 
       .highlight {
         color: vars.$color-primary-orange;
+      }
+
+      @media (max-width: 768px) {
+        font-size: 2.5rem;
       }
     }
 
@@ -105,7 +113,7 @@
       }
 
       @media (max-width: 768px) {
-        justify-content: center;
+        justify-content: space-around;
       }
     }
   }

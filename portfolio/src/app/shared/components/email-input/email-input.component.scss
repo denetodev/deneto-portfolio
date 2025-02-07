@@ -1,4 +1,4 @@
-@use "sass:color"; // Importa o módulo de cores do SASS
+@use "sass:color";
 @use "../../../../assets/styles/variables" as vars;
 
 .input-section {
@@ -9,39 +9,52 @@
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
+
+  @media (max-width: 600px) {
+    padding: 0 1rem;
+  }
 }
 
 .custom-input-container {
-  background: color.adjust(
-    vars.$color-platinum-light,
-    $lightness: 2%
-  ); // Corrigido: adicionado o namespace vars.
+  background: color.adjust(vars.$color-platinum-light, $lightness: 2%);
   border-radius: 100px;
   padding: 4px;
   width: 100%;
-  height: 64px;
   display: flex;
   align-items: center;
-  border: 2px solid vars.$color-taupe-gray; // Corrigido: adicionado o namespace vars.
+  border: 2px solid vars.$color-taupe-gray;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    height: auto;
+    border-radius: 20px;
+    padding: 0.5rem;
+  }
 }
 
 .input-wrapper {
   flex: 1;
   display: flex;
   align-items: center;
-  padding-left: vars.$spacing-tiny; // Corrigido: adicionado o namespace vars.
+  padding-left: vars.$spacing-tiny;
   gap: 0.5rem;
 
+  @media (max-width: 600px) {
+    width: 100%;
+    padding: 0.5rem;
+  }
+
   i {
-    color: vars.$color-black; // Corrigido: adicionado o namespace vars.
+    color: vars.$color-black;
     font-size: 1.1rem;
     padding: 12px;
-    background-color: color.adjust(
-      vars.$color-primary-orange,
-      $lightness: 30%
-    ); // Corrigido: adicionado o namespace vars.
+    background-color: color.adjust(vars.$color-primary-orange, $lightness: 30%);
     border-radius: 100px;
+
+    @media (max-width: 600px) {
+      display: none;
+    }
   }
 
   input {
@@ -49,67 +62,76 @@
     outline: none;
     padding: 0.75rem 0.5rem;
     width: 100%;
-    font-size: vars.$font-size-mlarge; // Corrigido: adicionado o namespace vars.
+    font-size: vars.$font-size-mlarge;
     background: transparent;
 
+    @media (max-width: 600px) {
+      font-size: vars.$font-size-base;
+      padding: 0.5rem;
+      text-align: center;
+    }
+
     &::placeholder {
-      color: vars.$color-black; // Corrigido: adicionado o namespace vars.
+      color: vars.$color-black;
     }
   }
 }
 
 .submit-button {
-  background: vars.$color-primary-orange; // Corrigido: adicionado o namespace vars.
+  background: vars.$color-primary-orange;
   color: white;
   border: none;
   border-radius: 100px;
   padding: 0.75rem 2rem;
-  font-size: vars.$font-size-mlarge; // Corrigido: adicionado o namespace vars.
-  font-weight: vars.$font-weight-semibold; // Corrigido: adicionado o namespace vars.
+  font-size: vars.$font-size-mlarge;
+  font-weight: vars.$font-weight-semibold;
   cursor: pointer;
   transition: background-color 0.2s ease;
   margin-right: 4px;
 
-  &:disabled {
-    background: vars.$color-platinum; // Corrigido: adicionado o namespace vars.
-    cursor: not-allowed;
+  @media (max-width: 600px) {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 20px;
+    font-size: vars.$font-size-base;
+  }
 
-    &:hover {
-      background: color.adjust(
-        vars.$color-primary-orange,
-        $lightness: 10%
-      ); // Corrigido: adicionado o namespace vars.
-    }
+  &:disabled {
+    background: vars.$color-platinum;
+    cursor: not-allowed;
   }
 }
 
 .credentials {
   display: flex;
   gap: 1rem;
-  padding: 0 vars.$spacing-large; // Corrigido: adicionado o namespace vars.
-  justify-content: space-between;
+  padding: 0 vars.$spacing-large;
+  justify-content: center;
   flex-wrap: wrap;
   width: 100%;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0;
+  }
 
   .credential-item {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    color: vars.$color-black; // Corrigido: adicionado o namespace vars.
+    color: vars.$color-black;
     font-size: 0.9rem;
-    font-weight: vars.$font-weight-semibold; // Corrigido: adicionado o namespace vars.
+    font-weight: vars.$font-weight-semibold;
+
+    @media (max-width: 600px) {
+      font-size: 0.8rem;
+    }
 
     i {
-      color: vars.$color-black; // Corrigido: adicionado o namespace vars.
+      color: vars.$color-black;
       font-size: 1rem;
     }
-  }
-}
-
-@media (max-width: 600px) {
-  .credentials {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
   }
 }

@@ -9,11 +9,13 @@
   a {
     text-decoration: none;
     transition: transform vars.$transition-speed-medium ease;
+    width: 100%; // Ensure full width for flexibility
   }
 
   ::ng-deep .p-button {
     font-family: vars.$font-family-primary;
     font-weight: vars.$font-weight-semibold;
+    width: 100%;
   }
 
   ::ng-deep .p-button.p-button-outlined {
@@ -62,12 +64,7 @@
     width: 100%;
     gap: vars.$spacing-tiny;
 
-    a {
-      width: 100%;
-    }
-
     ::ng-deep .p-button {
-      width: 100%;
       font-size: vars.$font-size-small;
       padding: vars.$spacing-tiny vars.$spacing-small;
       justify-content: center;

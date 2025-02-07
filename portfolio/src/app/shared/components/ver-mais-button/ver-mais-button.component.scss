@@ -1,28 +1,41 @@
-@use "sass:color"; // Importa o módulo de cores do SASS
+@use "sass:color";
 @use "../../../../assets/styles/variables" as vars;
 
 .ver-mais-button {
   display: inline-block;
-  background-color: vars.$color-primary-orange; // Corrigido: adicionado o namespace vars.
-  color: vars.$color-platinum-light; // Corrigido: adicionado o namespace vars.
+  background-color: vars.$color-primary-orange;
+  color: vars.$color-platinum-light;
   text-decoration: none;
-  padding: vars.$spacing-xMedium vars.$spacing-xlarge; // Corrigido: adicionado o namespace vars.
-  border-radius: vars.$border-radius-medium; // Corrigido: adicionado o namespace vars.
-  font-weight: vars.$font-weight-semibold; // Corrigido: adicionado o namespace vars.
-  font-size: vars.$font-size-xlarge; // Corrigido: adicionado o namespace vars.
+  padding: vars.$spacing-xMedium vars.$spacing-xlarge;
+  border-radius: vars.$border-radius-large;
+  font-weight: vars.$font-weight-semibold;
+  font-size: vars.$font-size-xlarge;
   transition: background-color 0.3s ease;
+  text-align: center;
+  white-space: nowrap;
+  max-width: 100%;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: vars.$spacing-xMedium vars.$spacing-medium;
+    font-size: vars.$font-size-large;
+  }
 
   &:hover {
     background-color: color.adjust(
       vars.$color-primary-orange,
       $lightness: 10%
-    ); // Corrigido: adicionado o namespace vars.
+    );
   }
 
   &:active {
     background-color: color.adjust(
       vars.$color-primary-orange,
       $lightness: 15%
-    ); // Corrigido: adicionado o namespace vars.
+    );
   }
 }

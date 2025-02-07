@@ -11,15 +11,33 @@
   align-items: center;
   justify-content: space-between;
 
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
   h2 {
     font-weight: vars.$font-weight-semibold;
     font-size: 3.5rem;
     margin-bottom: 1.5rem;
     color: vars.$color-black;
+
+    @media (max-width: 768px) {
+      font-size: 2rem;
+      align-content: flex-start;
+    }
   }
 
   .highlight {
-    color: vars.$color-primary-orange; // Corrigido: adicionado o namespace vars.
+    color: vars.$color-primary-orange;
+  }
+
+  app-ver-mais-button {
+    @media (max-width: 768px) {
+      align-self: center;
+      margin: 2rem 0;
+      width: 100%;
+    }
   }
 }
 
@@ -30,13 +48,13 @@
     text-align: center;
 
     .portfolio-title {
-      color: vars.$color-black; // Corrigido: adicionado o namespace vars.
-      font-weight: vars.$font-weight-semibold; // Corrigido: adicionado o namespace vars.
-      font-size: vars.$font-size-large; // Corrigido: adicionado o namespace vars.
+      color: vars.$color-black;
+      font-weight: vars.$font-weight-semibold;
+      font-size: vars.$font-size-large;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      align-items: center; /* Ajusta o alinhamento vertical */
+      align-items: center;
       gap: 1rem;
 
       .pi {
@@ -44,26 +62,29 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        //margin-right: 6px;
       }
     }
 
     .portfolio-content {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center; /* Centraliza horizontalmente */
-      align-items: center; /* Centraliza verticalmente */
+      justify-content: center;
+      align-items: center;
       gap: 1rem;
       margin-bottom: 1.5rem;
 
       .portfolio-heading {
-        color: vars.$color-black; // Corrigido: adicionado o namespace vars.
-        font-weight: vars.$font-weight-semibold; // Corrigido: adicionado o namespace vars.
-        font-size: vars.$font-size-heading-1; // Corrigido: adicionado o namespace vars.
+        color: vars.$color-black;
+        font-weight: vars.$font-weight-semibold;
+        font-size: vars.$font-size-heading-1;
         display: flex;
-        align-items: center; /* Ajusta alinhamento vertical */
-        justify-content: center; /* Ajusta alinhamento horizontal */
-        text-align: center; /* Garante alinhamento interno */
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+
+        @media (max-width: 768px) {
+          font-size: 2rem;
+        }
       }
 
       a p-button {
@@ -74,7 +95,7 @@
           color 0.3s ease;
 
         &:hover {
-          transform: scale(1.15) rotate(-45deg); /* Corrige a escala e rotação */
+          transform: scale(1.15) rotate(-45deg);
         }
       }
     }
@@ -82,10 +103,14 @@
     .portfolio-description {
       max-width: 1000px;
       margin: 0 auto;
-      color: vars.$color-gray; // Corrigido: adicionado o namespace vars.
-      font-size: vars.$font-size-mlarge; // Corrigido: adicionado o namespace vars.
-      line-height: 1.2; /* Melhor legibilidade */
-      font-weight: vars.$font-weight-regular; // Corrigido: adicionado o namespace vars.
+      color: vars.$color-gray;
+      font-size: vars.$font-size-mlarge;
+      line-height: 1.2;
+      font-weight: vars.$font-weight-regular;
+
+      @media (max-width: 768px) {
+        font-size: 2rem;
+      }
     }
   }
 }
