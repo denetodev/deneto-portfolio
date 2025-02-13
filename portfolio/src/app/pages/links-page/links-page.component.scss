@@ -1,181 +1,254 @@
 @use "../../../assets/styles/variables" as vars;
 
-.page-container {
-  max-width: 600px; // Reduzir largura para mobile-first
+.links-page {
+  max-width: 600px;
   margin: 0 auto;
-  padding: 0 1rem;
-  background-color: #f4f4f4;
+  padding: vars.$spacing-large;
+  font-family: vars.$font-family-primary;
+  background-color: #000; // Fundo preto
   min-height: 100vh;
-}
-
-.hero {
-  background: linear-gradient(
-    135deg,
-    var(--primary-color) 0%,
-    var(--primary-800) 100%
-  );
-  border-radius: 0 0 2rem 2rem;
-  padding: 2rem;
-  margin-bottom: 2rem;
-  text-align: center;
   color: white;
-
-  .profile-image {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 4px solid white;
-    margin-bottom: 1rem;
-    object-fit: cover;
-  }
-
-  .experience-badge {
-    background: rgba(255, 255, 255, 0.2);
-    padding: 0.5rem 1rem;
-    border-radius: 2rem;
-    display: inline-block;
-    margin: 1rem 0;
-  }
-
-  .tech-stack {
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 1rem;
-  }
 }
 
-.services {
-  margin-bottom: 2rem;
+.profile-section {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  margin-bottom: vars.$spacing-xlarge;
+  display: flex;
+  align-items: flex-end;
+  border-radius: vars.$border-radius-large;
+  overflow: hidden;
 
-  :host ::ng-deep .p-tabview {
-    .p-tabview-nav {
-      justify-content: center;
-    }
-  }
-
-  .service-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 1rem;
-
-    .service-details {
-      max-width: 400px;
-      margin-bottom: 1rem;
-    }
-
-    .service-image {
-      max-width: 200px;
-      height: auto;
-      margin-top: 1rem;
-    }
-
-    ul {
-      list-style-type: none;
-      padding: 0;
-      margin: 1rem 0;
-    }
-  }
-}
-
-.projects {
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 0.75rem;
-  }
-
-  .project-card {
-    :host ::ng-deep {
-      .p-card {
-        max-width: 250px;
-        width: 100%;
-        margin: 0 auto;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      }
-
-      .p-card-content {
-        padding: 0.75rem;
-
-        h3 {
-          font-size: 0.95rem;
-          margin-bottom: 0.25rem;
-        }
-
-        p {
-          font-size: 0.8rem;
-          color: #666;
-          margin-bottom: 0.5rem;
-        }
-      }
-    }
+  .profile-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 
     img {
-      height: 120px;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
+      object-position: center;
     }
 
-    .project-actions {
-      justify-content: center;
-      gap: 0.5rem;
+    .gradient-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.3) 0%,
+        rgba(0, 0, 0, 0.7) 50%,
+        rgba(0, 0, 0, 0.9) 80%,
+        rgba(0, 0, 0, 1) 100%
+      );
+    }
+  }
+
+  .profile-informations {
+    position: relative;
+    z-index: 2;
+    padding: vars.$spacing-xlarge;
+    width: 100%;
+
+    .name {
+      font-size: vars.$font-size-heading-2;
+      font-weight: vars.$font-weight-bold;
+      margin-bottom: vars.$spacing-small;
+      color: white;
+    }
+
+    .role {
+      font-size: vars.$font-size-base;
+      color: vars.$color-gray;
+      margin-bottom: vars.$spacing-medium;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: vars.$spacing-medium;
+
+      .social-icon {
+        color: white;
+        font-size: vars.$font-size-xlarge;
+        transition: color vars.$transition-speed-fast;
+
+        &:hover {
+          color: vars.$color-primary-orange;
+        }
+      }
     }
   }
 }
 
-@media (max-width: 480px) {
-  .projects .projects-grid {
-    grid-template-columns: 1fr;
+.buttons-section {
+  padding: 0 vars.$spacing-large;
+
+  .action-button {
+    margin-bottom: vars.$spacing-xlarge;
+
+    ::ng-deep .p-button {
+      width: 100%;
+      height: 50px;
+      background-color: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: white;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+    }
   }
-}
 
-.contact {
-  text-align: center;
-  padding: 2rem 0;
-  background: var(--surface-ground);
-  border-radius: 2rem;
+  .instagram-section,
+  .linkedin-section,
+  .github-section,
+  .rested-section {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: vars.$border-radius-medium;
+    padding: vars.$spacing-large;
+    margin-bottom: vars.$spacing-large;
+  }
 
-  .contact-buttons {
+  .instagram-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    max-width: 400px;
-    margin: 1rem auto 0;
+    grid-template-columns: repeat(3, 1fr);
+    gap: vars.$spacing-small;
+
+    .post-preview {
+      aspect-ratio: 1;
+      border-radius: vars.$border-radius-small;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
   }
 }
 
-@media (min-width: 768px) {
-  .page-container {
-    max-width: 800px;
+.linkedin-section {
+  margin-bottom: vars.$spacing-xlarge;
+  background-color: rgba(13, 17, 23, 0.3);
+  border-radius: vars.$border-radius-medium;
+  padding: vars.$spacing-medium;
+
+  .linkedin-button {
+    display: flex;
+    align-items: center;
+    gap: vars.$spacing-medium;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: vars.$border-radius-small;
+    padding: vars.$spacing-medium;
+    color: white;
+    cursor: pointer;
+    transition: background-color vars.$transition-speed-fast;
+
+    i {
+      font-size: vars.$font-size-large;
+    }
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
   }
 
-  .services {
-    .service-content {
-      flex-direction: row;
-      text-align: left;
+  .instruction {
+    text-align: center;
+    color: vars.$color-gray;
+    margin-top: vars.$spacing-small;
+    font-size: vars.$font-size-small;
+  }
+}
 
-      .service-details {
-        flex: 1;
+.github-section {
+  background: rgba(13, 17, 23, 0.3);
+  border-radius: vars.$border-radius-medium;
+  padding: vars.$spacing-medium;
+  margin-bottom: vars.$spacing-large;
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: vars.$spacing-medium;
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: vars.$spacing-small;
+
+      i {
+        font-size: vars.$font-size-large;
+        color: white;
       }
+    }
 
-      .service-image {
-        margin-left: 2rem;
-        max-width: 250px;
+    .username {
+      color: vars.$color-gray;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 2px 8px;
+      border-radius: vars.$border-radius-small;
+      font-size: vars.$font-size-small;
+    }
+  }
+
+  .stats {
+    display: flex;
+    align-items: center;
+    gap: vars.$spacing-small;
+    color: vars.$color-gray;
+    margin-bottom: vars.$spacing-medium;
+    font-size: vars.$font-size-small;
+
+    .dot {
+      font-size: 8px;
+      line-height: 1;
+      margin-top: 2px;
+    }
+  }
+
+  .contribution-grid {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: vars.$border-radius-small;
+    padding: vars.$spacing-medium;
+    overflow: hidden;
+
+    .contribution-cells {
+      display: grid;
+      grid-template-columns: repeat(22, 1fr);
+      gap: 2px;
+
+      .contribution-cell {
+        aspect-ratio: 1;
+        border-radius: 2px;
+        min-width: 6px;
+        transition: transform 0.1s ease;
+
+        &:hover {
+          transform: scale(1.2);
+        }
       }
     }
   }
+}
 
-  .projects {
-    .projects-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
+.rested-section {
+  background-color: vars.$color-black;
+  h3 {
+    font-size: vars.$font-size-heading-3;
+    margin-bottom: vars.$spacing-tiny;
   }
 
-  .contact {
-    .contact-buttons {
-      grid-template-columns: repeat(4, 1fr);
-    }
+  p {
+    color: vars.$color-gray;
   }
 }

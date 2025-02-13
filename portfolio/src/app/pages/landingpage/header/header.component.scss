@@ -12,7 +12,7 @@
   transition: background-color 1s ease, backdrop-filter 1s ease;
 
   .card {
-    background-color: vars.$color-platinum-light;
+    background-color: transparent;
     width: 100%;
     max-width: 90rem; // ~1440px
     margin: 0 auto;

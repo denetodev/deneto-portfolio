@@ -1,5 +1,5 @@
 @use "sass:color"; // Importa o módulo de cores do Sass
-@use "../../../assets/styles/variables" as vars;
+@use "../../../../assets/styles/variables" as vars;
 
 .footer {
   background-color: vars.$color-black;

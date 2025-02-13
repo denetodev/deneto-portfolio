@@ -1,162 +1,107 @@
-<div class="page-container">
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-content">
+<div class="links-page">
+  <div class="profile-section">
+    <div class="profile-background">
       <img
-        src="../../../assets/images/link-page/perfil-exemplo.jpg"
-        alt="Foto de perfil"
-        class="profile-image"
+        src="../../../assets/images/link-page/profile.jpg"
+        alt="imagem de perfil"
       />
-      <h1>Neto</h1>
-      <div class="experience-badge">3 Anos de Experiência</div>
-      <p class="tagline">
-        Desenvolvedor Full Stack & Especialista em Soluções Digitais
-      </p>
-      <div class="tech-stack">
-        <p-chip *ngFor="let tech of techStack" [label]="tech"></p-chip>
+      <div class="gradient-overlay"></div>
+    </div>
+
+    <div class="profile-informations">
+      <h1 class="name">{{ name }}</h1>
+      <p class="role">{{ role }}</p>
+      <div class="social-icons">
+        <a
+          *ngFor="let social of socialLinks"
+          [href]="social.url"
+          target="_blank"
+          class="social-icon"
+        >
+          <i [class]="social.icon"></i>
+        </a>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- Services Section -->
-  <section class="services">
-    <h2>Serviços Especializados</h2>
-    <p-tabView>
-      <p-tabPanel header="Desenvolvimento Web">
-        <div class="service-content">
-          <div class="service-details">
-            <h3>Desenvolvimento Web Full Stack</h3>
-            <ul>
-              <li>Aplicações web responsivas e escaláveis</li>
-              <li>Arquitetura moderna com Angular e Firebase</li>
-              <li>APIs RESTful e integrações</li>
-              <li>Otimização de performance e SEO</li>
-            </ul>
-            <p-button
-              label="Solicitar Orçamento"
-              styleClass="p-button-raised"
-            ></p-button>
-          </div>
-          <img
-            src="../../../assets/images/link-page/page-web.jpg"
-            alt="Web Development"
-            class="service-image"
-          />
-        </div>
-      </p-tabPanel>
-
-      <p-tabPanel header="Sites e Landing Pages">
-        <div class="service-content">
-          <div class="service-details">
-            <h3>Sites e Landing Pages Profissionais</h3>
-            <ul>
-              <li>Design responsivo e moderno</li>
-              <li>Otimização para conversão</li>
-              <li>Integração com CMS</li>
-              <li>Analytics e relatórios de performance</li>
-            </ul>
-            <p-button
-              label="Ver Portfolio"
-              styleClass="p-button-raised"
-            ></p-button>
-          </div>
-          <img
-            src="assets/landing-page.svg"
-            alt="Landing Pages"
-            class="service-image"
-          />
-        </div>
-      </p-tabPanel>
-
-      <p-tabPanel header="Aplicativos Mobile">
-        <div class="service-content">
-          <div class="service-details">
-            <h3>Desenvolvimento Mobile Multiplataforma</h3>
-            <ul>
-              <li>Apps híbridos com Ionic/Capacitor</li>
-              <li>PWAs de alta performance</li>
-              <li>Integração com APIs nativas</li>
-              <li>Publicação nas stores</li>
-            </ul>
-            <p-button
-              label="Conversar sobre seu App"
-              styleClass="p-button-raised"
-            ></p-button>
-          </div>
-          <img
-            src="assets/mobile-dev.svg"
-            alt="Mobile Development"
-            class="service-image"
-          />
-        </div>
-      </p-tabPanel>
-    </p-tabView>
-  </section>
-
-  <!-- Projects Section -->
-  <section class="projects">
-    <h2>Projetos em Destaque</h2>
-    <div class="projects-grid">
-      <p-card
-        *ngFor="let project of projects"
-        styleClass="project-card"
-        (mouseenter)="project.isHovered = true"
-        (mouseleave)="project.isHovered = false"
+  <div class="buttons-section">
+    // botão site
+    <div class="action-button">
+      <p-button
+        label="Get your own dott.bio"
+        [outlined]="true"
+        styleClass="w-full"
       >
-        <ng-template pTemplate="header">
-          <img [src]="project.image" [alt]="project.title" />
-        </ng-template>
-        <h3>{{ project.title }}</h3>
-        <p>{{ project.description }}</p>
-        <ng-template pTemplate="footer">
-          <div class="project-actions">
-            <p-button
-              *ngIf="project.githubUrl"
-              (onClick)="openUrl(project.githubUrl)"
-              icon="pi pi-github"
-              styleClass="p-button-rounded p-button-secondary"
-            >
-            </p-button>
-            <p-button
-              *ngIf="project.siteUrl"
-              (onClick)="openUrl(project.siteUrl)"
-              icon="pi pi-external-link"
-              styleClass="p-button-rounded"
-            >
-            </p-button>
+        <img
+          src="../../../assets/images/visual-identity/icon.png"
+          style="height: 1.8rem; margin-right: 0.5rem"
+        />
+      </p-button>
+    </div>
+
+    <div class="instagram-section">
+      <div class="section-header">
+        <i class="pi pi-instagram"></i>
+        <span>Instagram</span>
+        <span class="username">&commat;denetodev</span>
+      </div>
+      <div class="stats">
+        <span>{{ followers }} followers</span>
+        <span>•</span>
+        <span>{{ posts }} posts</span>
+      </div>
+      <div class="instagram-grid">
+        <div *ngFor="let post of instagramPosts" class="post-preview">
+          <img [src]="post.imageUrl" [alt]="post.alt" />
+        </div>
+      </div>
+    </div>
+
+    <div class="linkedin-section">
+      <div class="linkedin-button">
+        <i class="pi pi-linkedin"></i>
+        <span>Add me on LinkedIn</span>
+      </div>
+      <p class="instruction">Write "dott.bio" as the message</p>
+    </div>
+
+    <div class="github-section">
+      <div class="section-header">
+        <div class="header-left">
+          <i class="pi pi-github"></i>
+          <span>GitHub</span>
+        </div>
+        <span class="username">&commat;denetodev</span>
+      </div>
+      <div class="stats">
+        <span>7 followers</span>
+        <span class="dot">•</span>
+        <span>40 monthly contributions</span>
+      </div>
+      <div class="contribution-grid">
+        <div class="contribution-cells">
+          <div
+            *ngFor="
+              let week of githubData?.contributionsCollection
+                ?.contributionCalendar?.weeks
+            "
+            class="contribution-week"
+          >
+            <div
+              *ngFor="let day of week.contributionDays"
+              class="contribution-cell"
+              [style.background-color]="
+                getContributionColor(day.contributionCount)
+              "
+            ></div>
           </div>
-        </ng-template>
-      </p-card>
+        </div>
+      </div>
     </div>
-  </section>
 
-  <!-- Contact Section -->
-  <section class="contact">
-    <h2>Vamos Conversar?</h2>
-    <div class="contact-buttons">
-      <p-button
-        label="WhatsApp"
-        icon="pi pi-whatsapp"
-        styleClass="p-button-success p-button-lg"
-      ></p-button>
-      <p-button
-        label="LinkedIn"
-        icon="pi pi-linkedin"
-        styleClass="p-button-info p-button-lg"
-      ></p-button>
-      <p-button
-        label="GitHub"
-        icon="pi pi-github"
-        styleClass="p-button-secondary p-button-lg"
-      ></p-button>
-      <p-button
-        label="Email"
-        icon="pi pi-envelope"
-        styleClass="p-button-help p-button-lg"
-      ></p-button>
+    <div class="rested-section">
+      <h3>Rested.</h3>
+      <p>My Chrome Extension with 300+ Users</p>
     </div>
-  </section>
+  </div>
 </div>
-
-
-<app-link-page-test></app-link-page-test>

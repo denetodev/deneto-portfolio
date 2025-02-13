@@ -1,89 +1,117 @@
-import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
+import { AvatarModule } from 'primeng/avatar';
 import { CardModule } from 'primeng/card';
-import { CarouselModule } from 'primeng/carousel';
-import { ChipModule } from 'primeng/chip';
-import { DividerModule } from 'primeng/divider';
-import { TabViewModule } from 'primeng/tabview';
-import { Project } from '../../shared/interfaces/project.interface';
-import { ProjectService } from '../../shared/services/project.service';
-import { LinkPageTestComponent } from './link-page-test/link-page-test.component';
+import { Component, inject, OnInit } from '@angular/core';
+import { GithubService } from '@app/shared/services/github.service';
+import { GithubData } from '@app/shared/interfaces/githubData.interface';
+import { Apollo, gql } from 'apollo-angular';
+
+interface SocialLink {
+  url: string;
+  icon: string;
+}
+
+interface InstagramPost {
+  imageUrl: string;
+  alt: string;
+}
 
 @Component({
   selector: 'app-links-page',
   standalone: true,
-  imports: [
-    CommonModule,
-    ButtonModule,
-    CardModule,
-    CarouselModule,
-    ChipModule,
-    DividerModule,
-    TabViewModule,
-    LinkPageTestComponent,
-  ],
+  imports: [CommonModule, ButtonModule, AvatarModule, CardModule],
   templateUrl: './links-page.component.html',
-  styleUrl: './links-page.component.scss',
+  styleUrls: ['./links-page.component.scss'],
+  providers: [GithubService],
 })
-export class LinksPageComponent {
-  private projectService = inject(ProjectService);
-  projects: Project[] = [];
-  techStack = [
-    'Angular',
-    'TypeScript',
-    'Firebase',
-    'Node.js',
-    'PrimeNG',
-    'SCSS',
+export class LinksPageComponent implements OnInit {
+  name: string = 'Neto';
+  role: string = 'FullStack Developer ';
+  githubUsername = 'denetodev';
+  githubData!: GithubData;
+
+  socialLinks: SocialLink[] = [
+    { url: 'https://linkedin.com/', icon: 'pi pi-linkedin' },
+    { url: 'https://github.com/', icon: 'pi pi-github' },
+    { url: 'https://instagram.com/', icon: 'pi pi-instagram' },
   ];
 
-  featuredProjects: Project[] = [
+  instagramPosts: InstagramPost[] = [
     {
-      id: '1',
-      title: 'E-commerce Platform',
-      description:
-        'Plataforma completa de e-commerce com sistema de pagamentos integrado',
-      image: 'assets/project1.jpg',
-      githubUrl: '#',
-      siteUrl: '#',
-    },
-
-    {
-      id: '2',
-      title: 'Sistema de Gestão',
-      description:
-        'Dashboard administrativo para gestão de recursos empresariais',
-      image: 'assets/project2.jpg',
-      githubUrl: '#',
-      siteUrl: '#',
+      imageUrl: '../../../assets/images/link-page/instagram01.jpg',
+      alt: 'Post 1',
     },
     {
-      id: '3',
-      title: 'App de Delivery',
-      description:
-        'Aplicativo mobile para entrega de produtos com rastreamento em tempo real',
-      image: 'assets/project3.jpg',
-      githubUrl: '#',
-      siteUrl: '#',
+      imageUrl: '../../../assets/images/link-page/instagram02.jpg',
+      alt: 'Post 2',
     },
     {
-      id: '4',
-      title: 'Rede Social',
-      description: 'Rede social para conectar profissionais da área tech',
-      image: 'assets/project4.jpg',
-      githubUrl: '#',
-      siteUrl: '#',
+      imageUrl: '../../../assets/images/link-page/instagram03.jpg',
+      alt: 'Post 3',
     },
   ];
+
+  followers: number = 853;
+  posts: number = 3;
+  githubFollowers: number = 8;
+  monthlyContributions: number = 29;
+  social: any;
+
+  constructor(private githubService: GithubService) {}
+  private apollo = inject(Apollo);
 
   ngOnInit() {
-    this.projectService
-      .getProjectsSmall()
-      .subscribe((projects) => (this.projects = projects));
+    console.log('Componente LinksPageComponent foi inicializado!');
+    this.fetchGithubData();
+
+    // Testando a requisição GraphQL
+    console.log('Componente LinksPageComponent foi inicializado!');
+    this.fetchGithubData();
+
+    this.apollo
+      .watchQuery({
+        query: gql`
+        {
+          user(login: "${this.githubUsername}") {
+            followers {
+              totalCount
+            }
+            contributionsCollection {
+              contributionCalendar {
+                totalContributions
+              }
+            }
+          }
+        }
+      `,
+      })
+      .valueChanges.subscribe({
+        next: (result: any) => {
+          console.log('Resultado da GraphQL:', result.data);
+          this.githubFollowers = result.data.user.followers.totalCount;
+          this.monthlyContributions =
+            result.data.user.contributionsCollection.contributionCalendar.totalContributions;
+        },
+        error: (error) => {
+          console.error('Erro na GraphQL:', error);
+        },
+      });
   }
 
-  openUrl(url: string): void {
-    window.open(url, '_blank');
+  fetchGithubData() {
+    this.githubService
+      .getUserContributions(this.githubUsername)
+      .subscribe((data) => {
+        this.githubData = data;
+      });
+  }
+
+  getContributionColor(count: number): string {
+    if (count === 0) return '#161b22';
+    if (count < 3) return '#0e4429';
+    if (count < 5) return '#006d32';
+    if (count < 10) return '#26a641';
+    return '#39d353';
   }
 }
