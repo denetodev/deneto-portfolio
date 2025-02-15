@@ -1,0 +1,261 @@
+@use "sass:color"; // Importa o módulo de cores do Sass
+@use "../../../../assets/styles/variables" as vars;
+
+.footer {
+  background-color: vars.$color-black;
+  color: vars.$color-platinum-light;
+  padding: vars.$spacing-xlarge 0 vars.$spacing-large;
+  font-family: vars.$font-family-primary;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 vars.$spacing-medium;
+  }
+
+  .connect-section {
+    text-align: center;
+    margin-bottom: 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid rgba(vars.$color-platinum-light, 0.3);
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+
+    h2 {
+      font-weight: vars.$font-weight-semibold;
+      font-size: 3.5rem;
+      margin-bottom: 2rem;
+      color: white;
+
+      .highlight {
+        color: vars.$color-primary-orange;
+      }
+
+      @media (max-width: 768px) {
+        font-size: 2.5rem;
+      }
+    }
+
+    .contact-button {
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      ::ng-deep {
+        .p-button {
+          padding: 1rem 2rem;
+          border-width: 2px;
+          border-radius: vars.$border-radius-large;
+          font-size: vars.$font-size-large;
+        }
+      }
+    }
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: vars.$spacing-large;
+    margin-bottom: vars.$spacing-xlarge;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+  }
+
+  .footer-left {
+    .logo {
+      margin-bottom: vars.$spacing-medium;
+
+      img {
+        max-width: 150px;
+      }
+    }
+
+    .social-text {
+      margin: vars.$spacing-xlarge 0;
+      line-height: 1.5;
+      color: vars.$color-gray;
+      font-size: vars.$font-size-base;
+      font-weight: vars.$font-weight-regular;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: space-evenly;
+
+      .social-icon {
+        color: vars.$color-platinum-light;
+        font-size: vars.$font-size-heading-2;
+        transition: color vars.$transition-speed-medium ease;
+
+        width: vars.$spacing-xlarge;
+        height: vars.$spacing-xlarge;
+
+        svg {
+          width: vars.$spacing-xlarge;
+          height: vars.$spacing-xlarge;
+          fill: currentColor;
+        }
+
+        i.pi {
+          font-size: vars.$font-size-heading-2;
+          line-height: 1;
+        }
+
+        &:hover {
+          color: vars.$color-primary-orange;
+        }
+      }
+
+      @media (max-width: 768px) {
+        justify-content: space-around;
+      }
+    }
+  }
+
+  .footer-nav,
+  .footer-contact {
+    h3 {
+      color: vars.$color-primary-orange;
+      margin-bottom: vars.$spacing-medium;
+      font-size: vars.$font-size-large;
+      font-weight: vars.$font-weight-semibold;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        margin-bottom: vars.$spacing-small;
+        font-size: vars.$font-size-base;
+        color: vars.$color-gray;
+        line-height: 2.5;
+
+        a {
+          color: vars.$color-platinum-light;
+          text-decoration: none;
+          transition: color vars.$transition-speed-medium ease;
+          font-weight: vars.$font-weight-regular;
+
+          &:hover {
+            color: vars.$color-primary-orange;
+          }
+        }
+      }
+    }
+  }
+
+  .footer-newsletter {
+    .newsletter-form {
+      display: flex;
+      gap: 0; // Remove o gap para deixar elementos colados
+
+      @media (max-width: 768px) {
+        justify-content: center;
+      }
+
+      input {
+        background-color: vars.$color-platinum-light;
+        border: none;
+        padding: 12px 16px;
+        border-radius: 16px 0 0 16px;
+        font-family: vars.$font-family-primary;
+        font-size: vars.$font-size-base;
+        width: 240px;
+        height: 42px;
+        outline: none;
+      }
+
+      button {
+        background-color: vars.$color-primary-orange;
+        border: none;
+        color: vars.$color-platinum-light;
+        padding: 12px 20px;
+        border-radius: 0 16px 16px 0; // Arredonda apenas o lado direito
+        cursor: pointer;
+        transition: background-color vars.$transition-speed-medium ease;
+        font-family: vars.$font-family-primary;
+        height: 42px; // Mesma altura do input
+        margin-left: -1px; // Para garantir que fique colado ao input
+        min-width: 48px; // Largura mínima para o botão
+
+        &:hover {
+          background-color: color.adjust(
+            vars.$color-primary-orange,
+            $lightness: -10%
+          );
+        }
+      }
+    }
+  }
+
+  .footer-bottom {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    padding-top: vars.$spacing-large;
+    padding-bottom: vars.$spacing-large; // Adicionar padding bottom
+    border-top: 1px solid rgba(vars.$color-platinum-light, 0.1); // Ajustar opacidade e espessura da borda
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: vars.$spacing-medium;
+      text-align: center;
+    }
+
+    .copyright {
+      p {
+        margin: 0;
+        font-size: 14px; // Ajustar tamanho específico
+        color: vars.$color-gray;
+        font-weight: 400;
+        line-height: 1.5; // Melhorar espaçamento entre linhas
+      }
+    }
+
+    .made-by {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: vars.$spacing-tiny;
+      font-size: vars.$font-size-small;
+      color: vars.$color-gray;
+
+      img {
+        max-width: 150px; // Ajustar tamanho do logo
+        height: auto;
+        opacity: 0.8; // Adicionar leve transparência
+      }
+    }
+
+    .terms {
+      display: flex;
+      flex-direction: column;
+      gap: 8px; // Reduzir o gap entre os links
+      align-items: flex-end; // Alinhar à direita
+
+      @media (max-width: 768px) {
+        align-items: center;
+      }
+
+      a {
+        color: vars.$color-gray;
+        text-decoration: none;
+        font-size: 14px; // Mesmo tamanho do copyright
+        transition: color 0.3s ease;
+        font-weight: 400;
+
+        &:hover {
+          color: vars.$color-primary-orange;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,143 @@
+@use "../../../../assets/styles/variables" as vars;
+
+.project-card {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 400px;
+  cursor: pointer;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.8) 0%,
+      rgba(0, 0, 0, 0.4) 50%,
+      transparent 100%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &.show-content {
+    &::after {
+      opacity: 1;
+    }
+
+    .project-content {
+      margin: 10px;
+      padding: 15px;
+      /* From https://css.glass */
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 6px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .project-image {
+    width: 100%;
+    height: 100%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .project-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+
+    color: white;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: all 0.3s ease;
+
+    .project-title {
+      font-size: vars.$font-size-mlarge;
+      font-weight: 600;
+      margin: 1rem 0;
+
+      @media (max-width: 768px) {
+        font-size: 1.5rem; // Reduced from mlarge
+      }
+    }
+
+    .project-description {
+      font-size: vars.$font-size-base;
+      line-height: 1.5;
+
+      @media (max-width: 768px) {
+        font-size: vars.$font-size-small; // Reduced from base
+        line-height: 1.2;
+      }
+    }
+
+    .project-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 1rem;
+    }
+  }
+}
+
+.category-filters {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+
+  button {
+    &.p-button-text {
+      color: vars.$color-taupe-gray;
+      background: vars.$color-platinum;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: rgba(244, 123, 32, 0.1);
+        color: #f47b20;
+      }
+
+      @media (max-width: 768px) {
+        flex: 1 1 calc(33.333% - 1rem);
+        margin-bottom: 0.5rem;
+        max-width: calc(33.333% - 1rem);
+        padding: 0.5rem;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 480px) {
+        flex: 1 1 calc(50% - 1rem);
+        max-width: calc(50% - 1rem);
+      }
+    }
+  }
+}
+
+:host ::ng-deep {
+  .p-carousel {
+    .p-carousel-content {
+      padding: 0;
+    }
+
+    .p-carousel-item {
+      padding: 0.5rem;
+    }
+  }
+}

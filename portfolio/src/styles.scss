@@ -1,0 +1,11 @@
+/* styles.scss */
+@use "primeicons/primeicons.css"; // Ícones do PrimeNG
+@use "primeflex/primeflex"; // PrimeFlex
+
+@use "assets/styles/variables" as vars;
+@use "assets/styles/reset";
+@use "assets/styles/mixins" as mixins;
+
+body {
+  font-family: vars.$font-family-primary;
+}
