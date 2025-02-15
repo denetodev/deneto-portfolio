@@ -1,0 +1,208 @@
+@use "sass:color";
+@use "../../../../assets/styles/variables" as vars;
+
+:host ::ng-deep {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: transparent; // Host fica transparente ao scrollar
+  transition: background-color 1s ease, backdrop-filter 1s ease;
+
+  .card {
+    background-color: vars.$color-platinum-light;
+    width: 100%;
+    max-width: 90rem; // ~1440px
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    transition: all 1s ease;
+    padding: 0 vars.$spacing-medium;
+  }
+
+  .p-toolbar {
+    margin: vars.$spacing-large 0;
+    width: 100%;
+    min-width: 80vw;
+    background-color: vars.$color-black;
+    border: none;
+    color: var(--p-toolbar-color);
+    border-radius: var(--p-toolbar-border-radius);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 1s ease;
+    padding: vars.$spacing-medium vars.$spacing-large;
+
+    .p-toolbar-group-start,
+    .p-toolbar-group-end {
+      flex: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    .p-toolbar-group-start {
+      justify-content: flex-start;
+    }
+
+    .p-toolbar-group-end {
+      justify-content: flex-end;
+      gap: vars.$spacing-medium;
+    }
+  }
+
+  .card.scrolled {
+    background-color: transparent !important;
+
+    .p-toolbar {
+      background-color: rgba(vars.$color-black, 0.4);
+      backdrop-filter: blur(4px);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      border: 1px solid vars.$color-platinum-light;
+    }
+  }
+
+  .menu-items {
+    display: flex;
+    gap: vars.$spacing-medium;
+    align-items: center;
+    margin-right: vars.$spacing-large;
+  }
+
+  .menu-item-link {
+    color: vars.$color-platinum-light;
+    padding: vars.$spacing-tiny vars.$spacing-medium;
+    cursor: pointer;
+    transition: color vars.$transition-speed-fast ease;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+
+    &:hover {
+      color: vars.$color-primary-orange;
+      font-weight: vars.$font-weight-bold !important;
+      background-color: transparent !important;
+    }
+
+    span {
+      font-weight: vars.$font-weight-semibold;
+      font-size: vars.$font-size-small;
+    }
+  }
+
+  .logo {
+    flex-shrink: 0;
+    z-index: 2;
+    cursor: pointer;
+
+    a {
+      display: block;
+    }
+
+    img {
+      height: 2.2rem; // ~35px
+      width: auto;
+      max-width: 100%;
+    }
+  }
+}
+
+// Breakpoints using mobile-first approach
+@media screen and (max-width: 64rem) {
+  // 1024px
+  :host ::ng-deep {
+    .p-toolbar {
+      padding: vars.$spacing-medium;
+      margin: vars.$spacing-medium 0;
+    }
+
+    .menu-items {
+      gap: vars.$spacing-small;
+      margin-right: vars.$spacing-medium;
+    }
+  }
+}
+
+@media screen and (max-width: 48rem) {
+  // 768px
+  :host ::ng-deep {
+    .card {
+      width: 100%;
+      padding: 0 vars.$spacing-small;
+    }
+
+    .p-toolbar {
+      margin: vars.$spacing-small 0;
+      padding: vars.$spacing-small;
+      min-width: 95vw;
+    }
+
+    .menu-items {
+      display: none;
+    }
+
+    app-contact-button {
+      display: none;
+    }
+
+    .mobile-menu {
+      .p-menubar {
+        justify-content: flex-end;
+        border: none;
+        padding: 0;
+        margin-right: 5px;
+        min-width: 150px;
+
+        .p-menubar-button {
+          color: vars.$color-platinum-light;
+          display: flex !important;
+          align-items: center;
+          position: absolute;
+          justify-content: center !important;
+
+          &:hover {
+            background-color: vars.$color-primary-orange;
+          }
+        }
+
+        .p-menubar-root-list {
+          margin-top: 25px;
+          background-color: rgba(vars.$color-black, 0.9);
+          border-radius: vars.$border-radius-medium;
+
+          .p-menubar-item-label {
+            color: vars.$color-primary-orange;
+            font-weight: vars.$font-weight-semibold;
+
+            .p-menubar-root-list
+              > .p-menubar-item
+              > .p-menubar-item-content
+              > .p-menubar-item-link {
+              padding: 21px;
+              background-color: vars.$color-primary-orange !important;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 30rem) {
+    // 480px
+    :host ::ng-deep {
+      .card {
+        padding: 0 vars.$spacing-tiny;
+      }
+
+      .p-toolbar {
+        padding: vars.$spacing-tiny;
+      }
+
+      .logo img {
+        height: 1.8rem; // Slightly smaller logo for mobile
+      }
+    }
+  }
+}

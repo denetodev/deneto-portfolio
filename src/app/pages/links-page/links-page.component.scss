@@ -1,0 +1,254 @@
+@use "../../../assets/styles/variables" as vars;
+
+.links-page {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: vars.$spacing-large;
+  font-family: vars.$font-family-primary;
+  background-color: #000; // Fundo preto
+  min-height: 100vh;
+  color: white;
+}
+
+.profile-section {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  margin-bottom: vars.$spacing-xlarge;
+  display: flex;
+  align-items: flex-end;
+  border-radius: vars.$border-radius-large;
+  overflow: hidden;
+
+  .profile-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .gradient-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.3) 0%,
+        rgba(0, 0, 0, 0.7) 50%,
+        rgba(0, 0, 0, 0.9) 80%,
+        rgba(0, 0, 0, 1) 100%
+      );
+    }
+  }
+
+  .profile-informations {
+    position: relative;
+    z-index: 2;
+    padding: vars.$spacing-xlarge;
+    width: 100%;
+
+    .name {
+      font-size: vars.$font-size-heading-2;
+      font-weight: vars.$font-weight-bold;
+      margin-bottom: vars.$spacing-small;
+      color: white;
+    }
+
+    .role {
+      font-size: vars.$font-size-base;
+      color: vars.$color-gray;
+      margin-bottom: vars.$spacing-medium;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: vars.$spacing-medium;
+
+      .social-icon {
+        color: white;
+        font-size: vars.$font-size-xlarge;
+        transition: color vars.$transition-speed-fast;
+
+        &:hover {
+          color: vars.$color-primary-orange;
+        }
+      }
+    }
+  }
+}
+
+.buttons-section {
+  padding: 0 vars.$spacing-large;
+
+  .action-button {
+    margin-bottom: vars.$spacing-xlarge;
+
+    ::ng-deep .p-button {
+      width: 100%;
+      height: 50px;
+      background-color: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: white;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+    }
+  }
+
+  .instagram-section,
+  .linkedin-section,
+  .github-section,
+  .rested-section {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: vars.$border-radius-medium;
+    padding: vars.$spacing-large;
+    margin-bottom: vars.$spacing-large;
+  }
+
+  .instagram-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: vars.$spacing-small;
+
+    .post-preview {
+      aspect-ratio: 1;
+      border-radius: vars.$border-radius-small;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+.linkedin-section {
+  margin-bottom: vars.$spacing-xlarge;
+  background-color: rgba(13, 17, 23, 0.3);
+  border-radius: vars.$border-radius-medium;
+  padding: vars.$spacing-medium;
+
+  .linkedin-button {
+    display: flex;
+    align-items: center;
+    gap: vars.$spacing-medium;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: vars.$border-radius-small;
+    padding: vars.$spacing-medium;
+    color: white;
+    cursor: pointer;
+    transition: background-color vars.$transition-speed-fast;
+
+    i {
+      font-size: vars.$font-size-large;
+    }
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  .instruction {
+    text-align: center;
+    color: vars.$color-gray;
+    margin-top: vars.$spacing-small;
+    font-size: vars.$font-size-small;
+  }
+}
+
+.github-section {
+  background: rgba(13, 17, 23, 0.3);
+  border-radius: vars.$border-radius-medium;
+  padding: vars.$spacing-medium;
+  margin-bottom: vars.$spacing-large;
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: vars.$spacing-medium;
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: vars.$spacing-small;
+
+      i {
+        font-size: vars.$font-size-large;
+        color: white;
+      }
+    }
+
+    .username {
+      color: vars.$color-gray;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 2px 8px;
+      border-radius: vars.$border-radius-small;
+      font-size: vars.$font-size-small;
+    }
+  }
+
+  .stats {
+    display: flex;
+    align-items: center;
+    gap: vars.$spacing-small;
+    color: vars.$color-gray;
+    margin-bottom: vars.$spacing-medium;
+    font-size: vars.$font-size-small;
+
+    .dot {
+      font-size: 8px;
+      line-height: 1;
+      margin-top: 2px;
+    }
+  }
+
+  .contribution-grid {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: vars.$border-radius-small;
+    padding: vars.$spacing-medium;
+    overflow: hidden;
+
+    .contribution-cells {
+      display: grid;
+      grid-template-columns: repeat(22, 1fr);
+
+      .contribution-cell {
+        aspect-ratio: 1;
+        border-radius: 2px;
+        min-width: 6px;
+        margin: 1.5px;
+        transition: transform 0.1s ease;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+}
+
+.rested-section {
+  background-color: vars.$color-black;
+  h3 {
+    font-size: vars.$font-size-heading-3;
+    margin-bottom: vars.$spacing-tiny;
+  }
+
+  p {
+    color: vars.$color-gray;
+  }
+}

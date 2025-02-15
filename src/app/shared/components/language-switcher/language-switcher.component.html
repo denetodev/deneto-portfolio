@@ -1,0 +1,32 @@
+<div class="language-list">
+  <img
+    [src]="selectedLanguage.flag"
+    alt="Selected Language"
+    style="width: 30px; height: 30px"
+    (click)="toggle($event)"
+  />
+
+  <p-popover #op>
+    <div class="flex flex-col gap-4">
+      <div>
+        <span class="title-language font-medium block mb-2">
+          Escolha o Idioma
+        </span>
+        <ul class="languages-list">
+          <li
+            *ngFor="let language of languages"
+            class="text-language-int language-item"
+            (click)="selectLanguage(language)"
+          >
+            <img
+              [src]="language.flag"
+              class="language-flag"
+              alt="{{ language.name }}"
+            />
+            <span class="font-medium">{{ language.name }}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </p-popover>
+</div>
