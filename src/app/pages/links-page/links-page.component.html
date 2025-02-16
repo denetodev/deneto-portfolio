@@ -56,9 +56,9 @@
         <p-tag value="@denetodev" severity="warn" [rounded]="true" />
       </div>
       <div class="stats">
-        <span>{{ followers }} followers</span>
+        <span>{{ followersInsta }} followers</span>
         <span class="dot"> • </span>
-        <span>{{ posts }} posts</span>
+        <span>{{ postsInsta }} posts</span>
       </div>
       <div class="instagram-grid">
         <div *ngFor="let post of instagramPosts" class="post-preview">
@@ -95,40 +95,63 @@
       </a>
     </div>
 
-    <!-- GitHub Section -->
-    <a href="#" target="_blank" class="github-section">
+    <!-- Instagram Section -->
+    <a href="#" target="_blank" class="instagram-section">
       <div class="section-header">
         <div class="section-instaLogo">
           <img
-            src="../../../assets/images/features/2-github.svg"
+            src="../../../assets/images/visual-identity/instagram.png"
             alt="Instagram icon"
+          />
+          <h2>Instagram</h2>
+        </div>
+        <p-tag value="@denetodev" severity="warn" [rounded]="true" />
+      </div>
+      <div class="stats">
+        <span>{{ followersInsta }} followers</span>
+        <span class="dot"> • </span>
+        <span>{{ postsInsta }} posts</span>
+      </div>
+      <div class="instagram-grid">
+        <div *ngFor="let post of instagramPosts" class="post-preview">
+          <img [src]="post.imageUrl" [alt]="post.alt" />
+        </div>
+      </div>
+    </a>
+
+    <!-- GitHub Section -->
+    <a href="#" target="_blank" class="github-section">
+      <div class="github-header">
+        <div class="github-instaLogo">
+          <img
+            src="../../../assets/images/visual-identity/github.png"
+            alt="Github icon"
           />
           <h2>GitHub</h2>
         </div>
         <p-tag value="@denetodev" severity="warn" [rounded]="true" />
       </div>
       <div class="stats">
-        <span>7 followers</span>
-        <span class="dot">•</span>
-        <span>40 monthly contributions</span>
+        <span>{{ followersGithub }} followers</span>
+        <span class="dot"> • </span>
+        <span>{{ repositories }} monthly contributions</span>
       </div>
-      <div class="contribution-grid">
-        <div class="contribution-cells">
+
+      <div class="contribution-cells">
+        <div
+          *ngFor="
+            let week of githubData?.contributionsCollection
+              ?.contributionCalendar?.weeks
+          "
+          class="contribution-week"
+        >
           <div
-            *ngFor="
-              let week of githubData?.contributionsCollection
-                ?.contributionCalendar?.weeks
+            *ngFor="let day of week.contributionDays"
+            class="contribution-cell"
+            [style.background-color]="
+              getContributionColor(day.contributionCount)
             "
-            class="contribution-week"
-          >
-            <div
-              *ngFor="let day of week.contributionDays"
-              class="contribution-cell"
-              [style.background-color]="
-                getContributionColor(day.contributionCount)
-              "
-            ></div>
-          </div>
+          ></div>
         </div>
       </div>
     </a>

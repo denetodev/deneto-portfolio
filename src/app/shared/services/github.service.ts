@@ -38,7 +38,25 @@ export class GithubService {
             console.error('GraphQL Errors:', result.errors);
             throw result.errors;
           }
-          return result.data?.user as GithubData;
+
+          const data = result.data?.user as GithubData;
+
+          // Filtra apenas as últimas 22 semanas se houver dados
+          if (data?.contributionsCollection?.contributionCalendar?.weeks) {
+            const allWeeks =
+              data.contributionsCollection.contributionCalendar.weeks;
+            const last22Weeks = allWeeks.slice(-29);
+
+            return {
+              contributionsCollection: {
+                contributionCalendar: {
+                  weeks: last22Weeks,
+                },
+              },
+            };
+          }
+
+          return data;
         }),
         catchError((error) => {
           console.error('GitHub API Error:', error);

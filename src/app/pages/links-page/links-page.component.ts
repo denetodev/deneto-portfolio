@@ -29,6 +29,10 @@ export class LinksPageComponent implements OnInit {
   githubUsername = 'denetodev';
   githubData?: GithubData;
   currentYear = new Date().getFullYear();
+  followersGithub: number = 8;
+  repositories: number = 30;
+  followersInsta: number = 853;
+  postsInsta: number = 6;
 
   socialLinks: SocialLink[] = [
     { url: 'https://linkedin.com/', icon: 'pi pi-linkedin' },
@@ -63,9 +67,6 @@ export class LinksPageComponent implements OnInit {
     // },
   ];
 
-  followers: number = 853;
-  posts: number = 6;
-
   private githubService = inject(GithubService);
 
   ngOnInit() {
@@ -84,7 +85,7 @@ export class LinksPageComponent implements OnInit {
   }
 
   getContributionColor(count: number): string {
-    if (count === 0) return '#161b22';
+    if (count === 0) return '#181818';
     if (count < 3) return '#0e4429';
     if (count < 5) return '#006d32';
     if (count < 10) return '#26a641';

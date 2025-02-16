@@ -201,7 +201,8 @@
         background-color: rgba(255, 255, 255, 0.1);
 
         img {
-          height: 30px;
+          width: 100%;
+          height: 100%;
           object-fit: cover;
         }
       }
@@ -275,47 +276,47 @@
   .github-section {
     @extend .section-card;
 
-    .section-header {
+    .github-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: vars.$spacing-medium;
+      margin-bottom: vars.$spacing-tiny;
+      width: 100%;
 
-      .header-left {
+      .github-instaLogo {
         display: flex;
+        flex-direction: row;
         align-items: center;
-        gap: vars.$spacing-small;
 
-        i {
-          font-size: vars.$font-size-large;
+        h2 {
+          font-size: vars.$font-size-mlarge;
+          font-weight: vars.$font-weight-semibold;
+          margin-inline-start: 12px;
         }
       }
 
-      .username {
-        background-color: rgba(255, 255, 255, 0.1);
-        padding: 2px 8px;
-        border-radius: vars.$border-radius-small;
-        font-size: vars.$font-size-small;
-        color: vars.$color-gray;
+      .p-tag {
+        font-size: vars.$spacing-small;
+        font-weight: vars.$font-weight-semibold;
       }
     }
 
-    .contribution-grid {
-      background-color: rgba(0, 0, 0, 0.2);
-      border-radius: vars.$border-radius-small;
-      padding: vars.$spacing-medium;
-      margin-top: vars.$spacing-medium;
+    .stats {
+      font-size: vars.$font-size-small;
+      font-weight: vars.$font-weight-small;
+    }
 
-      .contribution-cells {
-        display: grid;
-        grid-template-columns: repeat(22, 1fr);
-        gap: 2px;
+    .contribution-cells {
+      display: grid;
+      grid-template-columns: repeat(29, 1fr);
+      width: 100%;
+      height: 100%;
 
-        .contribution-cell {
-          aspect-ratio: 1;
-          border-radius: 2px;
-          min-width: 6px;
-        }
+      div.contribution-cell {
+        aspect-ratio: 1;
+        border-radius: 3px;
+        width: 12px;
+        margin: 4px 2px;
       }
     }
   }
