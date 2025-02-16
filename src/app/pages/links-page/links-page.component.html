@@ -1,9 +1,10 @@
 <div class="links-page">
-  <div class="profile-section">
+  <!-- Profile Section -->
+  <section class="profile-section">
     <div class="profile-background">
       <img
         src="../../../assets/images/link-page/profile.jpg"
-        alt="imagem de perfil"
+        alt="Profile background"
       />
       <div class="gradient-overlay"></div>
     </div>
@@ -22,32 +23,41 @@
         </a>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="buttons-section">
-    // botão site
+  <!-- Buttons Section -->
+  <section class="buttons-section">
+    <!-- Link Para os Projetos Section -->
     <div class="action-button">
-      <p-button
-        label="Get your own dott.bio"
-        [outlined]="true"
-        styleClass="w-full"
-      >
-        <img
-          src="../../../assets/images/visual-identity/icon.png"
-          style="height: 1.8rem; margin-right: 0.5rem"
-        />
-      </p-button>
+      <a href="#" target="_blank" class="project-link">
+        <div class="action-textCard">
+          <img
+            src="../../../assets/images/visual-identity/icon.png"
+            alt="Deneto icon"
+          />
+          <h2 class="action-title">Confira meus Projetos</h2>
+        </div>
+        <span class="action-subtitle"
+          >Veja como transformo ideias em soluções digitais</span
+        >
+      </a>
     </div>
 
-    <div class="instagram-section">
+    <!-- Instagram Section -->
+    <a href="#" target="_blank" class="instagram-section">
       <div class="section-header">
-        <i class="pi pi-instagram"></i>
-        <span>Instagram</span>
-        <span class="username">&commat;denetodev</span>
+        <div class="section-instaLogo">
+          <img
+            src="../../../assets/images/visual-identity/instagram.png"
+            alt="Instagram icon"
+          />
+          <h2>Instagram</h2>
+        </div>
+        <p-tag value="@denetodev" severity="warn" [rounded]="true" />
       </div>
       <div class="stats">
         <span>{{ followers }} followers</span>
-        <span>•</span>
+        <span class="dot"> • </span>
         <span>{{ posts }} posts</span>
       </div>
       <div class="instagram-grid">
@@ -55,23 +65,47 @@
           <img [src]="post.imageUrl" [alt]="post.alt" />
         </div>
       </div>
-    </div>
+    </a>
 
+    <!-- LinkedIn Section -->
     <div class="linkedin-section">
-      <div class="linkedin-button">
-        <i class="pi pi-linkedin"></i>
-        <span>Add me on LinkedIn</span>
-      </div>
-      <p class="instruction">Write "dott.bio" as the message</p>
+      <a href="#" target="_blank" class="linkedin-button">
+        <img
+          src="../../../assets/images/visual-identity/linkedin.png"
+          alt="LinkedIn icon"
+        />
+        <h2 class="linkedin-title">Linkedin</h2>
+        <span class="linkedin-subtitle">| Vamos nos conectar</span>
+      </a>
     </div>
 
-    <div class="github-section">
-      <div class="section-header">
-        <div class="header-left">
-          <i class="pi pi-github"></i>
-          <span>GitHub</span>
+    <!-- Behance Section -->
+    <div class="behance-button">
+      <a href="#" target="_blank" class="project-link">
+        <div class="behance-textCard">
+          <img
+            src="../../../assets/images/visual-identity/behance.png"
+            alt="Deneto icon"
+          />
+          <h2 class="behance-title">Behance</h2>
         </div>
-        <span class="username">&commat;denetodev</span>
+        <span class="behance-subtitle"
+          >Explore minha coleção de projetos de design no Behance</span
+        >
+      </a>
+    </div>
+
+    <!-- GitHub Section -->
+    <a href="#" target="_blank" class="github-section">
+      <div class="section-header">
+        <div class="section-instaLogo">
+          <img
+            src="../../../assets/images/features/2-github.svg"
+            alt="Instagram icon"
+          />
+          <h2>GitHub</h2>
+        </div>
+        <p-tag value="@denetodev" severity="warn" [rounded]="true" />
       </div>
       <div class="stats">
         <span>7 followers</span>
@@ -97,11 +131,24 @@
           </div>
         </div>
       </div>
-    </div>
+    </a>
 
+    <!-- Rested Section -->
     <div class="rested-section">
       <h3>Rested.</h3>
       <p>My Chrome Extension with 300+ Users</p>
     </div>
-  </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="page-footer">
+    <div class="copyright">
+      <span>Copyright© {{ currentYear }} Denilson Neto.</span>
+      <span>Todos os direitos Reservados.</span>
+    </div>
+    <div class="footer-links">
+      <a href="#">Termos de Uso e Condições</a>
+      <a href="#">Política de Privacidade</a>
+    </div>
+  </footer>
 </div>

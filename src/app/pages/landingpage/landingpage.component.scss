@@ -1,5 +1,6 @@
-@use "../../../assets/styles/variables"  as vars;
+@use "../../../assets/styles/variables" as vars;
 
-app-home {
+.landing-page {
   background-color: vars.$color-platinum-light;
+  padding-top: 115px; /* Ajuste conforme a altura do seu header */
 }

@@ -1,13 +1,10 @@
 import { CommonModule } from '@angular/common';
+import { Component, OnInit, inject } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
-import { AvatarModule } from 'primeng/avatar';
-import { CardModule } from 'primeng/card';
-import { Component, inject, OnInit } from '@angular/core';
-import { Apollo, gql } from 'apollo-angular';
-import { GithubData } from '@app/shared/interfaces/githubData.interface';
 import { GithubService } from '@app/shared/services/github.service';
+import { GithubData } from '@app/shared/interfaces/githubData.interface';
+import { Tag } from 'primeng/tag';
 
-//TODO criar arquivos de interface para SocialLink e InstagramPost
 interface SocialLink {
   url: string;
   icon: string;
@@ -21,16 +18,17 @@ interface InstagramPost {
 @Component({
   selector: 'app-links-page',
   standalone: true,
-  imports: [CommonModule, ButtonModule, AvatarModule, CardModule],
+  imports: [CommonModule, ButtonModule, Tag],
   templateUrl: './links-page.component.html',
   styleUrls: ['./links-page.component.scss'],
   providers: [GithubService],
 })
 export class LinksPageComponent implements OnInit {
   name: string = 'Neto';
-  role: string = 'FullStack Developer ';
+  role: string = 'FullStack Developer';
   githubUsername = 'denetodev';
-  githubData!: GithubData;
+  githubData?: GithubData;
+  currentYear = new Date().getFullYear();
 
   socialLinks: SocialLink[] = [
     { url: 'https://linkedin.com/', icon: 'pi pi-linkedin' },
@@ -51,16 +49,24 @@ export class LinksPageComponent implements OnInit {
       imageUrl: '../../../assets/images/link-page/instagram03.jpg',
       alt: 'Post 3',
     },
+    // {
+    //   imageUrl: '../../../assets/images/link-page/instagram04.jpg',
+    //   alt: 'Post 4',
+    // },
+    // {
+    //   imageUrl: '../../../assets/images/link-page/instagram05.jpg',
+    //   alt: 'Post 5',
+    // },
+    // {
+    //   imageUrl: '../../../assets/images/link-page/instagram06.jpg',
+    //   alt: 'Post 6',
+    // },
   ];
 
   followers: number = 853;
-  posts: number = 3;
-  githubFollowers: number = 8;
-  monthlyContributions: number = 29;
-  social: any;
+  posts: number = 6;
 
-  constructor(private githubService: GithubService) {}
-  private apollo = inject(Apollo);
+  private githubService = inject(GithubService);
 
   ngOnInit() {
     this.fetchGithubData();
@@ -69,12 +75,10 @@ export class LinksPageComponent implements OnInit {
   fetchGithubData() {
     this.githubService.getUserContributions(this.githubUsername).subscribe({
       next: (data: GithubData) => {
-        console.log('GitHub data received:', data);
         this.githubData = data;
       },
-      error: (error: any) => {
+      error: (error) => {
         console.error('Error fetching GitHub data:', error);
-        // Aqui você pode adicionar lógica para mostrar uma mensagem ao usuário
       },
     });
   }
