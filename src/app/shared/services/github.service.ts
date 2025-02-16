@@ -42,19 +42,19 @@ export class GithubService {
           const data = result.data?.user as GithubData;
 
           // Filtra apenas as últimas 22 semanas se houver dados
-          if (data?.contributionsCollection?.contributionCalendar?.weeks) {
-            const allWeeks =
-              data.contributionsCollection.contributionCalendar.weeks;
-            const last22Weeks = allWeeks.slice(-29);
+          // if (data?.contributionsCollection?.contributionCalendar?.weeks) {
+          //   const allWeeks =
+          //     data.contributionsCollection.contributionCalendar.weeks;
+          //   const last22Weeks = allWeeks.slice(-29);
 
-            return {
-              contributionsCollection: {
-                contributionCalendar: {
-                  weeks: last22Weeks,
-                },
-              },
-            };
-          }
+          //   return {
+          //     contributionsCollection: {
+          //       contributionCalendar: {
+          //         weeks: last22Weeks,
+          //       },
+          //     },
+          //   };
+          // }
 
           return data;
         }),

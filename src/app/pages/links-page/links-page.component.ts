@@ -33,6 +33,7 @@ export class LinksPageComponent implements OnInit {
   repositories: number = 30;
   followersInsta: number = 853;
   postsInsta: number = 6;
+  weeksToShow: number = 29;
 
   socialLinks: SocialLink[] = [
     { url: 'https://linkedin.com/', icon: 'pi pi-linkedin' },
@@ -70,7 +71,35 @@ export class LinksPageComponent implements OnInit {
   private githubService = inject(GithubService);
 
   ngOnInit() {
+    this.updateWeeksToShow();
     this.fetchGithubData();
+    window.addEventListener('resize', () => this.updateWeeksToShow());
+  }
+
+  ngOnDestroy() {
+    window.removeEventListener('resize', () => this.updateWeeksToShow());
+  }
+
+  updateWeeksToShow() {
+    if (window.innerWidth < 442) {
+      this.weeksToShow = 16;
+    } else if (window.innerWidth < 576) {
+      this.weeksToShow = 20;
+    } else {
+      this.weeksToShow = 29;
+    }
+  }
+
+  getFilteredWeeks() {
+    if (
+      !this.githubData?.contributionsCollection?.contributionCalendar?.weeks
+    ) {
+      return [];
+    }
+
+    return this.githubData.contributionsCollection.contributionCalendar.weeks.slice(
+      -this.weeksToShow
+    );
   }
 
   fetchGithubData() {
