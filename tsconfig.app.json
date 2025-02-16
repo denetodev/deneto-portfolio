@@ -3,6 +3,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "types": ["node"],
     "outDir": "dist/portfolio/server",
     "module": "ES2022"
   },
