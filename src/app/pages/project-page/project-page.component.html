@@ -1,1 +1,98 @@
-<p>project-page works!</p>
+<!-- project-page.component.html -->
+<div class="container">
+  <app-header></app-header>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <img
+        class="hero-image"
+        src="../../../assets/images/projects-page/banner.jpg"
+      />
+      <div class="hero-description">
+        <h1>Transformando Ideias em Código</h1>
+        <div class="hero-right">
+          <p>
+            Combinando tecnologia e criatividade, desenvolvo soluções web
+            eficientes e escaláveis. Do back-end ao front-end, meu foco é criar
+            projetos inovadores que geram impacto.
+          </p>
+          <p-button
+            label="Ver Projetos"
+            icon="pi pi-github"
+            styleClass="p-button-lg"
+            src="https://github.com/denetodev"
+          ></p-button>
+        </div>
+      </div>
+    </div>
+    <div class="news-sidebar">
+      <h2>Blog</h2>
+      <div class="news-item">
+        <h3>Novo! Integração com Firebase</h3>
+        <p>
+          Agora utilizo Firebase para gerenciar dados e autenticação em tempo
+          real, otimizando a performance e segurança das aplicações.
+        </p>
+      </div>
+      <div class="news-item">
+        <h3>Spring Boot 3.3.4 em ação</h3>
+        <p>
+          A mais recente versão do Spring Boot já está integrada aos meus
+          projetos, garantindo maior eficiência e escalabilidade.
+        </p>
+      </div>
+      <div class="news-item">
+        <h3>WordPress & WooCommerce</h3>
+        <p>
+          Explorando novas possibilidades com WordPress e Elementor,
+          desenvolvendo sites personalizados e lojas virtuais robustas.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Highlights Section -->
+  <section class="highlights">
+    <div class="highlights-grid">
+      @for (highlight of highlights; track highlight.id) {
+      <div class="highlight-card">
+        <img [src]="highlight.image" [alt]="highlight.title" />
+        <div class="highlight-content">
+          <span class="highlight-number">{{ highlight.id }}</span>
+          <h3>{{ highlight.title }}</h3>
+          <p>{{ highlight.description }}</p>
+        </div>
+      </div>
+      }
+    </div>
+  </section>
+
+  <!-- Projects Grid -->
+  <section class="projects">
+    <div class="projects-header pt-7">
+      <h2>
+        Minha jornada no <br />
+        <span class="highlight-text"> Desenvolvimento </span>
+      </h2>
+    </div>
+    <div class="grid-wrapper">
+      @for (project of projects; track project.id) {
+      <div [ngClass]="getProjectClass(project)">
+        <img [src]="project.image" [alt]="project.title" />
+
+        <!-- Project Info -->
+        <div class="project-info">
+          <h4>{{ project.title }}</h4>
+          <p>{{ project.description }}</p>
+          <div class="links">
+            <app-project-buttons
+              [githubUrl]="project.githubUrl"
+              [siteUrl]="project.siteUrl"
+            ></app-project-buttons>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+  </section>
+</div>
