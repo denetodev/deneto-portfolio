@@ -6,10 +6,10 @@
         Tem uma ideia de projeto incrível? <br />
         <span class="highlight">Vamos conversar</span>!
       </h2>
-  
+
       <app-email-input></app-email-input>
     </div>
-  
+
     <div class="separator"><hr /></div>
     <!-- Seção de Posts do Blog -->
     <div class="blog-posts">
@@ -20,9 +20,9 @@
             <span class="highlight">Postagens no Blog</span>
           </h2>
         </div>
-        <app-ver-mais-button (click)="navigateToBlogPage()"></app-ver-mais-button>
+        <app-ver-mais-button route="/blog-page" />
       </div>
-  
+
       <div class="posts-grid">
         <div *ngFor="let post of blogPosts" class="post-card">
           <div

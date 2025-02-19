@@ -14,7 +14,7 @@ import { ProjectPageComponent } from './pages/project-page/project-page.componen
 
 export const routes: Routes = [
   { path: '', component: LandingPageComponent }, // Rota principal
-  
+
   // Rota dentro da LandingPage
   { path: 'home', component: HomeComponent },
   { path: 'offices', component: OfficesComponent },

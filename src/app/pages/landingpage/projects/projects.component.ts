@@ -11,9 +11,4 @@ import { ButtonModule } from 'primeng/button';
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss',
 })
-export class ProjectsComponent {
-  constructor(private router: Router) {}
-  navigateToProjectPage() {
-    this.router.navigate(['/project-page']);
-  }
-}
+export class ProjectsComponent {}

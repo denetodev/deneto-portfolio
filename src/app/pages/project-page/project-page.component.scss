@@ -1,9 +1,10 @@
 @use "../../../assets/styles/variables" as vars;
+@use "sass:color";
 
 .container {
-  max-width: 1300px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 150px vars.$spacing-xlarge vars.$spacing-xlarge;
+  padding: 150px vars.$spacing-xlarge 0;
 }
 
 // Hero Section
@@ -148,7 +149,7 @@
   margin-left: calc(-1 * ((100vw - 100%) / 2));
 
   .projects-header {
-    max-width: 1300px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
     display: flex;
@@ -179,8 +180,8 @@
 
   .grid-wrapper {
     display: grid;
-    max-width: 1300px; // Define um limite para o conteúdo
-    margin: 0 auto; // Centraliza na tela
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 0 20px;
     grid-gap: vars.$spacing-medium;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));

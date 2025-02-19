@@ -13,15 +13,12 @@ import { ButtonModule } from 'primeng/button';
 export class GroupButtonComponent {
   constructor(private router: Router, private scrollService: ScrollService) {}
 
-  scrollToSection(sectionId: string): void {
-    if (this.router.url !== '/') {
-      this.router.navigate(['/']).then(() => {
-        setTimeout(() => {
-          this.scrollService.scrollToElement(sectionId);
-        }, 100);
-      });
-    } else {
-      this.scrollService.scrollToElement(sectionId);
-    }
+  navigateToProjectPage(): void {
+    this.router.navigate(['/project-page']);
+  }
+
+  // Método para navegar para a página de links
+  navigateToLinksPage(): void {
+    this.router.navigate(['/links-page']);
   }
 }

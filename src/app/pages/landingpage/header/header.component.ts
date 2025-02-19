@@ -69,7 +69,13 @@ export class HeaderComponent implements OnInit {
   }
 
   navigateToLandingpage() {
-    this.router.navigate(['/**']);
+    // Rola a página para o topo
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Navega para a página inicial apenas se não estiver nela
+    if (this.router.url !== '/') {
+      this.router.navigate(['/']);
+    }
   }
 
   @HostListener('window:scroll', [])

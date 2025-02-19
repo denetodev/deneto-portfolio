@@ -1,4 +1,5 @@
 @use "../../../../assets/styles/variables" as vars;
+@use "sass:color";
 
 .offices-page {
   width: 100;
@@ -129,6 +130,17 @@
       border-width: 2px;
       border-radius: vars.$border-radius-large;
       font-size: vars.$font-size-large;
+
+      &:hover {
+        border: 2px vars.$color-primary-orange solid;
+        background-color: adjust-color(
+          $color: vars.$color-primary-orange,
+          $lightness: 45%
+        );
+        .p-button-label {
+          color: vars.$color-primary-orange;
+        }
+      }
     }
   }
 }

@@ -8,6 +8,7 @@ import { ProjectService } from '../../shared/services/project.service'; // Impor
 import { Project } from '../../shared/interfaces/project.interface'; // Importe a interface
 import { ProjectButtonsComponent } from '@app/shared/components/project-buttons/project-buttons.component';
 import { HeaderComponent } from '../landingpage/header/header.component';
+import { FooterComponent } from '../landingpage/footer/footer.component';
 
 interface Article {
   id: number;
@@ -33,6 +34,7 @@ interface Highlight {
     TagModule,
     ProjectButtonsComponent,
     HeaderComponent,
+    FooterComponent,
   ],
   templateUrl: './project-page.component.html',
   styleUrls: ['./project-page.component.scss'],
