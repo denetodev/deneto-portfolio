@@ -123,9 +123,8 @@
         font-size: 0.9rem;
       }
 
-      @media (max-width: 480px) {
-        flex: 1 1 calc(50% - 1rem);
-        max-width: calc(50% - 1rem);
+      @media (max-width: 576px) {
+        display: none;
       }
     }
   }

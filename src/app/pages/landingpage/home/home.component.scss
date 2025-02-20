@@ -235,6 +235,18 @@
   }
 
   @media (max-width: 576px) {
+    .hello-button {
+      display: none;
+    }
+
+    .home-container {
+      min-height: 60vh;
+    }
+
+    .home-container .content-wrapper {
+      padding: 0 1rem;
+    }
+
     .experience-rating {
       display: none !important;
     }

@@ -4,7 +4,7 @@
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 150px vars.$spacing-xlarge 0;
+  padding: 150px vars.$spacing-xlarge 0 vars.$spacing-xlarge;
 }
 
 // Hero Section
@@ -38,13 +38,22 @@
       margin-right: vars.$spacing-large;
       color: vars.$color-black;
       width: 50%;
+
+      @media (max-width: 768px) {
+        font-size: vars.$font-size-heading-3;
+      }
     }
 
     p {
       font-size: vars.$font-size-large;
+      font-weight: vars.$font-weight-semibold;
       line-height: 1.6;
       color: vars.$color-gray;
       margin-bottom: vars.$spacing-xlarge;
+
+      @media (max-width: 768px) {
+        font-size: vars.$font-size-base;
+      }
     }
   }
 
@@ -83,6 +92,53 @@
       p {
         color: vars.$color-taupe-gray;
         line-height: 1.6;
+      }
+    }
+
+    @media (max-width: 576px) {
+      display: none;
+    }
+  }
+}
+
+// Responsividade para telas menores (até 576px)
+@media (max-width: 576px) {
+  .container {
+    padding: vars.$spacing-medium vars.$spacing-medium 0;
+  }
+  .hero {
+    display: flex;
+    flex-direction: column;
+    gap: vars.$spacing-medium;
+
+    .hero-content {
+      .hero-image {
+        max-height: 250px;
+      }
+
+      .hero-description {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+
+        h1 {
+          width: 100%;
+          font-size: vars.$font-size-heading-2;
+          margin-bottom: vars.$spacing-medium;
+        }
+
+        p {
+          font-size: vars.$font-size-base;
+          margin-bottom: vars.$spacing-medium;
+        }
+      }
+    }
+
+    .news-sidebar {
+      padding: vars.$spacing-medium;
+      h2 {
+        font-size: vars.$font-size-heading-3;
+        text-align: center;
       }
     }
   }
@@ -139,26 +195,36 @@
       }
     }
   }
+
+  @media (max-width: 576px) {
+    display: none;
+  }
 }
 
 // Projects Grid
 .projects {
   width: 100vw; // Ocupa toda a largura da tela
   background-color: vars.$color-platinum-light;
-  padding: 50px 0; // Ajuste o padding para espaçamento interno
+  padding: vars.$spacing-xlarge; // Ajuste o padding para espaçamento interno
   margin-left: calc(-1 * ((100vw - 100%) / 2));
+
+  @media (max-width: 576px) {
+    padding: vars.$spacing-small;
+  }
 
   .projects-header {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: vars.$spacing-xlarge;
     display: flex;
     align-items: center;
     justify-content: space-between;
 
     @media (max-width: 768px) {
       flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
+      text-align: center;
+      padding: 1rem 0 0;
     }
 
     h2 {
@@ -170,6 +236,7 @@
       @media (max-width: 768px) {
         font-size: 2rem;
         align-content: flex-start;
+        margin-bottom: 0;
       }
     }
 
@@ -182,7 +249,7 @@
     display: grid;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: vars.$spacing-xlarge;
     grid-gap: vars.$spacing-medium;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     grid-auto-rows: 200px;

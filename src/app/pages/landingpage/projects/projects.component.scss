@@ -12,9 +12,10 @@
   align-items: center;
   justify-content: space-between;
 
-  @media (max-width: 768px) {
+  @media (max-width: 992px) {
     flex-direction: column;
-    align-items: flex-start;
+    justify-content: center;
+    text-align: center;
   }
 
   h2 {
@@ -23,9 +24,8 @@
     margin-bottom: 1.5rem;
     color: vars.$color-black;
 
-    @media (max-width: 768px) {
-      font-size: 2rem;
-      align-content: flex-start;
+    @media (max-width: 1140px) {
+      font-size: vars.$font-size-heading-1;
     }
   }
 
@@ -33,13 +33,12 @@
     color: vars.$color-primary-orange;
   }
 
-  app-ver-mais-button {
-    @media (max-width: 768px) {
-      align-self: center;
-      margin: 2rem 0;
-      width: 100%;
-    }
-  }
+  // app-ver-mais-button {
+  //   @media (max-width: 768px) {
+  //     display: flex;
+  //     justify-content: center;
+  //   }
+  // }
 }
 
 .projects-section {
@@ -89,7 +88,8 @@
         }
 
         @media (max-width: 768px) {
-          font-size: 2rem;
+          flex-direction: column;
+          font-size: vars.$font-size-heading-2;
         }
       }
 

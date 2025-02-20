@@ -1,5 +1,5 @@
 // project-page.component.ts
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
@@ -88,10 +88,17 @@ export class ProjectPageComponent implements OnInit {
 
   projects: Project[] = [];
 
+  isSmallScreen: boolean = window.innerWidth < 720;
+
   constructor(private projectService: ProjectService) {}
 
   ngOnInit(): void {
     this.loadProjects();
+  }
+
+  @HostListener('window:resize', [])
+  onResize() {
+    this.isSmallScreen = window.innerWidth < 720;
   }
 
   loadProjects(): void {
@@ -110,6 +117,8 @@ export class ProjectPageComponent implements OnInit {
   }
 
   getProjectClass(project: Project): string {
+    if (this.isSmallScreen) return ''; // Se for tela pequena, não aplica classe
+
     const index = this.projects.indexOf(project);
     if (index % 7 === 0) return 'big';
     if (index % 5 === 0) return 'wide';

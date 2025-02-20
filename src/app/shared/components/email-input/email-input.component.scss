@@ -10,7 +10,7 @@
   max-width: 800px;
   margin: 0 auto;
 
-  @media (max-width: 600px) {
+  @media (max-width: 720px) {
     padding: 0 1rem;
   }
 }
@@ -24,12 +24,15 @@
   align-items: center;
   border: 2px solid vars.$color-taupe-gray;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  max-width: 450px;
 
-  @media (max-width: 600px) {
+  @media (max-width: 720px) {
     flex-direction: column;
     height: auto;
     border-radius: 20px;
-    padding: 0.5rem;
+    padding: 0.75rem;
+    width: 100%;
+    max-width: 100%;
   }
 }
 
@@ -37,12 +40,11 @@
   flex: 1;
   display: flex;
   align-items: center;
-  padding-left: vars.$spacing-tiny;
   gap: 0.5rem;
+  width: 100%;
 
-  @media (max-width: 600px) {
-    width: 100%;
-    padding: 0.5rem;
+  @media (max-width: 720px) {
+    justify-content: center;
   }
 
   i {
@@ -50,10 +52,11 @@
     font-size: 1.1rem;
     padding: 12px;
     background-color: color.adjust(vars.$color-primary-orange, $lightness: 30%);
-    border-radius: 100px;
+    border-radius: 50%;
 
-    @media (max-width: 600px) {
-      display: none;
+    @media (max-width: 720px) {
+      padding: 8px;
+      font-size: 1rem;
     }
   }
 
@@ -64,8 +67,9 @@
     width: 100%;
     font-size: vars.$font-size-mlarge;
     background: transparent;
+    text-align: left;
 
-    @media (max-width: 600px) {
+    @media (max-width: 720px) {
       font-size: vars.$font-size-base;
       padding: 0.5rem;
       text-align: center;
@@ -96,9 +100,10 @@
     font-size: 1rem;
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 720px) {
     width: 100%;
     padding: 0.75rem;
+    margin-top: vars.$spacing-tiny;
     border-radius: 20px;
     font-size: vars.$font-size-base;
   }
@@ -117,7 +122,7 @@
   flex-wrap: wrap;
   width: 100%;
 
-  @media (max-width: 600px) {
+  @media (max-width: 720px) {
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
@@ -132,7 +137,7 @@
     font-size: 0.9rem;
     font-weight: vars.$font-weight-semibold;
 
-    @media (max-width: 600px) {
+    @media (max-width: 720px) {
       font-size: 0.8rem;
     }
 

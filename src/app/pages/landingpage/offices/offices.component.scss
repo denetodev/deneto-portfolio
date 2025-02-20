@@ -159,6 +159,10 @@
     text-align: center;
   }
 
+  .hire-image-container {
+    display: none;
+  }
+
   .hire-info {
     align-items: center;
     text-align: center;
@@ -183,7 +187,7 @@
     gap: 1rem;
 
     h2 {
-      font-size: 3rem;
+      font-size: vars.$font-size-heading-1;
     }
   }
 
@@ -193,7 +197,7 @@
 
   .hire-section {
     .hire-title {
-      font-size: 3rem;
+      font-size: vars.$font-size-heading-1;
     }
   }
 }

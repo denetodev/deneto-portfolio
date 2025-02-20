@@ -47,13 +47,13 @@
 
   // Tablets e dispositivos médios
   @media screen and (max-width: 852px) {
-    flex-direction: column;
+    flex-direction: row;
     ::ng-deep .p-button {
-      font-size: vars.$font-size-base;
-      padding: vars.$spacing-small vars.$spacing-medium;
+      font-size: vars.$font-size-small;
+      padding: vars.$spacing-tiny vars.$spacing-small;
 
       .p-button-icon {
-        font-size: vars.$font-size-base;
+        font-size: vars.$font-size-small;
       }
     }
   }
@@ -66,7 +66,7 @@
 
     ::ng-deep .p-button {
       font-size: vars.$font-size-small;
-      padding: vars.$spacing-tiny vars.$spacing-small;
+      padding: vars.$spacing-tiny vars.$spacing-tiny;
       justify-content: center;
 
       .p-button-icon {

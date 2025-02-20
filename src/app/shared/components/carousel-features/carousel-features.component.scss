@@ -13,4 +13,8 @@
 .carousel-item img {
   max-height: 4rem;
   height: auto;
+
+  @media (max-width: 576px) {
+    max-height: 2.5rem;
+  }
 }

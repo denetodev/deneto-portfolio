@@ -75,7 +75,7 @@ export class CarouselFeatures {
       { breakpoint: 1200, settings: { slidesToShow: 8, slidesToScroll: 1 } },
       { breakpoint: 992, settings: { slidesToShow: 6, slidesToScroll: 1 } },
       { breakpoint: 768, settings: { slidesToShow: 5, slidesToScroll: 1 } },
-      { breakpoint: 576, settings: { slidesToShow: 3, slidesToScroll: 1 } },
+      { breakpoint: 576, settings: { slidesToShow: 6, slidesToScroll: 1 } },
     ],
   };
 }
