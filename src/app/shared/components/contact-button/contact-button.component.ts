@@ -26,9 +26,7 @@ export class ContactButtonComponent {
   constructor(private router: Router) {}
 
   navigateToLinksPage() {
-    const url = this.router.serializeUrl(
-      this.router.createUrlTree(['/links-page'])
-    );
-    window.open(url, '_blank');
+    this.router.navigate(['/links-page']);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }

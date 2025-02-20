@@ -1,19 +1,36 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { InputTextModule } from 'primeng/inputtext';
+import { Tooltip } from 'primeng/tooltip';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import { ContactService } from '../../services/contact.service';
 
 @Component({
   selector: 'app-email-input',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    Tooltip,
+    InputTextModule,
+    InputTextModule,
+    ToastModule,
+  ],
+  providers: [MessageService],
   templateUrl: './email-input.component.html',
   styleUrl: './email-input.component.scss',
 })
 export class EmailInputComponent {
   emailValue: string = '';
   @Output() submitEmail = new EventEmitter<string>();
+  loading: boolean = false;
 
-  private readonly DESTINATION_EMAIL = 'deneto.dev@gmail.com';
+  constructor(
+    private contactService: ContactService,
+    private messageService: MessageService
+  ) {}
 
   isValidEmail(): boolean {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -21,24 +38,30 @@ export class EmailInputComponent {
   }
 
   onSubmit() {
-    if (this.isValidEmail()) {
-      // Emite o evento com o email digitado
-      this.submitEmail.emit(this.emailValue);
+    if (!this.isValidEmail() || this.loading) return;
 
-      // Prepara o mailto link
-      const mailtoLink = this.createMailtoLink();
+    this.loading = true;
 
-      // Abre o cliente de email
-      window.location.href = mailtoLink;
-    }
-  }
-
-  private createMailtoLink(): string {
-    const subject = encodeURIComponent('Contato via Website');
-    const body = encodeURIComponent(
-      `Olá! Gostaria de conversar sobre um projeto.\n\nMeu email para contato: ${this.emailValue}`
-    );
-
-    return `mailto:${this.DESTINATION_EMAIL}?subject=${subject}&body=${body}`;
+    this.contactService.submitContactRequest(this.emailValue).subscribe({
+      next: (response) => {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Sucesso',
+          detail: 'Recebemos sua solicitação! Em breve entraremos em contato.',
+        });
+        this.emailValue = '';
+        this.submitEmail.emit(this.emailValue);
+      },
+      error: (error) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Erro',
+          detail: error.message,
+        });
+      },
+      complete: () => {
+        this.loading = false;
+      },
+    });
   }
 }

@@ -88,6 +88,13 @@
   cursor: pointer;
   transition: background-color 0.2s ease;
   margin-right: 4px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  i {
+    font-size: 1rem;
+  }
 
   @media (max-width: 600px) {
     width: 100%;

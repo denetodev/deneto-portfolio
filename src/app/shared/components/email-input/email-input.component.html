@@ -1,4 +1,5 @@
 <div class="input-section">
+  <p-toast></p-toast>
   <div class="custom-input-container">
     <div class="input-wrapper">
       <i class="pi pi-envelope"></i>
@@ -10,11 +11,16 @@
       />
     </div>
     <button
+      pTooltip="Insira um e-mail válido"
+      tooltipPosition="right"
+      showDelay="1000"
+      placeholder="Top"
       class="submit-button"
       (click)="onSubmit()"
-      [disabled]="!isValidEmail()"
+      [disabled]="!isValidEmail() || loading"
     >
-      Enviar
+      <i class="pi pi-spin pi-spinner" *ngIf="loading"></i>
+      <span>{{ loading ? "Enviando..." : "Enviar" }}</span>
     </button>
   </div>
 

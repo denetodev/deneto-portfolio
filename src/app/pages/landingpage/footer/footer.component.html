@@ -11,10 +11,12 @@
       <!-- Logo and Social -->
       <div class="footer-left">
         <div class="logo">
-          <img
-            src="assets/images/visual-identity/logo-horizontal.png"
-            alt="Deneto Logo"
-          />
+          <a (click)="navigateToTop()">
+            <img
+              src="assets/images/visual-identity/logo-horizontal.png"
+              alt="Deneto Logo"
+            />
+          </a>
         </div>
         <p class="social-text">
           Quer colaborar ou trocar ideias? Fique à vontade para me enviar um
@@ -84,9 +86,7 @@
           <h3>Navegação</h3>
           <ul>
             <li>
-              <a (click)="scrollToSection('sobre')" style="cursor: pointer"
-                >Sobre</a
-              >
+              <a (click)="navigateToTop()" style="cursor: pointer">Home</a>
             </li>
             <li>
               <a (click)="scrollToSection('servicos')" style="cursor: pointer"
@@ -120,13 +120,32 @@
       </div>
 
       <!-- Newsletter -->
-       <!-- TODO ajustar para enviar emails -->
       <div class="footer-newsletter">
-        <div class="newsletter-form">
-          <input type="text" pInputText placeholder="Email" />
-          <button pButton type="button" icon="pi pi-send"></button>
-        </div>
+        <form
+          [formGroup]="newsletterForm"
+          (ngSubmit)="onSubmitNewsletter()"
+          class="newsletter-form"
+        >
+          <input
+            type="email"
+            pInputText
+            formControlName="email"
+            placeholder="Email"
+            [class.ng-invalid]="
+              newsletterForm.get('email')?.invalid &&
+              newsletterForm.get('email')?.touched
+            "
+          />
+          <button
+            pButton
+            type="submit"
+            icon="pi pi-send"
+            [loading]="loading"
+            [disabled]="newsletterForm.invalid || loading"
+          ></button>
+        </form>
       </div>
+      <p-toast position="bottom-right"></p-toast>
     </div>
 
     <!-- Copyright -->
@@ -136,10 +155,12 @@
         <p>Todos os direitos Reservados.</p>
       </div>
       <div class="made-by">
-        <img
-          src="assets/images/visual-identity/logo-horizontal-footer.png"
-          alt="DN Logo"
-        />
+        <a (click)="navigateToTop()">
+          <img
+            src="assets/images/visual-identity/logo-horizontal-footer.png"
+            alt="DN Logo"
+          />
+        </a>
       </div>
       <div class="terms">
         <a routerLink="/termos">Termos de Uso e Condições</a>

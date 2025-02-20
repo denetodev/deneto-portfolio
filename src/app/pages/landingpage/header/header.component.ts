@@ -32,8 +32,8 @@ export class HeaderComponent implements OnInit {
 
   items = [
     {
-      label: 'Sobre',
-      command: () => this.scrollToSection('sobre'),
+      label: 'Home',
+      command: () => this.navigateToLandingpage(),
     },
     {
       label: 'Serviços',

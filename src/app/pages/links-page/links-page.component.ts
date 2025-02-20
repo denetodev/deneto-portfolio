@@ -36,9 +36,9 @@ export class LinksPageComponent implements OnInit {
   weeksToShow: number = 29;
 
   socialLinks: SocialLink[] = [
-    { url: 'https://linkedin.com/', icon: 'pi pi-linkedin' },
-    { url: 'https://github.com/', icon: 'pi pi-github' },
-    { url: 'https://instagram.com/', icon: 'pi pi-instagram' },
+    { url: 'https://br.linkedin.com/in/deneto', icon: 'pi pi-linkedin' },
+    { url: 'https://github.com/denetodev', icon: 'pi pi-github' },
+    { url: 'https://www.instagram.com/denetodev', icon: 'pi pi-instagram' },
   ];
 
   instagramPosts: InstagramPost[] = [

@@ -17,6 +17,8 @@ export class VerMaisButtonComponent {
 
   // Método para navegar para a rota especificada
   navigateToRoute(): void {
+    // Rola a página para o topo
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     if (this.route) {
       this.router.navigate([this.route]);
     }

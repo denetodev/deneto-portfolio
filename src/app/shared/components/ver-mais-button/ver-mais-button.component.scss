@@ -2,15 +2,14 @@
 @use "../../../../assets/styles/variables" as vars;
 
 .vermais-button {
-      margin-bottom: 2rem;
-      display: flex;
-      align-items: center;
-      ::ng-deep {
-        .p-button {
-          padding: 1rem 2rem;
-          border-width: 2px;
-          border-radius: vars.$border-radius-large;
-          font-size: vars.$font-size-large;
-        }
-      }
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  ::ng-deep {
+    .p-button {
+      padding: 1rem 2rem;
+      border-radius: vars.$border-radius-medium;
+      font-size: vars.$font-size-large;
     }
+  }
+}
