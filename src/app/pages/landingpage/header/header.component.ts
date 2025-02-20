@@ -78,6 +78,10 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  navigateToLandingpageTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
   @HostListener('window:scroll', [])
   onWindowScroll() {
     this.isScrolled = window.scrollY > 50;

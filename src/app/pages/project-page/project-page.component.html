@@ -17,10 +17,10 @@
             projetos inovadores que geram impacto.
           </p>
           <p-button
-            label="Ver Projetos"
+            label="Conheça meu GitHub"
             icon="pi pi-github"
             styleClass="p-button-lg"
-            src="https://github.com/denetodev"
+            (onClick)="navigateToGitHub()"
           ></p-button>
         </div>
       </div>
@@ -77,7 +77,10 @@
     </div>
     <div class="grid-wrapper">
       @for (project of projects; track project.id) {
-      <div [ngClass]="getProjectClass(project)">
+      <div
+        [ngClass]="getProjectClass(project)"
+        style="box-shadow: -1px 11px 10px -3px rgba(0,0,0,0.2)"
+      >
         <img [src]="project.image" [alt]="project.title" />
 
         <!-- Project Info -->

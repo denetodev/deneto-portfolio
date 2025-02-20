@@ -105,6 +105,10 @@ export class ProjectPageComponent implements OnInit {
     });
   }
 
+  navigateToGitHub() {
+    window.open('https://github.com/denetodev', '_blank');
+  }
+
   getProjectClass(project: Project): string {
     const index = this.projects.indexOf(project);
     if (index % 7 === 0) return 'big';
