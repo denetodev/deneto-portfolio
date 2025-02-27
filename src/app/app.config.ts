@@ -1,4 +1,4 @@
-import { ApplicationConfig } from '@angular/core';
+import { ApplicationConfig, isDevMode } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 
@@ -19,6 +19,7 @@ import { provideClientHydration } from '@angular/platform-browser';
 import { InMemoryCache } from '@apollo/client/cache';
 import { HttpLink } from 'apollo-angular/http';
 import { APOLLO_OPTIONS, Apollo } from 'apollo-angular';
+import { provideServiceWorker } from '@angular/service-worker';
 
 const MyPreset = definePreset(Aura, {
   semantic: {
@@ -57,6 +58,7 @@ export const appConfig: ApplicationConfig = {
     }),
     provideClientHydration(),
     provideHttpClient(),
+    provideServiceWorker(!isDevMode() ? 'ngsw-worker.js' : ''),
 
     {
       provide: APOLLO_OPTIONS,

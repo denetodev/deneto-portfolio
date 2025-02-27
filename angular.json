@@ -45,6 +45,11 @@
                 "glob": "env.js",
                 "input": "src",
                 "output": "/"
+              },
+              {
+                "glob": ".htaccess",
+                "input": "./",
+                "output": "/"
               }
             ],
             "styles": [
@@ -55,6 +60,11 @@
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/slick-carousel/slick/slick.min.js"
+            ],
+            "allowedCommonJsDependencies": [
+              "firebase",
+              "js-confetti",
+              "typed.js"
             ]
           },
           "configurations": {
@@ -68,10 +78,24 @@
                 {
                   "type": "anyComponentStyle",
                   "maximumWarning": "6kB",
-                  "maximumError": "8kB"
+                  "maximumError": "10kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": true
+                },
+                "fonts": true
+              },
+              "aot": true,
+              "buildOptimizer": true,
+              "vendorChunk": false,
+              "subresourceIntegrity": true,
+              "serviceWorker": true,
+              "ngswConfigPath": "ngsw-config.json"
             },
             "development": {
               "optimization": false,
@@ -105,11 +129,16 @@
             "outputPath": "dist/portfolio/server",
             "main": "src/main.server.ts",
             "tsConfig": "tsconfig.server.json",
+            "optimization": true,
             "externalDependencies": ["@grpc/grpc-js", "@grpc/proto-loader"]
           },
           "configurations": {
             "production": {
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "optimization": {
+                "scripts": true,
+                "styles": true
+              }
             }
           }
         },
