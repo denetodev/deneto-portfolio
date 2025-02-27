@@ -13,51 +13,51 @@ export class CarouselFeatures {
   images = [
     {
       src: '../../../../assets/images/features/1-git.svg',
-      alt: 'Feature 1',
+      alt: 'imagem do ícone do Git',
     },
     {
       src: '../../../../assets/images/features/2-github.svg',
-      alt: 'Feature 2',
+      alt: 'imagem do ícone do GitHub',
     },
     {
       src: '../../../../assets/images/features/3-javascript.svg',
-      alt: 'Feature 3',
+      alt: 'imagem do ícone do JavaScript',
     },
     {
       src: '../../../../assets/images/features/4-typescript.svg',
-      alt: 'Feature 4',
+      alt: 'imagem do ícone do TypeScript',
     },
     {
       src: '../../../../assets/images/features/5-java.svg',
-      alt: 'Feature 5',
+      alt: 'imagem do ícone do Java',
     },
     {
       src: '../../../../assets/images/features/6-angular.svg',
-      alt: 'Feature 6',
+      alt: 'imagem do ícone do Angular',
     },
     {
       src: '../../../../assets/images/features/7-spring.svg',
-      alt: 'Feature 7',
+      alt: 'imagem do ícone do Spring Boot',
     },
     {
       src: '../../../../assets/images/features/8-wordpress.svg',
-      alt: 'Feature 8',
+      alt: 'imagem do ícone do WordPress',
     },
     {
       src: '../../../../assets/images/features/9-elementor.svg',
-      alt: 'Feature 9',
+      alt: 'imagem do ícone do Elementor',
     },
     {
       src: '../../../../assets/images/features/10-woocommerce.svg',
-      alt: 'Feature 10',
+      alt: 'imagem do ícone do WooCommerce',
     },
-    {
-      src: '../../../../assets/images/features/11-bubble.svg',
-      alt: 'Feature 11',
-    },
+    // {
+    //   src: '../../../../assets/images/features/11-bubble.svg',
+    //   alt: 'imagem do ícone do Bubble',
+    // },
     {
       src: '../../../../assets/images/features/12-flutterflow.svg',
-      alt: 'Feature 12',
+      alt: 'imagem do ícone do FlutterFlow',
     },
   ];
 

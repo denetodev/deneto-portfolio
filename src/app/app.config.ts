@@ -23,17 +23,17 @@ import { APOLLO_OPTIONS, Apollo } from 'apollo-angular';
 const MyPreset = definePreset(Aura, {
   semantic: {
     primary: {
-      50: '{orange.50}',
-      100: '{orange.100}',
-      200: '{orange.200}',
-      300: '{orange.300}',
-      400: '{orange.400}',
-      500: '{orange.500}',
-      600: '{orange.600}',
-      700: '{orange.700}',
-      800: '{orange.800}',
-      900: '{orange.900}',
-      950: '{orange.950}',
+      50: '#fff5eb',
+      100: '#ffe8d3',
+      200: '#ffd1a7',
+      300: '#ffb47a',
+      400: '#ff8c4d',
+      500: '#ff6200', // Sua cor principal
+      600: '#e65600',
+      700: '#cc4c00',
+      800: '#a33d00',
+      900: '#7a2e00',
+      950: '#4d1d00',
     },
   },
 });

@@ -6,7 +6,6 @@ import { AvatarModule } from 'primeng/avatar';
 import { RippleModule } from 'primeng/ripple';
 import { Router } from '@angular/router';
 import { ScrollService } from '@app/shared/services/scroll.service';
-import { LanguageSwitcherComponent } from '../../../shared/components/language-switcher/language-switcher.component';
 import { ContactButtonComponent } from '@app/shared/components/contact-button/contact-button.component';
 import { MenubarModule } from 'primeng/menubar';
 
@@ -21,7 +20,6 @@ import { MenubarModule } from 'primeng/menubar';
     ButtonModule,
     AvatarModule,
     RippleModule,
-    LanguageSwitcherComponent,
     ContactButtonComponent,
     MenubarModule,
   ],
