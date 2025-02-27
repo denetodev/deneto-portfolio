@@ -1,4 +1,4 @@
-import { config } from "@app/config/config";
+import { config } from '@app/config/config';
 
 export const environment = {
   production: false,

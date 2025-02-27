@@ -33,7 +33,7 @@
     justify-content: space-between;
     align-items: center;
     transition: all 1s ease;
-    padding: vars.$spacing-medium vars.$spacing-large;
+    padding: vars.$spacing-medium vars.$spacing-xxxlarge !important;
 
     .p-toolbar-group-start,
     .p-toolbar-group-end {
@@ -134,7 +134,7 @@
 
     .p-toolbar {
       margin: vars.$spacing-small 0;
-      padding: vars.$spacing-small;
+      padding: vars.$spacing-small vars.$spacing-large !important;
       min-width: 95vw;
     }
 
