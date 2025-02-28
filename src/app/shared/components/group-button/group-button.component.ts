@@ -23,6 +23,6 @@ export class GroupButtonComponent {
   navigateToLinksPage(): void {
     // Rola a página para o topo
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    this.router.navigate(['/links-page']);
+    this.router.navigate(['/links']);
   }
 }

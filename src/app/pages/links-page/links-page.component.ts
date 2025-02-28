@@ -16,7 +16,7 @@ interface InstagramPost {
 }
 
 @Component({
-  selector: 'app-links-page',
+  selector: 'app-links',
   standalone: true,
   imports: [CommonModule, ButtonModule, Tag],
   templateUrl: './links-page.component.html',

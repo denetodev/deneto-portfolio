@@ -17,7 +17,7 @@ export const routes: Routes = [
   { path: 'blog', component: BlogComponent },
 
   // Rotas entre páginas
-  { path: 'links-page', component: LinksPageComponent },
+  { path: 'links', component: LinksPageComponent },
   {
     path: 'admin',
     children: [{ path: '', redirectTo: 'login', pathMatch: 'full' }],

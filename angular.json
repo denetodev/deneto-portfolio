@@ -44,12 +44,12 @@
               {
                 "glob": "env.js",
                 "input": "src",
-                "output": "/"
+                "output": ""
               },
               {
                 "glob": ".htaccess",
                 "input": "./",
-                "output": "/"
+                "output": ""
               }
             ],
             "styles": [
@@ -72,15 +72,16 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "2MB",
-                  "maximumError": "3MB"
+                  "maximumWarning": "2097152",
+                  "maximumError": "3145728"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "6kB",
-                  "maximumError": "10kB"
+                  "maximumWarning": "6144",
+                  "maximumError": "10240"
                 }
               ],
+
               "outputHashing": "all",
               "optimization": {
                 "scripts": true,
@@ -91,11 +92,7 @@
                 "fonts": true
               },
               "aot": true,
-              "buildOptimizer": true,
-              "vendorChunk": false,
-              "subresourceIntegrity": true,
-              "serviceWorker": true,
-              "ngswConfigPath": "ngsw-config.json"
+              "subresourceIntegrity": true
             },
             "development": {
               "optimization": false,
@@ -156,7 +153,7 @@
               {
                 "glob": "env.js",
                 "input": "src",
-                "output": "/"
+                "output": ""
               }
             ],
             "styles": [
